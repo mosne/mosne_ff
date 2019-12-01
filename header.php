@@ -1,5 +1,5 @@
 <!doctype html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?> class="no-js" data-whatintent data-whatinput>
 <head>
     <meta charset="utf-8">
     <title><?php wp_title(''); ?></title>

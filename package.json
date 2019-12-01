@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "gulp-include": "^2.4.1",
+    "lazysizes": "^5.2.0-beta1",
     "normalize-scss": "^7.0.1",
     "object-fit-images": "^3.2.4",
     "susy": "^2.2.14",

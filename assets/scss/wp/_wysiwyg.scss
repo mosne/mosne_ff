@@ -1,0 +1,39 @@
+.wysiwyg {
+	@include clearfix;
+
+	// * {
+	// 	margin-bottom: $base-spacing;
+
+	// 	&:last-child {
+	// 		margin-bottom: 0;
+	// 	}
+	// }
+
+	a:not([class]) {
+		text-decoration: underline;
+
+		@include hover {
+			text-decoration: none;
+		}
+	}
+
+	ul:not([class]) {
+		@include wysiwyg__list();
+	}
+
+	ol:not([class]) {
+		@include wysiwyg__list(ol);
+	}
+
+	img {
+		@include img__responsive;
+		&.alignright,
+		&.alignleft {
+			max-width: 50%;
+
+			@include breakpoints(sm) {
+				max-width: 100%;
+			}
+		}
+	}
+}

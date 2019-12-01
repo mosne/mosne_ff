@@ -1,0 +1,1 @@
+//=require  'what-input/dist/what-input.js'

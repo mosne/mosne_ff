@@ -11,12 +11,12 @@
 @import "abstract/breakpoints";
 @import "abstract/grid";
 
-// Base
-// @import "base/text";
-
-// Components
-@import "components/buttons";
-
+.block-editor-block-list__layout{
+    // Base
+    @import "base/text";
+    // Components
+    @import "components/buttons";
+}
 // Wordpress
 @import "wp/img";
 @import "wp/gallery";

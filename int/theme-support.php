@@ -6,3 +6,9 @@
     add_theme_support( 'align-wide' );
     add_theme_support( 'wp-block-styles' );
     add_theme_support( 'disable-custom-colors' );
+
+    /**
+     * Gutenber Editor Style
+     */
+    add_editor_style( 'assets/editor-style.min.css');
+

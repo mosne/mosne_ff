@@ -1,5 +1,4 @@
 //=require 'lazysizes/lazysizes.js'
-//=require 'lazysizes/plugins/bgset/ls.bgset.js'
 //=require 'lazysizes/plugins/native-loading/ls.native-loading.js'
 //=require 'lazysizes/plugins/object-fit/ls.object-fit.js'
 

@@ -39,15 +39,6 @@ function theme_name_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 
-
-/**
- * Enqueue block editor style
- */
-function mytheme_block_editor_styles() {
-    wp_enqueue_style( 'mytheme-block-editor-styles', get_theme_file_uri( '/assets/editor-style.min.css' ), false, '1.0', 'all' );
-}
-add_action( 'enqueue_block_editor_assets', 'mytheme_block_editor_styles' );
-
 // Add custom taxonomies to the post class
 add_filter( 'post_class', 'custom_taxonomy_post_class', 10, 3 );
 if( !function_exists( 'custom_taxonomy_post_class' ) ) {

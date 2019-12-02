@@ -19,8 +19,6 @@ function m_widgets_init() {
             'after_title' => '</h4>'
         ) );
 
-        include 'register-menu.php';
-
 }
 
 add_action( 'widgets_init', 'm_widgets_init' );

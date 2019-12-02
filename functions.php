@@ -14,7 +14,8 @@ show_admin_bar(false);
 $role_object = get_role( 'editor' );
 $role_object->add_cap( 'edit_theme_options' );
 
-include 'int/theme.php';
+include 'int/services.php';
+include 'int/register-menu.php';
 include 'int/register-sidebar.php';
 include 'int/utilities.php';
 include 'int/m_image.php';

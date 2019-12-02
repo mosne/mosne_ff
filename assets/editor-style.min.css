@@ -118,7 +118,7 @@ p.has-large-font-size{font-weight:700;line-height:1.2;font-family:sans-serif;fon
 p.has-medium-font-size{font-weight:700;line-height:1.2;font-family:sans-serif;font-size:28px}
 .fonts-loading p.has-medium-font-size{font-family:Arial,Helvetica,sans-serif}
 .mce-content-body{margin:16px;max-width:1020px}
-.wp-block:not([data-align="full"]){max-width:container();background:yellow}
+.wp-block:not([data-align="full"]){max-width:1020px;background:yellow}
 .wp-block[data-align="wide"]{max-width:1530px}
 .editor-post-title__block .editor-post-title__input{font-family:sans-serif}
 .block-library-list ul{padding-left:0;margin:32px 0 32px 16px;list-style:disc inside none}

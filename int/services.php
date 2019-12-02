@@ -72,6 +72,14 @@ function custom_theme_setup() {
 
 add_action( 'after_setup_theme', 'custom_theme_setup' );
 
+/**
+ * Gutenber Editor Style
+*/
+function custom_editor_style() {
+    add_editor_style( 'assets/editor-style.min.css');
+}
+add_action( 'init', 'custom_editor_style' );
+
 
 function tax_cat_active($output, $args) {
     if (is_single()) {

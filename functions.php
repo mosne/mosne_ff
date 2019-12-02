@@ -18,9 +18,14 @@ include 'int/services.php';
 include 'int/register-menu.php';
 include 'int/register-sidebar.php';
 include 'int/utilities.php';
-include 'int/m_image.php';
 include 'int/polylang.php';
 include 'int/acf.php';
+include 'int/woocommerce.php';
+
+// m functions
+include 'int/m_image.php';
+include 'int/m_section.php';
+include 'int/m_icon.php';
 
 /*
 function my_theme_deregister_plugin_assets_header() {

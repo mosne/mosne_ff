@@ -41,4 +41,5 @@ function my_theme_deregister_plugin_assets_footer() {
 add_action( 'wp_footer', 'my_theme_deregister_plugin_assets_footer' );
 */
 
+
 ?>

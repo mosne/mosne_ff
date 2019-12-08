@@ -1,18 +1,43 @@
 <?php
-if (function_exists('acf_add_options_page')) {
-    acf_add_options_page();
-    /*
-    //acf_add_options_page("Adv");
+add_action('acf/init', 'my_acf_op_init');
+function my_acf_op_init() {
+
+    // Check function exists.
+    if( function_exists('acf_add_options_sub_page') ) {
+
+        // Add parent.
+        $parent = acf_add_options_page(array(
+            'page_title'  => __('Theme General options'),
+            'menu_title'  => __('Options'),
+            'menu_slug' => 'mosne-options',
+            'redirect'    => false,
+            'icon_url'    => 'dashicons-visibility',
+            'position'    => 63,
+        ));
+
+        /*
+        // Add sub page.
+        $child = acf_add_options_sub_page(array(
+            'page_title'  => __('Social Settings'),
+            'menu_title'  => __('Social'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
+        */
+
+        // Add tho the apparence menu.
+        $apparence = acf_add_options_page(array(
+            'page_title'  => __('Footer options'),
+            'menu_title'  => __('Footer options'),
+            'parent_slug' => 'themes.php',
+        ));
+    }
+
     add_filter('acf/settings/google_api_key', function () {
-       return 'xxx';
-   	});
-*/
+        //restricted to .mosne.it domains
+        return 'AIzaSyDSt-brRexqMeWyTtMUXnCtFwvjae2lWaI';
+    });
 
-}
-
-/*
-add_action('acf/init', 'my_acf_init');
-function my_acf_init() {
+    /*
 
     // check function exists
     if( function_exists('acf_register_block') ) {
@@ -27,18 +52,21 @@ function my_acf_init() {
                 'icon'    => 'format-image',
                 'keywords'   => array( 'image', 'svg','inline','vector' )
             ));
+        }
     }
+
+
+    function my_acf_block_render_callback( $block ) {
+
+        // convert name ("acf/testimonial") into path friendly slug ("testimonial")
+        $slug = str_replace('acf/', '', $block['name']);
+
+        // include a template part from within the "template-parts/block" folder
+        if( file_exists(STYLESHEETPATH . "/block-{$slug}.php") ) {
+            include( STYLESHEETPATH . "/block-{$slug}.php" );
+        }
+    }
+
+    */
 }
 
-
-function my_acf_block_render_callback( $block ) {
-
-    // convert name ("acf/testimonial") into path friendly slug ("testimonial")
-    $slug = str_replace('acf/', '', $block['name']);
-
-    // include a template part from within the "template-parts/block" folder
-    if( file_exists(STYLESHEETPATH . "/block-{$slug}.php") ) {
-        include( STYLESHEETPATH . "/block-{$slug}.php" );
-    }
-}
-*/

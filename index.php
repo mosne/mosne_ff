@@ -3,6 +3,10 @@
     <article class="page">
     <?php if ( have_posts() ) : ?>
     	<?php while ( have_posts() ) : the_post(); ?>
+        <?php m_icon('youtube'); ?>
+        <?php m_icon('youtube'); ?>
+        <?php m_icon('youtube'); ?>
+        <?php m_icon('youtube'); ?>
         <?php the_title();?>
     <?php endwhile; endif;?>
    </article>

@@ -62,6 +62,9 @@ const cache = require( 'gulp-cache' ); // Cache files in stream for later use.
 const remember = require( 'gulp-remember' ); //  Adds all the files it has ever seen back into the stream.
 const plumber = require( 'gulp-plumber' ); // Prevent pipe breaking caused by errors from gulp plugins.
 const beep = require( 'beepbeep' );
+const path = require( 'path' );
+const svgmin = require( 'gulp-svgmin' );
+
 
 /**
  * Custom Error Handler.
@@ -405,3 +408,22 @@ gulp.task(
 		gulp.watch( config.imgSRC, gulp.series( 'images', reload ) ); // Reload on customJS file changes.
 	})
 );
+
+
+gulp.task('svg', () => {
+	return gulp
+		.src( './assets/svg/*.svg' )
+		.pipe( svgmin( function ( file ) {
+			var prefix = path.basename(file.relative, path.extname(file.relative));
+			return {
+				plugins: [ {
+					removeDimensions: true,
+					cleanupIDs: {
+						prefix: prefix + '-',
+						minify: true
+					}
+				} ]
+			};
+		}) )
+		.pipe( gulp.dest( './assets/svg' ) );
+});

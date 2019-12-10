@@ -49,9 +49,11 @@
   },
   "dependencies": {
     "gulp-include": "^2.4.1",
+    "gulp-svgmin": "^2.2.0",
     "lazysizes": "^5.2.0-beta1",
     "normalize-scss": "^7.0.1",
     "object-fit-images": "^3.2.4",
+    "path": "^0.12.7",
     "what-input": "^5.2.6"
   }
 }

@@ -55,9 +55,10 @@ module.exports = {
 	// Browsers you care about for autoprefixing. Browserlist https://github.com/ai/browserslist
 	// The following list is set as per WordPress requirements. Though, Feel free to change.
 	BROWSERS_LIST: [
+
+		// 'ie >= 11',
 		'last 2 version',
 		'> 1%',
-		'ie >= 11',
 		'last 1 Android versions',
 		'last 1 ChromeAndroid versions',
 		'last 2 Chrome versions',

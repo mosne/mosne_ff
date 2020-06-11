@@ -11,6 +11,6 @@ module.exports = {
   liveHttps: true,
   liveServer: 'https://2020.mosne.it',
   liveStartDir: '/',
-  liveServerRoute: '/content/themes/mosne_2020/dist/',
+  liveServerRoute: '/wp-content/themes/mosne_2020/dist',
   liverefresh: ['dist/app.css', 'dist/app.js'],
 }

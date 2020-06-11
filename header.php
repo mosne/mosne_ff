@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title><?php wp_title(''); ?></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <script>WebFont.load({ google:{families:['Arsenal:400,400i,700,700i']}, custom: { families: ['icomoon'], urls: ['<?php echo get_template_directory_uri(); ?>/assets/fonts/fonts.css?v=1.0.0']},timeout: 2000});</script>
+    <link href="<?php echo get_template_directory_uri(); ?>/dist/fonts/fonts.css?v=1.0.0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="theme-color" content="#ffffff">

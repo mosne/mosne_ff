@@ -42,4 +42,13 @@ add_action( 'wp_footer', 'my_theme_deregister_plugin_assets_footer' );
 */
 
 
+function nicelink_url($url){
+    
+    preg_match("/[a-z0-9\-]{1,63}\.[a-z\.]{2,6}$/", parse_url($url, PHP_URL_HOST), $_domain_tld);
+    return $_domain_tld[0];
+
+   // return $link_url;
+}
+
+
 ?>

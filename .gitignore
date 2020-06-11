@@ -1,68 +1,80 @@
-# NPM #
-##########
-# Ignore all directories called node_modules in current folder and any subfolders.
-node_modules/
-/node_modules/
+### Eclipse ###
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
 
-# Packages #
-############
-*.7z
-*.dmg
-*.gz
-*.bz2
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-*.tgz
-*.map
+# External tool builders
+.externalToolBuilders/
 
-# Logs and databases #
-######################
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+### WordPress ###
+wp-content/uploads/
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+sitemap.xml
 *.log
-*.sql
-*.env
+wp-content/cache/
+wp-content/backups/
+sitemap.xml.gz
+.htpasswd
 
-# OS generated files #
-######################
-**.DS_Store*
-ehthumbs.db
-Icon?
-Thumbs.db
-._*
+### SublimeText ###
+*.sublime-project
+*.sublime-workspace
+sftp-config.json
+sftp-config-alt*.json
+*.sublime-gulp.cache
 
-# Vim generated files #
-######################
-*.un~
+### NodeJS ###
+node_modules/
+bower_components/
 
-# SASS #
-##########
-**/.sass-cache
-**/.sass-cache/*
-**/.map
+### PictureFill/Retina images/Timthumb ###
+### on dev need to specify themes path like : wp-content/themes/name_of_your_theme/assets/img/sample/cache ###
+src/img/sample/cache
+dist/img/sample/cache
 
-# Composer #
-##########
-!assets/js/vendor/
-wpcs/
-/vendor/
+### Mac OSX
+.DS_Store
 
-# Bower #
-##########
-assets/bower_components/*
+### VS Code ###
+.vscode/
 
-# Codekit #
-##########
-/codekit-config.json
-*.codekit
-**.codekit-cache/*
-
-# Compiled Files and Build Dirs #
-##########
-/README.html
-
-# PhpStrom Project Files #
+### PHPStorm ###
 .idea/
-library/vendors/composer
-assets/img/.DS_Store
+
+### Conf Webpack ###
+config/host.js
+
+### frontend build directory ###
+dist/
+src/conf-img/*.csv
+
+### NPM (use Yarn instead)
+package-lock.json
+
+### config
+.port
+.bs-port

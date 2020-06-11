@@ -238,7 +238,7 @@ module.exports = (env, argv) => {
           serveStatic: [
             {
               route: config.liveServerRoute,
-              dir: 'dist',
+              dir: './dist',
             },
           ],
           files: [

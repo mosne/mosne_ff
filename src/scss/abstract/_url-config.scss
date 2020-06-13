@@ -1,6 +1,4 @@
 // Dynamic paths
-$images-url: "./assets/images";
-$icons-url: "./assets/icons";
-$src-url: "../../src";
-$fonts-url : "./assets/fonts";
-$sprite : $images-url + "/sprite.png";
+$images-url: "../assets/images";
+$icons-url: "../assets/icons";
+$fonts-url : "../assets/fonts";

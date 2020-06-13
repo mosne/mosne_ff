@@ -14,18 +14,18 @@ show_admin_bar(false);
 $role_object = get_role( 'editor' );
 $role_object->add_cap( 'edit_theme_options' );
 
-include 'int/services.php';
-include 'int/register-menu.php';
-include 'int/register-sidebar.php';
-include 'int/utilities.php';
-include 'int/polylang.php';
-include 'int/acf.php';
-include 'int/woocommerce.php';
+include 'inc/services.php';
+include 'inc/register-menu.php';
+include 'inc/register-sidebar.php';
+include 'inc/utilities.php';
+include 'inc/polylang.php';
+include 'inc/acf.php';
+include 'inc/woocommerce.php';
 
 // m functions
-include 'int/m_image.php';
-include 'int/m_section.php';
-include 'int/m_icon.php';
+include 'inc/m_image.php';
+include 'inc/m_section.php';
+include 'inc/m_icon.php';
 
 /*
 function my_theme_deregister_plugin_assets_header() {

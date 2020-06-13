@@ -44,8 +44,8 @@ const svgoPlugins = [
 const icons = [
   {
     id: 'Icons front',
-    src: './src/icons',
-    dist: './dist/icons',
+    src: './assets/icons',
+    dist: './dist',
     filename: 'icons.svg',
     prefix: 'icon',
     optimize: true,

@@ -4,7 +4,8 @@
  * m_section
  */
 
-function m_include($filePath, $variables = array(), $print = true, $nbInclude = 1){
+function m_include($filePath, $variables = array(), $print = true, $nbInclude = 1)
+{
 
     // if $variables is integer switch with $nbInclude
     if (gettype($variables) === 'integer') {
@@ -16,8 +17,8 @@ function m_include($filePath, $variables = array(), $print = true, $nbInclude = 
         $variables = array('variable' => $variables);
     }
 
-    $output = NULL;
-    if(file_exists($filePath)){
+    $output = null;
+    if (file_exists($filePath)) {
         // Extract the variables to a local namespace
         extract($variables);
 
@@ -38,7 +39,8 @@ function m_include($filePath, $variables = array(), $print = true, $nbInclude = 
     return $output;
 }
 
-function m_section($file, $variables = array(), $nbInclude = 1, $print = true) {
+function m_section($file, $variables = array(), $nbInclude = 1, $print = true)
+{
     if ($nbInclude === false) {
         $nbInclude = 1;
         $print = false;

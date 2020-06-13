@@ -12,8 +12,9 @@
     "build:dev": "node_modules/.bin/webpack --mode=development && node scripts/svg-sprite.js",
     "build:prod": "rm -rf dist/ && echo \"✓ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production && node scripts/svg-sprite.js",
     "build": "rm -rf dist/ && echo \"✓ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production && node_modules/.bin/webpack --mode=development && node scripts/svg-sprite.js",
+    "fast:prod": "node_modules/.bin/webpack --mode=production",
+    "fast": "node_modules/.bin/webpack --mode=development",
     "watch": "node_modules/.bin/webpack --watch --mode=development",
-    "bump": "node scripts/style-version.js",
     "icon": "node scripts/svg-sprite.js"
   },
   "license": "GPL-2.0",
@@ -52,6 +53,7 @@
     "lazysizes": "^5.2.1",
     "normalize-scss": "^7.0.1",
     "ora": "^3.4.0",
+    "picturefill": "^3.0.3",
     "single-line-log": "^1.1.2",
     "svgo": "^1.2.2",
     "svgstore": "^3.0.0-2",

@@ -122,7 +122,7 @@
 	border-radius: 0;
 	appearance: none;
 	background-color: $lightcolor;
-	background-image: url('#{$src-url}/img/icons/down.svg'),
+	background-image: url('#{$icons-url}/down.svg'),
 	  linear-gradient(to bottom, $lightcolor 0%,$lightcolor 100%);
 	background-repeat: no-repeat, repeat;
 	background-position: right 10px top 50%, 0 0;
@@ -451,7 +451,7 @@
 	border-radius: 0;
 	appearance: none;
 	background-color: $lightcolor;
-	background-image: url('#{$src-url}/img/icons/down.svg'),
+	background-image: url('#{$icons-url}/down.svg'),
 	  linear-gradient(to bottom, $lightcolor 0%,$lightcolor 100%);
 	background-repeat: no-repeat, repeat;
 	background-position: right 10px top 50%, 0 0;

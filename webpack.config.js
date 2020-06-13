@@ -137,28 +137,6 @@ const webpackConfig = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: 'src/js/vendor_async',
-        to: 'js/vendor_async',
-      },
-      {
-        from: 'src/js/vendor_ie',
-        to: 'js/vendor_ie',
-      },
-      {
-        from: 'src/fonts',
-        to: 'fonts',
-      },
-      {
-        from: 'src/fonts/',
-        to: 'fonts/',
-      },
-      {
-        from: 'src/img/static/',
-        to: 'img/static/',
-      },
-    ]),
     new PhpOutputPlugin({
       devServer: false, // false or string with server entry point, e.g: app.js or
       outPutPath: path.resolve(__dirname, 'dist/'), // false for default webpack path of pass string to specify
@@ -174,21 +152,10 @@ const webpackConfig = {
 
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
-    webpackConfig.devtool = 'source-map'
+    webpackConfig.devtool = 'cheap-module-source-map'
     webpackConfig.output.filename = '[name].js'
     webpackConfig.plugins.push(
       new SoundsPlugin(),
-      new OptimizeCssAssetsPlugin({
-        assetNameRegExp: /\.min\.css$/,
-        cssProcessorOptions: {
-          discardComments: {
-            removeAll: true,
-          },
-        },
-      }),
-      new UglifyJsPlugin({
-        sourceMap: true,
-      }),
       new MiniCssExtractPlugin({
         filename: '[name].css',
         allChunks: true,
@@ -224,7 +191,7 @@ module.exports = (env, argv) => {
     )
   }
   if (argv.mode === 'none') {
-    webpackConfig.devtool = 'source-map'
+    webpackConfig.devtool = 'cheap-module-source-map'
     webpackConfig.output.filename = '[name].js'
     webpackConfig.plugins.push(
       new MiniCssExtractPlugin({
@@ -266,16 +233,17 @@ module.exports = (env, argv) => {
     )
   }
   if (argv.mode === 'production') {
+    webpackConfig.devtool = 'cheap-module-source-map'
     webpackConfig.optimization.minimizer = [
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         openAnalyzer: false,
       }),
       new OptimizeCssAssetsPlugin({
-        assetNameRegExp: /\.min\.css$/,
+        sourceMap: true,
         cssProcessorOptions: {
-          discardComments: {
-            removeAll: true,
+          map: {
+            inline: false
           },
         },
       }),
@@ -283,10 +251,10 @@ module.exports = (env, argv) => {
         sourceMap: true,
       }),
     ]
-    webpackConfig.output.filename = '[name].min.js'
+    webpackConfig.output.filename = '[name].js'
     webpackConfig.plugins.push(
       new MiniCssExtractPlugin({
-        filename: '[name].min.css',
+        filename: '[name].css',
         allChunks: true,
       }),
       new ManifestPlugin({

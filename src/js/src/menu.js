@@ -1,3 +1,6 @@
+/**
+ * Main Menu
+ */
 ;(function($) {
   var body = $('body')
   $('#selector').on('click', function(e) {

@@ -240,11 +240,15 @@ module.exports = (env, argv) => {
         openAnalyzer: false,
       }),
       new OptimizeCssAssetsPlugin({
-        sourceMap: true,
-        cssProcessorOptions: {
-          map: {
-            inline: false
-          },
+        cssProcessor: require('cssnano'),
+        cssProcessorPluginOptions: {
+          preset: [
+            'default',
+            {
+              sourceMap: true,
+              discardComments: { removeAll: true },
+            },
+          ],
         },
       }),
       new UglifyJsPlugin({

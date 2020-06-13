@@ -9,13 +9,11 @@
   "scripts": {
     "live": "node_modules/.bin/concurrently -k -n \"Webpack,PHP Server\" -p \"[{name}]\" -c \"green, blue\" \"node_modules/.bin/webpack --mode=none --watch\" \"sh server.sh\"",
     "start": "node_modules/.bin/concurrently -k -n \"Webpack,PHP Server\" -p \"[{name}]\" -c \"green, blue\" \"node_modules/.bin/webpack --mode=development --watch\" \"sh server.sh\"",
-    "build:dev": "node_modules/.bin/webpack --mode=development && node scripts/svg-sprite.js",
-    "build:prod": "rm -rf dist/ && echo \"✓ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production && node scripts/svg-sprite.js",
+    "build:dev": "node_modules/.bin/webpack --mode=development",
+    "build:prod": "rm -rf dist/ && echo \"✓ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production",
     "build": "rm -rf dist/ && echo \"✓ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production && node_modules/.bin/webpack --mode=development && node scripts/svg-sprite.js",
-    "fast:prod": "node_modules/.bin/webpack --mode=production",
-    "fast": "node_modules/.bin/webpack --mode=development",
     "watch": "node_modules/.bin/webpack --watch --mode=development",
-    "icon": "node scripts/svg-sprite.js"
+    "icons": "node scripts/svg-sprite.js"
   },
   "license": "GPL-2.0",
   "devDependencies": {

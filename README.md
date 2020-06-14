@@ -21,14 +21,16 @@ MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplat
 You need a minimum of Node 10.
 
 ## Installation
-
+```bash
+$ cd wp-content/themes/
+```
 ```bash
 $ git clone git@github.com:mosne/mosne_ff.git your_theme_name
 ```
 Next, go to your theme folder.
 
 ```bash
-$ cd wp-content/themes/your_theme_name
+$ cd your_theme_name
 ```
 
 Then install node dependencies with NPM or Yarn.

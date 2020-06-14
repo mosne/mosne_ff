@@ -245,8 +245,8 @@ module.exports = (env, argv) => {
           preset: [
             'default',
             {
-              sourceMap: true,
-              discardComments: { removeAll: true },
+              sourcemap: true,
+              discardComments: { sourcemap: true, removeAll: true },
             },
           ],
         },

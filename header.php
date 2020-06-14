@@ -2,6 +2,7 @@
 <html <?php language_attributes(); ?> class="no-js" data-whatintent data-whatinput>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php wp_title(''); ?></title>
     <link href="<?php echo get_template_directory_uri(); ?>/assets/fonts.css?v=1.0.0" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">

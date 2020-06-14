@@ -3,6 +3,8 @@
 
 MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplate to help you to build your own WordPress theme with modern tools and a better productivity.
 
+![MOSNE FF](scrennshot.png)
+
 ## Tools
 * [Webpack 4](https://www.npmjs.com/package/webpack)
 * [Node SASS](https://www.npmjs.com/package/node-sass)
@@ -14,23 +16,6 @@ MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplat
 * [Browser Sync](https://www.npmjs.com/package/browser-sync-webpack-plugin)
 
 ## Requirements
-### Composer
-You need composer to autoload all your classes from the inc folder.
-
-Use the `beapi/composer-scaffold-theme` package that add it automatically to the composer.json file.
-You can add it yourself like this :
-
-```composer.json
-    "autoload": {
-        "psr-4": {
-            "BEA\\Theme\\Framework\\": "content/themes/framework/inc/"
-        }
-    }
-```
-
-## Autoload
-The autoload is based on psr-4 and handled by composer.
-
 ### Node 10
 
 You need a minimum of Node 10.

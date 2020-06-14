@@ -18,53 +18,51 @@ remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
 
 
 
-if( !function_exists( "bcdiv" ) )
-{
-    function bcdiv( $first, $second, $scale = 0 )
-    {
-        $res = $first / $second;
-        return round( $res, $scale );
-    }
+if ( ! function_exists( 'bcdiv' ) ) {
+	function bcdiv( $first, $second, $scale = 0 ) {
+		$res = $first / $second;
+		return round( $res, $scale );
+	}
 }
 
 function theme_name_scripts() {
-    wp_deregister_script('jquery');
-    wp_register_script('jquery', "//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js", false, NULL , true);
-    wp_register_script('mosne_app', get_template_directory_uri().'/dist/app.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('jquery');
-    wp_enqueue_script('mosne_app');
-    wp_enqueue_style( 'mosne_style', get_template_directory_uri().'/dist/app.css', NULL , '1.0', 'all' );
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, null, true );
+	wp_register_script( 'mosne_app', get_template_directory_uri() . '/dist/app.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'mosne_app' );
+	wp_enqueue_style( 'mosne_style', get_template_directory_uri() . '/dist/app.css', null, '1.0', 'all' );
 }
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 
 // Add custom taxonomies to the post class
 add_filter( 'post_class', 'custom_taxonomy_post_class', 10, 3 );
-if( !function_exists( 'custom_taxonomy_post_class' ) ) {
-    function custom_taxonomy_post_class( $classes, $class, $ID ) {
-        $taxonomy = 'anno';
-        $terms = get_the_terms( (int) $ID, $taxonomy );
-        if( !empty( $terms ) ) {
-            foreach( (array) $terms as $order => $term ) {
-                if( !in_array( $term->slug, $classes ) ) {
-                    $classes[] = $term->taxonomy.'-'.$term->slug;
-                }
-            }
-        }
-        return $classes;
-    }
+if ( ! function_exists( 'custom_taxonomy_post_class' ) ) {
+	function custom_taxonomy_post_class( $classes, $class, $ID ) {
+		$taxonomy = 'anno';
+		$terms    = get_the_terms( (int) $ID, $taxonomy );
+		if ( ! empty( $terms ) ) {
+			foreach ( (array) $terms as $order => $term ) {
+				if ( ! in_array( $term->slug, $classes ) ) {
+					$classes[] = $term->taxonomy . '-' . $term->slug;
+				}
+			}
+		}
+		return $classes;
+	}
 }
 
 
 function custom_theme_setup() {
 
-    include 'theme-support.php';
-    include 'image-sizes.php';
+	include 'theme-support.php';
+	include 'image-sizes.php';
 
-    function cc_mime_types($mimes) {
-        $mimes['svg'] = 'image/svg+xml';
-        return $mimes;
-    }
-    add_filter('upload_mimes', 'cc_mime_types');
+	function cc_mime_types( $mimes ) {
+		$mimes['svg'] = 'image/svg+xml';
+		return $mimes;
+	}
+	add_filter( 'upload_mimes', 'cc_mime_types' );
 
 }
 
@@ -74,21 +72,23 @@ add_action( 'after_setup_theme', 'custom_theme_setup' );
  * Gutenber Editor Style
 */
 function custom_editor_style() {
-    add_editor_style( 'dist/editor-style.css');
+	add_editor_style( 'dist/editor-style.css' );
 }
 add_action( 'init', 'custom_editor_style' );
 
 
-function tax_cat_active($output, $args) {
-    if (is_single()) {
-        global $post;
-        $terms = get_the_terms($post->ID, 'category');
-        if (!empty($terms)) {
-            foreach( $terms as $term )
-                if ( preg_match( '#cat-item-' . $term ->term_id . '#', $output ) )
-                    $output = str_replace('cat-item-'.$term ->term_id, 'cat-item-'.$term ->term_id . ' current-cat', $output);
-        }
-    }
-    return $output;
+function tax_cat_active( $output, $args ) {
+	if ( is_single() ) {
+		global $post;
+		$terms = get_the_terms( $post->ID, 'category' );
+		if ( ! empty( $terms ) ) {
+			foreach ( $terms as $term ) {
+				if ( preg_match( '#cat-item-' . $term->term_id . '#', $output ) ) {
+					$output = str_replace( 'cat-item-' . $term->term_id, 'cat-item-' . $term->term_id . ' current-cat', $output );
+				}
+			}
+		}
+	}
+	return $output;
 }
-add_filter('wp_list_categories', 'tax_cat_active', 10, 2);
+add_filter( 'wp_list_categories', 'tax_cat_active', 10, 2 );

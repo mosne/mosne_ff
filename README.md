@@ -3,7 +3,7 @@
 
 MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplate to help you to build your own WordPress theme with modern tools and a better productivity.
 
-![MOSNE FF](scrennshot.png)
+![MOSNE FF](screenshot.png)
 
 ## Tools
 * [Webpack 4](https://www.npmjs.com/package/webpack)

@@ -102,3 +102,51 @@ Generate SVG sprite from the icons files in src/img/icons/ by using :
 ```bash
 $ yarn run icons
 ```
+
+### PHP Coding standads > Wordpress-Extra
+#### Installing PHPCS (and phpcbf)
+Download and install:
+
+```bash
+$ curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+$ curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
+$ chmod +x phpcs.phar
+$ chmod +x phpcs.phar
+$ sudo mv phpcs.phar /usr/local/bin/phpcs
+```
+
+#### Installing WPC
+Download WordPress Coding standard:
+
+```bash
+$ git clone -b master https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git wpcs
+```
+#### Configuring PHPCS
+Set the path and the default rules.
+```bash
+$ phpcs --config-set installed_paths ./wpcs
+$ phpcs --config-set default_standard WordPress-Extra
+```
+Verify your configuration:
+```bash
+$ phpcs -i
+```
+
+#### Configure VScode
+Install the following plugins:
+* [phpcs](https://www.npmjs.com/package/webpack)
+* [phpcbf](https://www.npmjs.com/package/node-sass)
+
+Edit your configuration file:
+```javascript
+"[php]": {
+        "phpcs.enable":   true,
+        "phpcs.standard": "WordPress-Extra",
+    },
+"phpcbf.enable": true,
+"phpcbf.executablePath": "phpcbf",
+"phpcbf.documentFormattingProvider": true,
+"phpcbf.onsave": true,
+"phpcbf.standard": "WordPress-Extra",
+"phpcs.standard": ""
+```

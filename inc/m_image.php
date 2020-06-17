@@ -185,7 +185,7 @@ function obj_m_image( $field, $sz = 'medium', $mode = 'cover' ) {
 		$srcset = $image['url'] . ' 320w';
 	}
 
-	//$srcset_h = preg_replace('/(.*?)(\d+)x(\d+)(.*?)\s(\d+)(w)/', '$0 $3h', $srcset);
+	// $srcset_h = preg_replace('/(.*?)(\d+)x(\d+)(.*?)\s(\d+)(w)/', '$0 $3h', $srcset);
 
 	if ( $image ) {
 

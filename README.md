@@ -142,14 +142,10 @@ Install the following plugins:
 
 Edit your configuration file:
 ```javascript
-"[php]": {
-        "phpcs.enable":   true,
-        "phpcs.standard": "WordPress-Extra",
-    },
+"phpcs.standard": "WordPress-Extra",
 "phpcbf.enable": true,
 "phpcbf.executablePath": "phpcbf",
 "phpcbf.documentFormattingProvider": true,
 "phpcbf.onsave": true,
 "phpcbf.standard": "WordPress-Extra",
-"phpcs.standard": ""
 ```

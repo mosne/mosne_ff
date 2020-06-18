@@ -114,8 +114,9 @@ Download and install:
 $ curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
 $ curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
 $ chmod +x phpcs.phar
-$ chmod +x phpcs.phar
+$ chmod +x phpcbf.phar
 $ sudo mv phpcs.phar /usr/local/bin/phpcs
+$ sudo mv phpcbf.phar /usr/local/bin/phpcbf
 ```
 
 #### Installing WPC
@@ -125,20 +126,21 @@ Download WordPress Coding standard:
 $ git clone -b master https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git wpcs
 ```
 #### Configuring PHPCS
-Set the path and the default rules.
+Set the ABSOLUTE path to thw wpcs folder and the default rules.
 ```bash
-$ phpcs --config-set installed_paths ./wpcs
+$ phpcs --config-set installed_paths /User/[your_user_name]/wpcs
 $ phpcs --config-set default_standard WordPress-Extra
 ```
 Verify your configuration:
 ```bash
 $ phpcs -i
+$ phpcbf -i
 ```
 
 #### Configure VScode
 Install the following plugins:
-* [phpcs](https://www.npmjs.com/package/webpack)
-* [phpcbf](https://www.npmjs.com/package/node-sass)
+* [phpcs](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs)
+* [phpcbf](https://marketplace.visualstudio.com/items?itemName=persoderlind.vscode-phpcbf)
 
 Edit your configuration file:
 ```javascript

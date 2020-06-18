@@ -7,9 +7,9 @@ the_post();?>
 <main id="bd">
 	<article class="push">
 		<header>
-		   <h1 class="big">
-			<?php the_title(); ?>
-		   </h1>
+			<h1 class="big">
+				<?php the_title(); ?>
+			</h1>
 		</header>
 		<div class="wysiwyg">
 				<?php the_content(); ?>

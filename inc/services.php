@@ -16,8 +16,6 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
 
-
-
 if ( ! function_exists( 'bcdiv' ) ) {
 	function bcdiv( $first, $second, $scale = 0 ) {
 		$res = $first / $second;
@@ -27,10 +25,12 @@ if ( ! function_exists( 'bcdiv' ) ) {
 
 function theme_name_scripts() {
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, null, true );
+	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', null, '3.3.1', true );
 	wp_register_script( 'mosne_app', get_template_directory_uri() . '/dist/app.js', array( 'jquery' ), '1.0', true );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'mosne_app' );
+	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap', null, '1.0', 'all' );
+	wp_enqueue_style( 'custom_fonts', get_template_directory_uri() . '/assets/fonts/fonts.css', null, '1.0', 'all' );
 	wp_enqueue_style( 'mosne_style', get_template_directory_uri() . '/dist/app.css', null, '1.0', 'all' );
 }
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );

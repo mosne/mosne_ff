@@ -13,10 +13,13 @@ MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplat
 * [Node SASS](https://www.npmjs.com/package/node-sass)
 * [SVGStore](https://www.npmjs.com/package/svgstore)
 * [SVGGo](https://www.npmjs.com/package/svgstore)
+* [svg4all](https://www.marketplacerating.com/etsy/svg4all)
 * [Lazysizes](https://www.npmjs.com/package/lazysizes)
 * [Eslint](https://www.npmjs.com/package/eslint)
 * [Babel Loader](https://www.npmjs.com/package/babel-loader)
 * [Browser Sync](https://www.npmjs.com/package/browser-sync-webpack-plugin)
+* [polyfill.io](https://polyfill.io)
+* [Accessible-Mega-Menu](https://github.com/adobe-accessibility/Accessible-Mega-Menu)
 
 ## Requirements
 ### Node 10

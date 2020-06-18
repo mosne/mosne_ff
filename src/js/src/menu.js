@@ -2,15 +2,30 @@
  * Main Menu
  */
 ;(function($) {
-  var body = $('body')
-  $('#selector').on('click', function(e) {
-    e.preventDefault()
-    body.toggleClass('menu-main-open')
-    const selector = $('#selector')
-    const expandend = selector.attr('aria-expanded') === 'false' ? 'true' : 'false'
-    selector.attr('aria-expanded', expandend)
-    const menu = $('#menu')
-    const hidden = menu.attr('aria-hidden') === 'false' ? 'true' : 'false'
-    menu.attr('aria-hidden', hidden)
+  $('#menu').accessibleMegaMenu({
+    /* prefix for generated unique id attributes, which are required
+       to indicate aria-owns, aria-controls and aria-labelledby */
+    uuidPrefix: '.menu',
+
+    /* css class used to define the megamenu styling */
+    menuClass: 'nav-menu',
+
+    /* css class for a top-level navigation item in the megamenu */
+    topNavItemClass: 'menu-item',
+
+    /* css class for a megamenu panel */
+    panelClass: 'sub-menu',
+
+    /* css class for a group of items within a megamenu panel */
+    panelGroupClass: 'sub-menu-group',
+
+    /* css class for the hover state */
+    hoverClass: 'hover',
+
+    /* css class for the focus state */
+    focusClass: 'focus',
+
+    /* css class for the open state */
+    openClass: 'open',
   })
 })(jQuery)

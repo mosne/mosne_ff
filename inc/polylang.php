@@ -6,6 +6,9 @@ $m_strings = array(
 	'STRING',
 );
 
+/**
+ * @param $strings
+ */
 function m_register_strings( $strings ) {
 	if ( function_exists( 'pll_register_string' ) ) {
 		if ( is_array( $strings ) ) {

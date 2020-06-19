@@ -4,6 +4,14 @@
  * m_section
  */
 
+/**
+ * @param       $filePath
+ * @param array $variables
+ * @param bool  $print
+ * @param int   $nbinclude
+ *
+ * @return false|string|null
+ */
 function m_include( $filePath, $variables = array(), $print = true, $nbinclude = 1 ) {
 
 	// if $variables is integer switch with $nbInclude
@@ -38,6 +46,14 @@ function m_include( $filePath, $variables = array(), $print = true, $nbinclude =
 	return $output;
 }
 
+/**
+ * @param       $file
+ * @param array $variables
+ * @param int   $nbInclude
+ * @param bool  $print
+ *
+ * @return false|string|null
+ */
 function m_section( $file, $variables = array(), $nbInclude = 1, $print = true ) {
 	if ( $nbInclude === false ) {
 		$nbInclude = 1;

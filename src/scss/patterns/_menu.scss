@@ -2,10 +2,28 @@
  * Menu
  */
 
-.menu{
-	background: purple;
-	margin: 0;
-	&-item{
-		background: orange;
-	}
+.menu {
+  background: purple;
+  margin: 0;
+  &-item {
+    background: orange;
+  }
+  &__panel {
+    background: aqua;
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, max-height 0.5s ease, visibility 0s linear;
+    &.open {
+      overflow: auto;
+      max-height: 350px;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @include breakpoints(sm) {
+    display: flex;
+  }
 }

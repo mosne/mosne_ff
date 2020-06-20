@@ -2,16 +2,16 @@
  * Main Menu
  */
 ;(function($) {
-  $('#menu').accessibleMegaMenu({
+  $('#nav-primary').accessibleMegaMenu({
     /* prefix for generated unique id attributes, which are required
        to indicate aria-owns, aria-controls and aria-labelledby */
     uuidPrefix: '.menu',
 
     /* css class used to define the megamenu styling */
-    menuClass: 'nav-menu',
+    menuClass: 'menu-main',
 
     /* css class for a top-level navigation item in the megamenu */
-    topNavItemClass: 'menu-item',
+    topNavItemClass: 'menu-item-has-children',
 
     /* css class for a megamenu panel */
     panelClass: 'sub-menu',

@@ -14,9 +14,7 @@
 		<a id="skip-navigation" class="visuallyhidden" href="#bd">skip navigation</a>
 		<div class="grid">
 			<div id="logo"><a class="name" href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a></div>
-				<nav id="menu" class="serif" aria-hidden="true" aria-label="Main Navigation">
-						<?php dynamic_sidebar( 'header' ); ?>
-				</nav>
+			<?php get_template_part( 'components/menu/menu-main' ); ?>
 		</div>
 		<?php echo get_search_form(); ?>
 	</header>

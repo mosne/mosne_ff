@@ -1,14 +1,11 @@
 const fs = require('fs')
 const config = require('./webpack.settings')
 const path = require('path')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const PhpOutputPlugin = require('./src/js/vendor/webpack-php-output')
-const SoundsPlugin = require('sounds-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WebpackProgressOraPlugin = require('webpack-progress-ora-plugin')
 const getServerPort = function(portFile) {
@@ -98,7 +95,7 @@ const webpackConfig = {
             },
           },
         ],
-      },
+      } /*
       {
         test: /\.(woff2?|woff|eot|ttf|otf|mp3|wav)(\?.*)?$/,
         use: {
@@ -133,7 +130,7 @@ const webpackConfig = {
             },
           },
         ],
-      },
+      }, */,
     ],
   },
   plugins: [
@@ -152,6 +149,8 @@ const webpackConfig = {
 
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
+    const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+    const SoundsPlugin = require('sounds-webpack-plugin')
     webpackConfig.devtool = 'cheap-module-source-map'
     webpackConfig.output.filename = '[name].js'
     webpackConfig.plugins.push(
@@ -191,9 +190,12 @@ module.exports = (env, argv) => {
     )
   }
   if (argv.mode === 'none') {
+    const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+    const SoundsPlugin = require('sounds-webpack-plugin')
     webpackConfig.devtool = 'cheap-module-source-map'
     webpackConfig.output.filename = '[name].js'
     webpackConfig.plugins.push(
+      new SoundsPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].css',
         allChunks: true,

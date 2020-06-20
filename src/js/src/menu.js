@@ -5,13 +5,13 @@
   $('#nav-primary').accessibleMegaMenu({
     /* prefix for generated unique id attributes, which are required
        to indicate aria-owns, aria-controls and aria-labelledby */
-    uuidPrefix: '.menu',
+    uuidPrefix: 'amenu',
 
     /* css class used to define the megamenu styling */
     menuClass: 'menu-main',
 
     /* css class for a top-level navigation item in the megamenu */
-    topNavItemClass: 'menu-item-has-children',
+    topNavItemClass: 'amenu__top',
 
     /* css class for a megamenu panel */
     panelClass: 'amenu__panel',

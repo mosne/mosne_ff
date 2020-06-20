@@ -46,4 +46,25 @@
     background: red;
     margin: 0;
   }
+  @include breakpoints(sm,max){
+    &__toggle ~ #{$el}__main > #{$el}__top {
+      height: 0;
+      overflow: hidden;
+      visibility: collapse;
+    }
+    &__toggle[aria-expanded='true'] ~ #{$el}__main > #{$el}__top {
+      height: auto;
+      overflow: visible;
+      visibility: visible;
+    }
+  }
+  @include breakpoints(sm){
+    &__toggle{
+      display: none;
+    }
+    &__main{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
 }

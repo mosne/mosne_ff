@@ -2,3 +2,10 @@
  * Menu
  */
 
+.menu{
+	background: purple;
+	margin: 0;
+	&-item{
+		background: orange;
+	}
+}

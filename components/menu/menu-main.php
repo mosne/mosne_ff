@@ -1,16 +1,16 @@
-<nav id="nav-primary" class="nav-primary" aria-label="<?php _e('Main navigation','mosne');?>" role="navigation">
-	<button class="menu-toggle accessible-megamenu-toggle">
+<nav id="nav-primary" class="amenu nav-primary" aria-label="<?php _e('Main navigation','mosne');?>" role="navigation">
+	<button class="amenu__toggle accessible-megamenu-toggle">
 		<span class="visuallyhidden">Menu</span>
-		<span class="menu-icon--open"><?php m_icon( 'menu' ); ?></span>
-		<span class="menu-icon--close"><?php m_icon( 'close' ); ?></span>
+		<?php m_icon( 'menu' ); ?>
+		<?php m_icon( 'close' ); ?>
 	</button>
 <?php
 wp_nav_menu(
 	array(
 		'theme_location'  => 'primary',
 		'container'       => '',
-		'menu_id'         => 'menu-main',
-		'menu_class'      => 'menu-main',
+		'menu_id'         => 'amenu-main',
+		'menu_class'      => 'amenu__main',
 		'walker'          => new Accessible_Menu_Walker(),
 	)
 );

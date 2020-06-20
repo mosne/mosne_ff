@@ -14,10 +14,10 @@
     topNavItemClass: 'menu-item-has-children',
 
     /* css class for a megamenu panel */
-    panelClass: 'sub-menu',
+    panelClass: 'amenu__panel',
 
     /* css class for a group of items within a megamenu panel */
-    panelGroupClass: 'sub-menu-group',
+    panelGroupClass: 'sub-menu',
 
     /* css class for the hover state */
     hoverClass: 'hover',

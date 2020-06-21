@@ -74,6 +74,7 @@ src/conf-img/*.csv
 
 ### NPM (use Yarn instead)
 package-lock.json
+.yarnclean
 
 ### config
 .port

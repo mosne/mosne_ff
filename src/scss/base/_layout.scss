@@ -10,10 +10,6 @@
 	margin: 0 auto;
 }
 
-[tabindex]:focus {
-	outline: none;
-}
-
 @include breakpoints(md) {
 	.container {
 		padding: 0;

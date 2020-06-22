@@ -25,10 +25,10 @@
     }
   }
   &__main{
-      background: yellow;
+      padding: 0;
   }
   &__panel{
-    background: aqua;
+    padding: 0;
     display: block;
     max-height: 0;
     overflow: hidden;
@@ -43,7 +43,7 @@
     }
   }
   &__sub-menu{
-    background: red;
+    padding: 0;
     margin: 0;
   }
   @include breakpoints(sm,max){

@@ -16,7 +16,7 @@
   // Regular WordPress Menu
   $('.menu-footer-container').accessibleMegaMenu({
     uuidPrefix: 'amenu',
-    menuClass: '.menu',
+    menuClass: 'menu',
     topNavItemClass: 'menu__top',
     panelClass: 'menu__panel',
     panelGroupClass: 'sub-menu',

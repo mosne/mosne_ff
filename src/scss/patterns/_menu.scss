@@ -3,13 +3,17 @@
  */
 
 .menu {
-  background: purple;
+  padding: 0;
   margin: 0;
   &-item {
-    background: orange;
+    padding: 0;
+    a{
+      padding: 1em;
+      display: block;
+    }
   }
   &__panel {
-    background: aqua;
+    padding: 0;
     display: block;
     max-height: 0;
     overflow: hidden;

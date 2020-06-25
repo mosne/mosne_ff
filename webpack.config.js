@@ -1,13 +1,11 @@
 const fs = require('fs')
 const config = require('./webpack.settings')
 const path = require('path')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const PhpOutputPlugin = require('./src/js/vendor/webpack-php-output')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const WebpackProgressOraPlugin = require('webpack-progress-ora-plugin')
+const WebpackBar = require('webpackbar')
 const getServerPort = function(portFile) {
   try {
     require('fs').accessSync(portFile, fs.R_OK | fs.W_OK)
@@ -95,7 +93,7 @@ const webpackConfig = {
             },
           },
         ],
-      } /*
+      },
       {
         test: /\.(woff2?|woff|eot|ttf|otf|mp3|wav)(\?.*)?$/,
         use: {
@@ -130,21 +128,10 @@ const webpackConfig = {
             },
           },
         ],
-      }, */,
+      },
     ],
   },
-  plugins: [
-    new PhpOutputPlugin({
-      devServer: false, // false or string with server entry point, e.g: app.js or
-      outPutPath: path.resolve(__dirname, 'dist/'), // false for default webpack path of pass string to specify
-      assetsPathPrefix: '',
-      phpClassName: 'WebpackBuiltFiles', //
-      phpFileName: 'WebpackBuiltFiles',
-      nameSpace: false, // false {nameSpace: 'name', use: ['string'] or empty property or don't pass "use" property}
-      path: '',
-    }),
-    new WebpackProgressOraPlugin(),
-  ],
+  plugins: [new WebpackBar()],
 }
 
 module.exports = (env, argv) => {
@@ -237,10 +224,6 @@ module.exports = (env, argv) => {
   if (argv.mode === 'production') {
     webpackConfig.devtool = 'cheap-module-source-map'
     webpackConfig.optimization.minimizer = [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        openAnalyzer: false,
-      }),
       new OptimizeCssAssetsPlugin({
         cssProcessor: require('cssnano'),
         cssProcessorPluginOptions: {
@@ -269,6 +252,5 @@ module.exports = (env, argv) => {
       })
     )
   }
-
   return webpackConfig
 }

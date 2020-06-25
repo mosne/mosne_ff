@@ -7,15 +7,15 @@
     "url": "https://github.com/mosne/mosne_ff"
   },
   "scripts": {
-    "live": "node_modules/.bin/concurrently -k -n \"Webpack,PHP Server\" -p \"[{name}]\" -c \"green, blue\" \"node_modules/.bin/webpack --mode=none --watch\" \"sh server.sh\"",
-    "start": "node_modules/.bin/concurrently -k -n \"Webpack,PHP Server\" -p \"[{name}]\" -c \"green, blue\" \"node_modules/.bin/webpack --mode=development --watch\" \"sh server.sh\"",
-    "build:dev": "rm -rf dist/ && echo \"✓ dist folder has been successfully removed.\" node_modules/.bin/webpack --mode=development",
-    "build:prod": "rm -rf dist/ && echo \"✓ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production",
-    "fast:prod": "node_modules/.bin/webpack --mode=production",
-    "fast": "node_modules/.bin/webpack --mode=development",
-    "build": "rm -rf dist/ && echo \"✓ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production && node scripts/svg-sprite.js",
-    "watch": "node_modules/.bin/webpack --watch --mode=development",
-    "icons": "node scripts/svg-sprite.js"
+    "live": "node scripts/mosne.js && node_modules/.bin/concurrently -k -n \"Webpack,PHP Server\" -p \"[{name}]\" -c \"green, blue\" \"node_modules/.bin/webpack --mode=none --watch --display=errors-only\" \"sh server.sh\"",
+    "start": "node scripts/mosne.js && node_modules/.bin/concurrently -k -n \"Webpack,PHP Server\" -p \"[{name}]\" -c \"green, blue\" \"node_modules/.bin/webpack --mode=development --watch --display=errors-only\" \"sh server.sh\"",
+    "build:dev": "node scripts/mosne.js && rm -rf dist/ && echo \"✔ dist folder has been successfully removed.\" node_modules/.bin/webpack --mode=development --display=errors-only",
+    "build:prod": "node scripts/mosne.js && rm -rf dist/ && echo \"✔ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production --display=errors-only",
+    "fast:prod": "node scripts/mosne.js && node_modules/.bin/webpack --mode=production --display=errors-only",
+    "fast": "node scripts/mosne.js && node_modules/.bin/webpack --mode=development",
+    "build": "node scripts/mosne.js && rm -rf dist/ && echo \"✔ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production --display=errors-only && node scripts/svg-sprite.js",
+    "watch": "node scripts/mosne.js && node_modules/.bin/webpack --watch --mode=development",
+    "icons": "node scripts/mosne.js && node scripts/svg-sprite.js"
   },
   "license": "GPL-2.0",
   "devDependencies": {
@@ -62,8 +62,7 @@
     "webpack-bundle-analyzer": "^3.5.2",
     "webpack-cli": "^3.3.11",
     "webpack-manifest-plugin": "^2.2.0",
-    "webpack-php-output": "^1.0.8",
-    "webpack-progress-ora-plugin": "^1.2.2",
+    "webpackbar": "^4.0.0",
     "what-input": "^5.2.7"
   }
 }

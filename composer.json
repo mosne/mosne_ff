@@ -1,0 +1,66 @@
+{
+	"name": "mosne/mosne_ff",
+	"description": "WordPress plugins installation via Composer.",
+	"license": "GPL-2.0+",
+	"type": "project",
+	"keywords": [
+		"WordPress",
+		"composer",
+		"wpackagist"
+	],
+	"authors": [
+		{
+			"name": "Mosne",
+			"email": "info@mosne.it",
+			"homepage": "https://mosne.it",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"source": "https://github.com/mosne/mosne_ff",
+		"issues": "https://github.com/mosne/mosne_ff/issues"
+	},
+	"config": {
+		"preferred-install": {
+			"*": "dist"
+		}
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org"
+		}
+	],
+	"require": {
+		"wpackagist-plugin/disable-embeds": "1.4.0",
+		"wpackagist-plugin/disable-emojis": "1.7.2",
+		"wpackagist-plugin/wordpress-seo": "14.2",
+		"wpackagist-plugin/redirection": "4.8",
+		"wpackagist-plugin/duplicate-post": "3.2.4",
+		"wpackagist-plugin/intuitive-custom-post-order": "^3.1",
+		"wpackagist-plugin/webp-simple": "^1.0",
+		"wpackagist-plugin/autoptimize": "^2.7",
+		"wpackagist-plugin/custom-post-type-ui": "^1.7",
+		"wpackagist-plugin/underconstruction": "^1.18",
+		"wpackagist-plugin/widget-css-classes": "^1.5",
+		"wpackagist-plugin/worker": "^4.9",
+		"wpackagist-plugin/wp-super-cache": "^1.7",
+		"wpackagist-plugin/better-wp-security": "^7.7",
+		"wpackagist-plugin/regenerate-thumbnails": "^3.1",
+		"wpackagist-plugin/disable-comments": "^1.10"
+	},
+	"extra": {
+		"wordpress-install-dir": "../../../",
+		"installer-paths": {
+			"../../plugins/{$name}": [
+				"type:wordpress-plugin"
+			],
+			"../../themes/{$name}": [
+				"type:wordpress-theme"
+			],
+			"../../mu-plugins/{$name}": [
+				"type:wordpress-muplugin"
+			]
+		}
+	}
+}

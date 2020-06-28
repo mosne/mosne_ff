@@ -72,10 +72,16 @@ config/host.js
 dist/
 src/conf-img/*.csv
 
-### NPM (use Yarn instead)
+### Lock files
 package-lock.json
+yarn.lock
+composer.lock
 .yarnclean
+
 
 ### config
 .port
 .bs-port
+
+#composer
+vendor/

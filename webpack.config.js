@@ -189,6 +189,7 @@ module.exports = (env, argv) => {
       }),
       new BrowserSyncPlugin(
         {
+          port: getServerPort('./.bs-port') || 3000,
           proxy: config.liveServer,
           https: config.liveHttps,
           serveStatic: [

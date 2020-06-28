@@ -1,7 +1,6 @@
 const fs = require('fs')
 const config = require('./webpack.settings')
 const path = require('path')
-const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -246,10 +245,6 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({
         filename: '[name].css',
         allChunks: true,
-      }),
-      new ManifestPlugin({
-        fileName: 'assets.json',
-        filter: file => !file.isAsset,
       })
     )
   }

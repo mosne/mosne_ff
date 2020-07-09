@@ -1,34 +1,29 @@
-//normalize
-@import "../../node_modules/normalize-scss/sass/normalize/import-now";
+@import "~normalize-scss/sass/normalize/import-now";
 
 // Abstract
-@import "abstract/url-config";
 @import "abstract/mixins";
-@import "abstract/functions";
-@import 'abstract/fonts';
-@import 'abstract/colors';
-@import 'abstract/breakpoints';
-@import 'abstract/grid';
-@import 'abstract/positioning';
-@import 'abstract/borders';
-@import "abstract/box-sizing";
-@import "abstract/zindex";
+@import "abstract/utilities";
+@import "abstract/grid";
 @import "abstract/fonts";
+@import "abstract/colors";
+@import "abstract/breakpoints";
+@import "abstract/positioning";
+@import "abstract/borders";
+@import "abstract/box-sizing";
 @import "abstract/easing";
 
 // Base
-@import "base/utilities";
 @import "base/svg-icons";
 @import "base/text";
 @import "base/form";
 @import "base/seo";
 @import "base/lazyload";
 @import "base/layout";
+@import "base/video-wrapper";
 @import "base/focus";
 
 // Components
 @import "components/buttons";
-@import "components/menu-trigger";
 @import "components/menu-fastaccess";
 @import "components/menu-accessible";
 @import "components/card";
@@ -41,13 +36,14 @@
 @import "patterns/hero";
 @import "patterns/searchform";
 
-//Wordpress
-@import "wp/wpforms";
+// Wordpress
 @import "wp/img";
+//@import "wp/gallery"; Enable if Gutenberg is not used
 @import "wp/wysiwyg";
 @import "wp/gutenberg";
-@import "wp/woocommerce";
 
 // Pages
-@import "pages/index.scss";
+@import "pages/404";
+@import "pages/home";
+@import "pages/default";
 @import "pages/print";

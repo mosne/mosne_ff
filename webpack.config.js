@@ -4,7 +4,6 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const StylelintPlugin = require('stylelint-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const getServerPort = function(portFile) {
   try {
@@ -83,7 +82,7 @@ const webpackConfig = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              plugins: () => [require('autoprefixer')(), require('postcss-pxtorem')({ propWhiteList: [] })],
+              plugins: () => [require('autoprefixer')()],
             },
           },
           {
@@ -131,7 +130,7 @@ const webpackConfig = {
       },
     ],
   },
-  plugins: [new WebpackBar(), new StylelintPlugin()],
+  plugins: [new WebpackBar()],
 }
 
 module.exports = (env, argv) => {

@@ -16,7 +16,6 @@ MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplat
 * [svg4all](https://www.marketplacerating.com/etsy/svg4all)
 * [Lazysizes](https://www.npmjs.com/package/lazysizes)
 * [Eslint](https://www.npmjs.com/package/eslint)
-* [Stylelint](https://stylelint.io/)
 * [Babel Loader](https://www.npmjs.com/package/babel-loader)
 * [Browser Sync](https://www.npmjs.com/package/browser-sync-webpack-plugin)
 * [polyfill.io](https://polyfill.io)
@@ -108,18 +107,6 @@ Generate SVG sprite from the icons files in src/img/icons/ by using :
 
 ```bash
 $ yarn run icons
-```
-
-### CSS stylelint 
-#### VScode plugin
-Install the following plugins:
-* [stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
-
-In disperate cases you can disable stylelint using:
-```bash
-/* stylelint-disable */
-a {}
-/* stylelint-enable */
 ```
 
 ### PHP Coding standads > Wordpress-Extra

@@ -1,65 +1,91 @@
+/**
+ * @section Typography
+ * @page index
+ *
+ * @example
+ * <div class="row">
+ * <div class="col-6">
+ * <h1 class="font--title">Circular</h1>
+ * <h1>Level 1 Heading</h1>
+ * <h2>Level 2 Heading</h2>
+ * <h3>Level 3 Heading</h3>
+ * <h4>Level 4 Heading</h4>
+ * <h5>Level 5 Heading</h5>
+ * <h6>Level 6 Heading</h6>
+ * </div>
+ * <div class="col-6">
+ * <h1 class="font--title">Roboto</h1>
+ * <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur quam augue, vehicula quis, tincidunt vel, varius vitae, nulla.</p>
+ * <p class="font--italic">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur quam augue, vehicula quis, tincidunt vel, varius vitae, nulla.</p>
+ * <p class="font--bold">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur quam augue, vehicula quis, tincidunt vel, varius vitae, nulla.</p>
+ * </div>
+ * </div>
+ */
+
 body {
-	font-family: $primary-font-family;
-	font-size: $base-font-size;
-	line-height: $base-line-height;
-	color: $secondary-color;
+	font-size: $base-fz;
+	line-height: $base-lh;
+	font-family: $customfont-1;
+	color: $textcolor;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-a {
-	color: $secondary-color;
-	text-decoration: none;
-
-	@include hover {
-		color: $secondary-color;
+	overflow-x: hidden;
+	//Fonts loading FOUT
+	//Adjust FOUT with tools like https://meowni.ca/font-style-matcher/
+	.fonts-loading & {
+		font-family: $font-sansserif;
 	}
 }
 
-/* Headings */
-h1 {
+a {
+	color: $textcolor;
+	text-decoration: none;
 
+	@include hover {
+		color: $textcolor;
+	}
+}
+
+/* Headings
+----------------------------------------------------------------------------------------------------*/
+h1 {
 	@include title(XXL);
 }
 
 h2 {
-
 	@include title(XL);
 }
 
 h3 {
-
 	@include title(L);
 }
 
 h4 {
-
 	@include title(M);
 }
 
 h5 {
-
 	@include title(S);
 }
 
 h6 {
-
 	@include title(XS);
 }
 
-/* Lists */
+/* Lists
+----------------------------------------------------------------------------------------------------*/
 ol,
 ul {
-	padding: 0;
-	margin: 0;
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
-
 li {
 	margin: 0;
 }
 
-/* Spacing */
+/* Spacing
+----------------------------------------------------------------------------------------------------*/
 p,
 dl,
 hr,
@@ -79,39 +105,39 @@ figure {
 	margin: 0 0 $base-spacing 0;
 }
 
-/* Wysiwyg style */
+/* Wysiwyg style
+----------------------------------------------------------------------------------------------------*/
 hr {
-	margin: $base-spacing 0;
 	clear: both;
+	border: 0;
+	height: 1px;
+	background: $maingrey;
+	margin: $base-spacing 0;
 }
-
 blockquote {
 	padding: $base-spacing;
 	margin: 0 0 $base-spacing 0;
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
 }
-
 cite {
 	font-style: italic;
 }
-
 small {
 	font-size: 11px;
 }
-
 table {
-	width: 100%;
 	margin: $base-spacing 0;
-	border-collapse: collapse;
+	width: 100%;
 	border: 0;
+	border-collapse: collapse;
 
 	th,
 	td {
 		padding: $half-base-spacing;
-		text-align: left;
+		border: 1px solid $base-border-color;
 		vertical-align: top;
-		border: $base-border;
+		text-align: left;
 	}
 }
 
@@ -126,8 +152,7 @@ abbr {
 	text-decoration: underline;
 }
 
-abbr[title],
-abbr[data-original-title] {
+abbr[title], abbr[data-original-title] {
 	cursor: help;
 	border-bottom: 1px dotted $base-border-color;
 }
@@ -139,10 +164,10 @@ big {
 code {
 	display: inline-block;
 	padding: 2px 5px;
+	background-color: $light-gray;
+	border: 1px solid $darkcolor;
 	font-family: monospace;
-	font-size: $base-font-size;
-	background-color: $gray-color-800;
-	border: 1px solid $dark-color;
+	font-size: $base-fz;
 	border-radius: $base-border-radius;
 }
 
@@ -175,8 +200,8 @@ pre {
 	@include word-wrap(break-all);
 
 	white-space: pre-wrap;
-	background-color: $gray-color-800;
-	border: 1px solid $dark-color;
+	background-color: $light-gray;
+	border: 1px solid $darkcolor;
 	border-radius: $base-border-radius;
 }
 
@@ -187,8 +212,8 @@ q {
 
 sub,
 sup {
-	position: relative;
 	bottom: -0.25em;
+	position: relative;
 	font-size: 75%;
 	line-height: 0;
 	vertical-align: baseline;

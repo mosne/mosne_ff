@@ -1,11 +1,16 @@
-/* Main Layout */
+/* Main Layout
+----------------------------------------------------------------------------------------------------*/
+.main__content {
+	position: relative;
+	z-index: z('main__content');
+}
 .container {
-
-	@include container;
+	padding: 0 10px;
+	max-width: $container;
+	margin: 0 auto;
 }
 
 @include breakpoints(md) {
-
 	.container {
 		padding: 0;
 	}

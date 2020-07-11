@@ -1,6 +1,10 @@
-// Border
-$base-border-color: $gray-color-800;
+/**
+ * Border
+ */
+$base-border-color: $light-gray;
 $base-border: 1px solid $base-border-color;
 
-// Border Radius
+/**
+ * Border Radius
+ */
 $base-border-radius: 3px;

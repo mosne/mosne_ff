@@ -1,19 +1,22 @@
-// Font Family
-$primary-font-family: roboto, sans-serif;
-$secondary-font-family: sofia-pro, sans-serif;
+/**
+ * Font Family
+ */
+$font-sansserif: Arial, Helvetica, sans-serif;
+$font-serif: Times, Georgia, serif;
+$customfont-1: sans-serif;
+$customfont-2: sans-serif;
 
-// Font Size
-$base-font-size: 16px;
+/**
+ * Font Size
+ */
+$base-fz: 16px;
+$heading-font-size: 25px;
 
-// Line Height
-$base-line-height: 1.4;
+/**
+ * Line Height
+ */
+$base-lh: 1.4;
 $heading-line-height: 1.2;
 
-// Font Faces
-@include declare-font-face("Roboto", "./fonts/roboto-v15-latin/roboto-v15-latin-regular");
-@include declare-font-face("Roboto", "./fonts/roboto-v15-latin/roboto-v15-latin-500", 500);
-@include declare-font-face("Roboto", "./fonts/roboto-v15-latin/roboto-v15-latin-700", bold);
-
-// Sofia Pro for Hn
-// Use this script to add external ressource like typekit: https://github.com/swissspidy/local-webfont
-// example: npx local-webfont https://use.typekit.net/bjc8obi.css src/scss/abstract/temp_to_copy_paste_delete.css swap
+// Custom font declaration example  for body text
+// @include declare-font-face("Roboto", "#{$fonts-url}/roboto-v15-latin/roboto-v15-latin-regular"); //regularx400

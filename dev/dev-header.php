@@ -41,11 +41,14 @@ function get_lorem( $min, $max ) {
 	echo substr( $lorem, 0, rand( $min, $max ) );
 }
 
-function m_icon( $fileName, $print = true ) {
+function m_icon( $file_name, $extra_class = '', $echo = true ) {
 
-	$output = '<svg class="icon icon-' . $fileName . '" aria-hidden="true" role="img"><use xlink:href="/dist/icons.svg#icon-' . $fileName . '"></use></svg>';
-	if ( $print ) {
-		print $output;
+	$classes = array( 'icon', 'icon-' . $file_name );
+	$extra   = explode( ' ', $extra_class );
+	$classes = array_merge( $classes, $extra );
+	$output  = '<svg class="' . implode( ' ', $classes ) . '" aria-hidden="true" role="img"><use xlink:href="/dist/icons.svg#icon-' . $file_name . '"></use></svg>';
+	if ( $echo ) {
+		echo $output;
 	}
 	return $output;
 }
@@ -70,7 +73,7 @@ function m_image( $w, $h, $alt = 'Image placeholder', $print = true ) {
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title><?php echo $pageTitle; ?></title>
+	<title><?php echo $page_title; ?></title>
 	<meta name="robots" content="noindex, follow" />
 	<link rel='dns-prefetch' href='//ajax.googleapis.com' />
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -80,4 +83,4 @@ function m_image( $w, $h, $alt = 'Image placeholder', $print = true ) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta name="theme-color" content="#ffffff">
 </head>
-<body class="<?php echo $bodyClass; ?>">
+<body class="<?php echo $body_class; ?>">

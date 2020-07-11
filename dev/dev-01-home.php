@@ -1,7 +1,7 @@
 <?php
-$pageTitle = 'Home';
-$bodyClass = 'home';
-require 'dev_header.php'; ?>
+$page_title = 'Home';
+$body_class = 'home';
+require 'dev-header.php'; ?>
 <main id="bd">
 	<h1>Hello world</h1>
 	<p><?php get_lorem( 100, 200 ); ?></p>
@@ -11,4 +11,4 @@ require 'dev_header.php'; ?>
 	</div>
 
 </div>
-<?php require 'dev_footer.php'; ?>
+<?php require 'dev-footer.php'; ?>

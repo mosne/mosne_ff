@@ -10,5 +10,5 @@ import 'lazysizes/plugins/object-fit/ls.object-fit'
  * https://github.com/aFarkas/lazysizes/#js-api---options
  */
 lazySizes.cfg.nativeLoading = {
-  setLoadingAttribute: false,
+	setLoadingAttribute: false,
 }

@@ -2,15 +2,15 @@
  * @section Buttons
  */
 
- @mixin button {
+@mixin button {
 	display: inline-block;
-	vertical-align: middle;
 	padding: 8px 12px;
+	font-family: $customfont-1;
+	line-height: 1.5;
+	vertical-align: middle;
 	border: 1px solid transparent;
 	border-radius: 0;
-	line-height: 1.5;
-	transition: background-color .3s ease;
-	font-family: $customfont-1;
+	transition: background-color 0.3s ease;
 }
 
 // Sizing
@@ -29,8 +29,8 @@
 @mixin button--expand {
 	display: block;
 	width: 100%;
-	margin-left: 0;
 	margin-right: 0;
+	margin-left: 0;
 	text-align: center;
 }
 
@@ -47,10 +47,10 @@
 
 // Outline style
 @mixin button--outline($borderColor: $maingrey, $color: $textcolor) {
-	background-color: transparent;
-	border-width: 1px; // Force button width VS Gutenberg CSS
-	border-color: $borderColor;
 	color: $color;
+	background-color: transparent;
+	border-color: $borderColor;
+	border-width: 1px; // Force button width VS Gutenberg CSS
 
 	@include hover {
 		background-color: transparent;
@@ -64,18 +64,18 @@
 }
 
 @mixin button--circle($size: 50px) {
-	padding: 0;
 	width: $size;
 	height: $size;
-	border-radius: $size;
+	padding: 0;
 	line-height: $size;
 	text-align: center;
+	border-radius: $size;
 }
 
 // State style
 @mixin button--disabled($backgroundColor: $maingrey) {
-	opacity: 0.3;
 	cursor: not-allowed;
+	opacity: 0.3;
 
 	@include hover {
 		background-color: $backgroundColor;
@@ -103,86 +103,125 @@
 	@include button;
 
 	&--xs {
+
 		@include button--xs;
 	}
+
 	&--sm {
+
 		@include button--sm;
 	}
+
 	&--lg {
+
 		@include button--lg;
 	}
+
 	&--expand {
+
 		@include button--expand;
 	}
+
 	&--primary {
+
 		@include button--colored($maincolor, $textcolor);
 	}
+
 	&--error {
+
 		@include button--colored($errorcolor-2, $errorcolor-1);
 	}
+
 	&--warning {
+
 		@include button--colored($noticecolor-2, $noticecolor-1);
 	}
+
 	&--success {
+
 		@include button--colored($successcolor-2, $successcolor-1);
 	}
+
 	&--info {
+
 		@include button--colored($infocolor-2, $infocolor-1);
 	}
+
 	&--outline {
+
 		@include button--outline;
 
 		&#{$parent}--primary {
+
 			@include button--outline($maincolor, $textcolor);
 		}
 
 		&#{$parent}--error {
+
 			@include button--outline($errorcolor-2, $errorcolor-1);
 		}
 
 		&#{$parent}--warning {
+
 			@include button--outline($noticecolor-2, $noticecolor-1);
 		}
 
 		&#{$parent}--success {
+
 			@include button--outline($successcolor-2, $successcolor-1);
 		}
 
 		&#{$parent}--info {
+
 			@include button--outline($infocolor-2, $infocolor-1);
 		}
 	}
+
 	&--square {
 		border-radius: 0;
 	}
+
 	&--round {
+
 		@include button--round;
 	}
+
 	&--circle {
+
 		@include button--circle();
 	}
+
 	&--text {
+
 		@include button--text;
 	}
+
 	&--icon {
+
 		@include button--icon;
 	}
+
 	&[disabled] {
+
 		@include button--disabled;
 
 		&#{$parent}--error {
+
 			@include button--disabled($errorcolor-2);
 		}
 
 		&#{$parent}--warning {
+
 			@include button--disabled($noticecolor-2);
 		}
 
 		&#{$parent}--success {
+
 			@include button--disabled($successcolor-2);
 		}
 
 		&#{$parent}--info {
+
 			@include button--disabled($infocolor-2);
 		}
 	}

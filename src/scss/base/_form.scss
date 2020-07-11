@@ -49,24 +49,30 @@ $text-inputs-list: 'input[type="color"]',
 	'input[type="time"]',
 	'input[type="url"]',
 	'input[type="week"]',
-	'input:not([type])',
-	'textarea';
+	"input:not([type])",
+	"textarea";
 
 $all-text-inputs:        assign-inputs($text-inputs-list);
+
+// Textarea
+textarea {
+	resize: vertical;
+}
 
 #{$all-text-inputs},
 textarea {
 	box-sizing: border-box;
-	line-height: 1;
 	width: 100%;
-	border: 1px solid $maingrey;
 	padding: $half-base-spacing;
 	font-family: $customfont-1;
+	line-height: 1;
 	color: $textcolor;
 	background: darken($lightcolor, 5%);
+	border: 1px solid $maingrey;
 	border-radius: 0; //reset border radius for ios
-	transition : border-color 0.5s ease;
+	transition: border-color 0.5s ease;
 	appearance: none;
+
 	@include placeholder {
 		color: lighten($textcolor, 50%);
 	}
@@ -81,10 +87,6 @@ textarea {
 	}
 }
 
-// Textarea
-textarea {
-	resize:vertical;
-}
 
 // Label
 label {
@@ -94,15 +96,18 @@ label {
 
 // Custom select
 select {
+
 	@include select--custom;
 }
 
 // Checkbox + Radio
 .checkbox--custom {
+
 	@include checkbox--custom($maincolor);
 }
 
 .radio--custom {
+
 	@include checkbox--custom($maincolor);
 	@include radio--custom();
 }

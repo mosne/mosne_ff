@@ -15,7 +15,10 @@
     "fast": "node scripts/mosne.js && node_modules/.bin/webpack --mode=development",
     "build": "node scripts/mosne.js && rm -rf dist/ && echo \"✔ dist folder has been successfully removed.\" && node_modules/.bin/webpack --mode=production --display=errors-only && node scripts/svg-sprite.js",
     "watch": "node scripts/mosne.js && node_modules/.bin/webpack --watch --mode=development",
-    "icons": "node scripts/mosne.js && node scripts/svg-sprite.js"
+    "icons": "node scripts/mosne.js && node scripts/svg-sprite.js",
+    "fixcss": "yarn run stylelint src/scss/**/*.scss --fix",
+    "fixphp": "phpcbf *.php && find ./template-parts -iname \"*.php\" -exec phpcbf {} \\; && find ./templates -iname \"*.php\" -exec phpcbf {} \\; && find ./dev -iname \"*.php\" -exec phpcbf {} \\;",
+    "fixjs": "yarn run eslint --fix src/js/**/*.js"
   },
   "license": "GPL-2.0",
   "devDependencies": {
@@ -41,6 +44,10 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-recess-order": "^2.0.4",
+    "stylelint-config-wordpress": "^17.0.0",
+    "stylelint-scss": "^3.18.0",
     "http-proxy": "1.18.1",
     "json2csv": "^4.5.1",
     "lazysizes": "^5.2.1",

@@ -3,31 +3,36 @@
  */
 
 .menu {
-  padding: 0;
-  margin: 0;
-  &-item {
-    padding: 0;
-    a{
-      padding: .5em 1em;
-      display: block;
-    }
-  }
-  &__panel {
-    padding: 0;
-    display: block;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.35s ease, max-height 0.5s ease, visibility 0s linear;
-    &.open {
-      overflow: auto;
-      max-height: 350px;
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-  @include breakpoints(sm) {
-    display: flex;
-  }
+	padding: 0;
+	margin: 0;
+
+	&-item {
+		padding: 0;
+
+		a {
+			display: block;
+			padding: 0.5em 1em;
+		}
+	}
+
+	&__panel {
+		display: block;
+		max-height: 0;
+		padding: 0;
+		overflow: hidden;
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity 0.35s ease, max-height 0.5s ease, visibility 0s linear;
+
+		&.open {
+			max-height: 350px;
+			overflow: auto;
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+
+	@include breakpoints(sm) {
+		display: flex;
+	}
 }

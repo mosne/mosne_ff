@@ -1,19 +1,20 @@
 .lazyload,
 .lazyloading {
-	opacity: 0;
 	background: $maincolor;
+	opacity: 0;
 }
 
 .lazyloaded {
 	opacity: 1;
-	transition : opacity .5s;
+	transition: opacity 0.5s;
 }
 
 .m-img-wrap {
-    width: 100%;
-    height: 0;
+	width: 100%;
+	height: 0;
 	padding-bottom: 100%;
-	img{
+
+	img {
 		width: 100%;
 		height: auto;
 	}
@@ -31,54 +32,59 @@ $loading-dimensions : 50px;
 	opacity: 1;
 
 	&::before {
-		@include pseudo__content;
 
-		z-index: $zindex*2;
+		@include pseudo__content;
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
+
+		z-index: $zindex*2;
 		background: $maincolor;
-		transition: opacity .5s, z-index .5s ease .5s;
+		transition: opacity 0.5s, z-index 0.5s ease 0.5s;
 	}
 
 	&::after {
-		@include pseudo__content;
 
-		z-index: $zindex*3;
+		@include pseudo__content;
 		position: absolute;
 		top: calc(50% - #{$loading-dimensions / 2});
 		left: calc(50% - #{$loading-dimensions / 2});
-		transform: translateX(-50%) translateY(-50%);
+
+		z-index: $zindex*3;
 		width: $loading-dimensions;
 		height: $loading-dimensions;
-		border-radius: $loading-dimensions;
 		border: 5px solid $lightcolor;
 		border-top-color: transparent;
+		border-radius: $loading-dimensions;
 		opacity: 1;
-		transition: opacity .5s, z-index .5s ease .5s;
-		animation: loading .5s linear infinite;
+		transition: opacity 0.5s, z-index 0.5s ease 0.5s;
+		transform: translateX(-50%) translateY(-50%);
+		animation: loading 0.5s linear infinite;
 	}
 
 	&.lazyload {
 		opacity: 1;
-		transition : opacity 0.5s;
+		transition: opacity 0.5s;
 	}
 
 	&.lazyloaded {
-		&:after,
-		&:before {
-			opacity: 0;
+
+		&::after,
+		&::before {
 			z-index: -$zindex;
+			opacity: 0;
 		}
 	}
 }
 
 @keyframes loading {
+
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}

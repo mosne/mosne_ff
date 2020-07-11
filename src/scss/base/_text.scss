@@ -23,13 +23,13 @@
  */
 
 body {
+	overflow-x: hidden;
+	font-family: $customfont-1;
 	font-size: $base-fz;
 	line-height: $base-lh;
-	font-family: $customfont-1;
 	color: $textcolor;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	overflow-x: hidden;
 	//Fonts loading FOUT
 	//Adjust FOUT with tools like https://meowni.ca/font-style-matcher/
 	.fonts-loading & {
@@ -49,26 +49,32 @@ a {
 /* Headings
 ----------------------------------------------------------------------------------------------------*/
 h1 {
+
 	@include title(XXL);
 }
 
 h2 {
+
 	@include title(XL);
 }
 
 h3 {
+
 	@include title(L);
 }
 
 h4 {
+
 	@include title(M);
 }
 
 h5 {
+
 	@include title(S);
 }
 
 h6 {
+
 	@include title(XS);
 }
 
@@ -76,10 +82,11 @@ h6 {
 ----------------------------------------------------------------------------------------------------*/
 ol,
 ul {
-	list-style: none;
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	list-style: none;
 }
+
 li {
 	margin: 0;
 }
@@ -108,36 +115,40 @@ figure {
 /* Wysiwyg style
 ----------------------------------------------------------------------------------------------------*/
 hr {
-	clear: both;
-	border: 0;
 	height: 1px;
-	background: $maingrey;
 	margin: $base-spacing 0;
+	clear: both;
+	background: $maingrey;
+	border: 0;
 }
+
 blockquote {
 	padding: $base-spacing;
 	margin: 0 0 $base-spacing 0;
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
 }
+
 cite {
 	font-style: italic;
 }
+
 small {
 	font-size: 11px;
 }
+
 table {
-	margin: $base-spacing 0;
 	width: 100%;
-	border: 0;
+	margin: $base-spacing 0;
 	border-collapse: collapse;
+	border: 0;
 
 	th,
 	td {
 		padding: $half-base-spacing;
-		border: 1px solid $base-border-color;
-		vertical-align: top;
 		text-align: left;
+		vertical-align: top;
+		border: 1px solid $base-border-color;
 	}
 }
 
@@ -152,7 +163,8 @@ abbr {
 	text-decoration: underline;
 }
 
-abbr[title], abbr[data-original-title] {
+abbr[title],
+abbr[data-original-title] {
 	cursor: help;
 	border-bottom: 1px dotted $base-border-color;
 }
@@ -164,10 +176,10 @@ big {
 code {
 	display: inline-block;
 	padding: 2px 5px;
-	background-color: $light-gray;
-	border: 1px solid $darkcolor;
 	font-family: monospace;
 	font-size: $base-fz;
+	background-color: $light-gray;
+	border: 1px solid $darkcolor;
 	border-radius: $base-border-radius;
 }
 
@@ -212,8 +224,8 @@ q {
 
 sub,
 sup {
-	bottom: -0.25em;
 	position: relative;
+	bottom: -0.25em;
 	font-size: 75%;
 	line-height: 0;
 	vertical-align: baseline;

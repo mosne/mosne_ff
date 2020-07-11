@@ -16,7 +16,7 @@
 /**
  * Main colors
  */
-$maincolor: #F1E25B;
+$maincolor: #f1e25b;
 $textcolor: #333;
 
 /**
@@ -47,7 +47,9 @@ $successcolor-2 : #e6efc2;
 
 $infocolor-1 : #205791;
 $infocolor-2 : #d5edf8;
+
 /**
  * Debug grid colors
  */
-$debug_color: transparentize(purple,.75);
+/* stylelint-disable-next-line */
+$debug_color: transparentize(purple, 0.75);

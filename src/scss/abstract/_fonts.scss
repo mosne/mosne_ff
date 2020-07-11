@@ -1,8 +1,8 @@
 /**
  * Font Family
  */
-$font-sansserif: Arial, Helvetica, sans-serif;
-$font-serif: Times, Georgia, serif;
+$font-sansserif: arial, helvetica, sans-serif;
+$font-serif: times, georgia, serif;
 $customfont-1: sans-serif;
 $customfont-2: sans-serif;
 
@@ -19,4 +19,4 @@ $base-lh: 1.4;
 $heading-line-height: 1.2;
 
 // Custom font declaration example  for body text
-// @include declare-font-face("Roboto", "#{$fonts-url}/roboto-v15-latin/roboto-v15-latin-regular"); //regularx400
+// @include declare-font-face("Roboto", "#{$fonts-url}/roboto-v15-latin/roboto-v15-latin-regular");

@@ -1,37 +1,33 @@
-/**
- * 1. Font and Wording
- * 2. Images
- * 3. Forms
- * 4. Miscellaneous
- */
-
-
-/**
- * 1. Font and Wording
- */
-
 // FontFace. GO to abstract/_custom_fonts.scss to see it in action
-@mixin declare-font-face($font-family, $font-filename, $font-weight : normal, $font-style :normal, $font-stretch : normal){
-	@font-face{
-		font-family: '#{$font-family}';
-		font-weight: $font-weight;
+@mixin declare-font-face(
+	$font-family,
+	$font-filename,
+	$font-weight: normal,
+	$font-style: normal,
+	$font-stretch: normal
+) {
+
+	@font-face {
+		font-family: "#{$font-family}";
 		font-style: $font-style;
+		font-weight: $font-weight;
 		font-stretch: $font-stretch;
 		font-display: swap;
-		src: url(#{$font-filename}.woff2) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-			 url(#{$font-filename}.woff) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+		src:
+			url(#{$font-filename}.woff2) format("woff2"),
+			url(#{$font-filename}.woff) format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 	}
 }
 
 // Word wrap
 @mixin word-wrap($wrap: break-word) {
-	overflow-wrap: $wrap;
 	word-wrap: $wrap;
+	overflow-wrap: $wrap;
 
 	@if $wrap == break-word {
-	  word-break: break-all;
+		word-break: break-all;
 	} @else {
-	  word-break: $wrap;
+		word-break: $wrap;
 	}
 }
 
@@ -40,7 +36,7 @@
  */
 
 // Image responsive
-@mixin img__responsive($max-width:100%) {
+@mixin img__responsive($max-width: 100%) {
 	display: block;
 	max-width: $max-width;
 	height: auto;
@@ -49,11 +45,12 @@
 // Object Fit polyfill
 @mixin object-fit($fit: cover, $position: null) {
 	object-fit: $fit;
+
 	@if $position {
 		object-position: $position;
-		font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+		font-family: "object-fit: #{$fit}; object-position: #{$position}";
 	} @else {
-		font-family: 'object-fit: #{$fit}';
+		font-family: "object-fit: #{$fit}";
 	}
 }
 
@@ -64,31 +61,38 @@
 // Mixin for custom checkbox
 @mixin checkbox--custom($color: $maincolor, $size: 1em, $border-width: 2px) {
 	margin-bottom: 20px;
+
 	input[type="checkbox"],
 	input[type="radio"] {
+
 		@extend .visuallyhidden;
-		&+label {
-			display: block;
-			cursor: pointer;
+
+		+ label {
 			position: relative;
+			display: block;
 			padding-left: $size * 1.5;
-			&:before {
-				content: '';
+			cursor: pointer;
+
+			&::before {
 				position: absolute;
-				left: 0;
 				top: 1px;
-				background-color: transparent;
+				left: 0;
 				width: calc(#{$size} + #{$border-width});
 				height: calc(#{$size} + #{$border-width});
 				margin: 0;
-				border: $border-width solid $color;
 				cursor: pointer;
-				transition: background-color .25s ease;
+				content: "";
+				background-color: transparent;
+				border: $border-width solid $color;
+				transition: background-color 0.25s ease;
 			}
 		}
+
 		&:checked {
-			&+label {
-				&:before {
+
+			+ label {
+
+				&::before {
 					background-color: $color;
 				}
 			}
@@ -96,12 +100,14 @@
 	}
 }
 
-
 // Custom radio
 @mixin radio--custom() {
+
 	input[type="radio"] {
-		&+label {
-			&:before {
+
+		+ label {
+
+			&::before {
 				border-radius: 50%;
 			}
 		}
@@ -111,22 +117,25 @@
 //Custom select
 @mixin select--custom {
 	display: block;
-	font-size: 16px; // prevent iOS zoom
-	color: $textcolor;
-	line-height: 1.15;
-	padding: $half-base-spacing $half-base-spacing*3 $half-base-spacing $half-base-spacing;
 	width: 100%;
 	max-width: 100%; /* useful when width is set to anything other than 100% */
+	padding:
+		$half-base-spacing $half-base-spacing * 3 $half-base-spacing
+		$half-base-spacing;
 	margin: 0;
-	border: 1px solid $maingrey;
-	border-radius: 0;
-	appearance: none;
+	font-size: 16px; // prevent iOS zoom
+	line-height: 1.15;
+	color: $textcolor;
 	background-color: $lightcolor;
-	background-image: url('#{$icons-url}/down.svg'),
-	  linear-gradient(to bottom, $lightcolor 0%,$lightcolor 100%);
+	background-image:
+		url("#{$icons-url}/down.svg"),
+		linear-gradient(to bottom, $lightcolor 0%, $lightcolor 100%);
 	background-repeat: no-repeat, repeat;
 	background-position: right 10px top 50%, 0 0;
 	background-size: 10px auto, 100%;
+	border: 1px solid $maingrey;
+	border-radius: 0;
+	appearance: none;
 
 	// Hide arrow icon in IE browsers
 	&::-ms-expand {
@@ -138,21 +147,21 @@
 		border-color: darken($maingrey, 10%);
 	}
 
+	// Set options to normal weight
+	option {
+		font-weight: 400;
+	}
 	// Focus style
 	&:focus {
-		border-color: darken($maingrey, 20%);
-		box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
-		box-shadow: 0 0 0 3px -moz-mac-focusring;
 		color: darken($textcolor, 10%);
+		border-color: darken($maingrey, 20%);
 		outline: none;
+		box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+		box-shadow: 0 0 0 3px -moz-mac-focusring;
+
 		option {
 			outline: none;
 		}
-	}
-
-	// Set options to normal weight
-	option {
-		font-weight:normal;
 	}
 
 	// Support for rtl text, explicit support for Arabic and Hebrew
@@ -181,11 +190,12 @@
 
 // Webkit autofill
 @mixin autofill {
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus {
-        @content;
-    }
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus {
+		@content;
+	}
 }
 
 /**
@@ -194,27 +204,31 @@
 
 // Hover Active Focus pseudo selector mixin
 @mixin hover {
-	&:hover, &:active, &:focus {
+
+	&:hover,
+	&:active,
+	&:focus {
 		@content;
 	}
 }
 
 // Insert content for extra style
 @mixin pseudo__content {
-	content: "";
 	display: block;
+	content: "";
 	speak: none;
 }
 
 // Card base
 @mixin card {
 	padding: $base-spacing;
-	box-shadow: 0 2px 4px rgba($darkcolor, .25);
+	box-shadow: 0 2px 4px rgba($darkcolor, 0.25);
 }
 
 // Float, left by default
-@mixin align($direction:left) {
+@mixin align($direction: left) {
 	float: $direction;
+
 	@if ($direction == left) {
 		margin-right: $base-spacing;
 	} @else {
@@ -224,30 +238,34 @@
 
 //fullwidth row
 @mixin row--fullwidth($position: relative) {
-	z-index: $zindex;
 	position: $position;
-	width: 100vw;
 	left: 50%;
+	z-index: $zindex;
+	width: 100vw;
 	transform: translateX(-50%) translateY(0);
 }
 
 // Clearfix
 @mixin clearfix {
-	&:before, &:after {
-		content: "";
+
+	&::before,
+	&::after {
 		display: table;
+		content: "";
 	}
-	&:after {
+
+	&::after {
 		clear: both;
 	}
 }
 
 // Hardware acceleration
 @mixin hardware($backface: true, $perspective: 1000) {
-    @if $backface {
-        backface-visibility: hidden;
-    }
-    perspective: $perspective;
+
+	@if $backface {
+		backface-visibility: hidden;
+	}
+	perspective: $perspective;
 }
 
 //List mixins
@@ -275,9 +293,9 @@
 
 //Title mixins
 @mixin title($size: md) {
+	font-family: $customfont-2;
 	font-weight: 700;
 	line-height: $heading-line-height;
-	font-family: $customfont-2;
 
 	.fonts-loading & {
 		font-family: $font-sansserif;
@@ -287,42 +305,47 @@
 		font-size: 40px;
 
 		@include breakpoints(sm) {
-			font-size: 40px*1.5;
+			font-size: 40px * 1.5;
 		}
 	}
+
 	@if $size == XL {
 		font-size: 36px;
 
 		@include breakpoints(sm) {
-			font-size: 36px*1.5;
+			font-size: 36px * 1.5;
 		}
 	}
+
 	@if $size == L {
 		font-size: 32px;
 
 		@include breakpoints(sm) {
-			font-size: 32px*1.5;
+			font-size: 32px * 1.5;
 		}
 	}
+
 	@if $size == M {
 		font-size: 28px;
 
 		@include breakpoints(sm) {
-			font-size: 28px*1.5;
+			font-size: 28px * 1.5;
 		}
 	}
+
 	@if $size == S {
 		font-size: 24px;
 
 		@include breakpoints(sm) {
-			font-size: 24px*1.5;
+			font-size: 24px * 1.5;
 		}
 	}
+
 	@if $size == XS {
 		font-size: 20px;
 
 		@include breakpoints(sm) {
-			font-size: 20*1.5;
+			font-size: 20 * 1.5;
 		}
 	}
 }
@@ -334,33 +357,40 @@
  * 4. Miscellaneous
  */
 
-
 /**
  * 1. Font and Wording
  */
 
 // FontFace. GO to abstract/_custom_fonts.scss to see it in action
-@mixin declare-font-face($font-family, $font-filename, $font-weight : normal, $font-style :normal, $font-stretch : normal){
-	@font-face{
-		font-family: '#{$font-family}';
-		font-weight: $font-weight;
+@mixin declare-font-face(
+	$font-family,
+	$font-filename,
+	$font-weight: normal,
+	$font-style: normal,
+	$font-stretch: normal
+) {
+
+	@font-face {
+		font-family: "#{$font-family}";
 		font-style: $font-style;
+		font-weight: $font-weight;
 		font-stretch: $font-stretch;
 		font-display: swap;
-		src: url(#{$font-filename}.woff2) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-			 url(#{$font-filename}.woff) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+		src:
+			url(#{$font-filename}.woff2) format("woff2"),
+			url(#{$font-filename}.woff) format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 	}
 }
 
 // Word wrap
 @mixin word-wrap($wrap: break-word) {
-	overflow-wrap: $wrap;
 	word-wrap: $wrap;
+	overflow-wrap: $wrap;
 
 	@if $wrap == break-word {
-	  word-break: break-all;
+		word-break: break-all;
 	} @else {
-	  word-break: $wrap;
+		word-break: $wrap;
 	}
 }
 
@@ -369,7 +399,7 @@
  */
 
 // Image responsive
-@mixin img__responsive($max-width:100%) {
+@mixin img__responsive($max-width: 100%) {
 	display: block;
 	max-width: $max-width;
 	height: auto;
@@ -378,11 +408,12 @@
 // Object Fit polyfill
 @mixin object-fit($fit: cover, $position: null) {
 	object-fit: $fit;
+
 	@if $position {
 		object-position: $position;
-		font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+		font-family: "object-fit: #{$fit}; object-position: #{$position}";
 	} @else {
-		font-family: 'object-fit: #{$fit}';
+		font-family: "object-fit: #{$fit}";
 	}
 }
 
@@ -393,31 +424,38 @@
 // Mixin for custom checkbox
 @mixin checkbox--custom($color: $maincolor, $size: 1em, $border-width: 2px) {
 	margin-bottom: 20px;
+
 	input[type="checkbox"],
 	input[type="radio"] {
+
 		@extend .visuallyhidden;
-		&+label {
-			display: block;
-			cursor: pointer;
+
+		+ label {
 			position: relative;
+			display: block;
 			padding-left: $size * 1.5;
-			&:before {
-				content: '';
+			cursor: pointer;
+
+			&::before {
 				position: absolute;
-				left: 0;
 				top: 1px;
-				background-color: transparent;
+				left: 0;
 				width: calc(#{$size} + #{$border-width});
 				height: calc(#{$size} + #{$border-width});
 				margin: 0;
-				border: $border-width solid $color;
 				cursor: pointer;
-				transition: background-color .25s ease;
+				content: "";
+				background-color: transparent;
+				border: $border-width solid $color;
+				transition: background-color 0.25s ease;
 			}
 		}
+
 		&:checked {
-			&+label {
-				&:before {
+
+			+ label {
+
+				&::before {
 					background-color: $color;
 				}
 			}
@@ -425,12 +463,14 @@
 	}
 }
 
-
 // Custom radio
 @mixin radio--custom() {
+
 	input[type="radio"] {
-		&+label {
-			&:before {
+
+		+ label {
+
+			&::before {
 				border-radius: 50%;
 			}
 		}
@@ -440,22 +480,25 @@
 //Custom select
 @mixin select--custom {
 	display: block;
-	font-size: 16px; // prevent iOS zoom
-	color: $textcolor;
-	line-height: 1.15;
-	padding: $half-base-spacing $half-base-spacing*3 $half-base-spacing $half-base-spacing;
 	width: 100%;
 	max-width: 100%; /* useful when width is set to anything other than 100% */
+	padding:
+		$half-base-spacing $half-base-spacing * 3 $half-base-spacing
+		$half-base-spacing;
 	margin: 0;
-	border: 1px solid $maingrey;
-	border-radius: 0;
-	appearance: none;
+	font-size: 16px; // prevent iOS zoom
+	line-height: 1.15;
+	color: $textcolor;
 	background-color: $lightcolor;
-	background-image: url('#{$icons-url}/down.svg'),
-	  linear-gradient(to bottom, $lightcolor 0%,$lightcolor 100%);
+	background-image:
+		url("#{$icons-url}/down.svg"),
+		linear-gradient(to bottom, $lightcolor 0%, $lightcolor 100%);
 	background-repeat: no-repeat, repeat;
 	background-position: right 10px top 50%, 0 0;
 	background-size: 10px auto, 100%;
+	border: 1px solid $maingrey;
+	border-radius: 0;
+	appearance: none;
 
 	// Hide arrow icon in IE browsers
 	&::-ms-expand {
@@ -467,21 +510,22 @@
 		border-color: darken($maingrey, 10%);
 	}
 
+	// Set options to normal weight
+	option {
+		font-weight: 400;
+	}
+
 	// Focus style
 	&:focus {
-		border-color: darken($maingrey, 20%);
-		box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
-		box-shadow: 0 0 0 3px -moz-mac-focusring;
 		color: darken($textcolor, 10%);
+		border-color: darken($maingrey, 20%);
 		outline: none;
+		box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+		box-shadow: 0 0 0 3px -moz-mac-focusring;
+
 		option {
 			outline: none;
 		}
-	}
-
-	// Set options to normal weight
-	option {
-		font-weight:normal;
 	}
 
 	// Support for rtl text, explicit support for Arabic and Hebrew
@@ -510,11 +554,12 @@
 
 // Webkit autofill
 @mixin autofill {
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus {
-        @content;
-    }
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus {
+		@content;
+	}
 }
 
 /**
@@ -523,27 +568,31 @@
 
 // Hover Active Focus pseudo selector mixin
 @mixin hover {
-	&:hover, &:active, &:focus {
+
+	&:hover,
+	&:active,
+	&:focus {
 		@content;
 	}
 }
 
 // Insert content for extra style
 @mixin pseudo__content {
-	content: "";
 	display: block;
+	content: "";
 	speak: none;
 }
 
 // Card base
 @mixin card {
 	padding: $base-spacing;
-	box-shadow: 0 2px 4px rgba($darkcolor, .25);
+	box-shadow: 0 2px 4px rgba($darkcolor, 0.25);
 }
 
 // Float, left by default
-@mixin align($direction:left) {
+@mixin align($direction: left) {
 	float: $direction;
+
 	@if ($direction == left) {
 		margin-right: $base-spacing;
 	} @else {
@@ -553,30 +602,34 @@
 
 //fullwidth row
 @mixin row--fullwidth($position: relative) {
-	z-index: $zindex;
 	position: $position;
-	width: 100vw;
 	left: 50%;
+	z-index: $zindex;
+	width: 100vw;
 	transform: translateX(-50%) translateY(0);
 }
 
 // Clearfix
 @mixin clearfix {
-	&:before, &:after {
-		content: "";
+
+	&::before,
+	&::after {
 		display: table;
+		content: "";
 	}
-	&:after {
+
+	&::after {
 		clear: both;
 	}
 }
 
 // Hardware acceleration
 @mixin hardware($backface: true, $perspective: 1000) {
-    @if $backface {
-        backface-visibility: hidden;
-    }
-    perspective: $perspective;
+
+	@if $backface {
+		backface-visibility: hidden;
+	}
+	perspective: $perspective;
 }
 
 //List mixins
@@ -602,75 +655,72 @@
 	}
 }
 
-
 // Flexbox row
-@mixin flexrow($gutter:1rem,$debug:false,$grid:12,$baseline:0) {
+@mixin flexrow($gutter: 1rem, $debug: false, $grid: 12, $baseline: 0) {
 	display: flex;
 	flex-wrap: wrap;
 	margin-left: -$gutter;
+
 	@if $debug == true {
-	  $flexcolsize: 1/$grid*100%;
-	  position: relative;
+		$flexcolsize: 1 / $grid * 100%;
+		position: relative;
 
-	  @if $grid != 0 {
-		// Debug Grid
-		&::before {
-		  content: "";
-		  position: absolute;
-		  left: $gutter;
-		  top: 0;
-		  right: 0;
-		  bottom: 0;
-		  pointer-events: none;
-		  background-image: repeating-linear-gradient(
-			to right,
-			#{$debug_color},
-			#{$debug_color} calc(#{$flexcolsize} - #{$gutter}),
-			rgba(0, 0, 0, 0) calc(#{$flexcolsize} - #{$gutter}),
-			rgba(0, 0, 0, 0) calc(#{$flexcolsize})
-		  );
-		  background-size: calc(100% + #{$gutter}) 100%,
-			calc(100% + #{$gutter}) 100%;
+		@if $grid != 0 {
+			// Debug Grid
+			&::before {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: $gutter;
+				pointer-events: none;
+				content: "";
+				/* stylelint-disable */
+				background-image:
+ repeating-linear-gradient(to right, #{$debug_color}, #{$debug_color} calc(#{$flexcolsize} - #{$gutter}), rgba(0, 0, 0, 0) calc(#{$flexcolsize} - #{$gutter}), rgba(0, 0, 0, 0) calc(#{$flexcolsize}));
+				background-size:
+					calc(100% + #{$gutter}) 100%,
+					calc(100% + #{$gutter}) 100%;
+				/* stylelint-enable */
+			}
 		}
-	  }
 
-	  @if $baseline != 0 {
-		// Debug baseline
-		&::after {
-		  content: "";
-		  position: absolute;
-		  left: $gutter;
-		  top: 0;
-		  right: 0;
-		  bottom: 0;
-		  pointer-events: none;
-		  background-image: repeating-linear-gradient(
-			#{$debug_color},
-			#{$debug_color} 1px,
-			rgba(0, 0, 0, 0) 1px,
-			rgba(0, 0, 0, 0) #{$baseline}
-		  );
-		  background-size: calc(100% + #{$gutter}) 100%,
-			calc(100% + #{$gutter}) 100%;
+		@if $baseline != 0 {
+			// Debug baseline
+			&::after {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: $gutter;
+				pointer-events: none;
+				content: "";
+				/* stylelint-disable-next-line */
+				background-image:
+ repeating-linear-gradient(#{$debug_color}, #{$debug_color} 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) #{$baseline});
+				background-size:
+					calc(100% + #{$gutter}) 100%,
+					calc(100% + #{$gutter}) 100%;
+			}
 		}
-	  }
 	}
 }
 // Flexbox column
-@mixin flexcol($col:12,$grid:12,$gutter:1rem) {
-	$flexcolsize: $col/$grid*100%;
+@mixin flexcol($col: 12, $grid: 12, $gutter: 1rem) {
+	$flexcolsize: $col/$grid * 100%;
 	flex: 0 0 $flexcolsize;
 	max-width: calc(#{$flexcolsize} - #{$gutter});
 	margin-left: $gutter;
 }
 
 // Flexbox offset
-@mixin flexoff($col:12, $grid:12, $gutter:1rem, $direction: "push") {
-	$flexcolsize: $col/$grid*100%;
+@mixin flexoff($col: 12, $grid: 12, $gutter: 1rem, $direction: "push") {
+	$flexcolsize: $col/$grid * 100%;
+
 	@if $direction == "push" {
 		margin-left: calc(#{$flexcolsize} + #{$gutter});
 	} @else if $direction == "pull" {
-		margin-left: $gutter;
 		margin-right: $flexcolsize;
+		margin-left: $gutter;
 	}
 }

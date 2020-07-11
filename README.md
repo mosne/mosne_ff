@@ -116,12 +116,16 @@ Install the following plugins:
 * [stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 
 In disperate cases you can disable stylelint using:
-```bash
+```scss
 /* stylelint-disable */
 a {}
 /* stylelint-enable */
 ```
-
+or
+```scss
+/* stylelint-disable-line */
+a {}
+```
 
 ### PHP Coding standads > Wordpress-Extra
 #### Installing PHPCS (and phpcbf)

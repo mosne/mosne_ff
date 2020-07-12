@@ -7,6 +7,7 @@
     "url": "https://github.com/mosne/mosne_ff"
   },
   "scripts": {
+    "test": "node scripts/mosne.js",
     "live": "node scripts/mosne.js && node_modules/.bin/concurrently -k -n \"Webpack,PHP Server\" -p \"[{name}]\" -c \"green, blue\" \"node_modules/.bin/webpack --mode=none --watch --display=errors-only\" \"sh server.sh\"",
     "start": "node scripts/mosne.js && node_modules/.bin/concurrently -k -n \"Webpack,PHP Server\" -p \"[{name}]\" -c \"green, blue\" \"node_modules/.bin/webpack --mode=development --watch --display=errors-only\" \"sh server.sh\"",
     "build:dev": "node scripts/mosne.js && rm -rf dist/ && echo \"✔ dist folder has been successfully removed.\" node_modules/.bin/webpack --mode=development --display=errors-only",

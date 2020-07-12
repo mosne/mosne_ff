@@ -132,6 +132,7 @@ Generate SVG sprite from the icons files in src/img/icons/ by using :
 $ yarn run icons
 ```
 
-# PHP Coding standads
-* [SCSS Stylelint WordPress](https://github.com/mosne/mosne_ff/wiki/Coding-standard-SCSS)
-* [PHP WordPress-Extra](https://github.com/mosne/mosne_ff/wiki/PHP-Coding-standads)
+### Coding standads
+Read our wiki page to correctly configure your enviroment
+* [SCSS Stylelint for WordPress](https://github.com/mosne/mosne_ff/wiki/Coding-standard-SCSS)
+* [PHPCS WordPress-Extra](https://github.com/mosne/mosne_ff/wiki/PHP-Coding-standads)

@@ -102,6 +102,26 @@ If you want to deliver just css and assets run :
 $ yarn run fast
 ```
 
+### Batch autofix assets
+Try to auto fix JS using eslint :
+
+```bash
+$ yarn run fix
+```
+
+Try to auto fix SCSS using stylelint :
+
+```bash
+$ yarn run fixcss
+```
+
+
+Try to auto fix PHP using phpcbf :
+
+```bash
+$ yarn run fixphp
+```
+
 ### Assets
 #### SVG Icons
 Generate SVG sprite from the icons files in src/img/icons/ by using :

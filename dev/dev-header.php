@@ -1,13 +1,13 @@
 <?php
 
-function includeWithVariables( $filePath, $variables = array(), $print = true ) {
+function includeWithVariables( $file_path, $variables = array(), $print = true ) {
 	// allow unique variable as string
 	if ( gettype( $variables ) === 'string' ) {
 		$variables = array( 'variable' => $variables );
 	}
 
 	$output = null;
-	if ( file_exists( $filePath ) ) {
+	if ( file_exists( $file_path ) ) {
 		// Extract the variables to a local namespace
 		extract( $variables );
 
@@ -15,7 +15,7 @@ function includeWithVariables( $filePath, $variables = array(), $print = true ) 
 		ob_start();
 
 		// Include the template file
-		include $filePath;
+		include $file_path;
 
 		// End buffering and return its contents
 		$output = ob_get_clean();
@@ -53,7 +53,7 @@ function m_icon( $file_name, $extra_class = '', $echo = true ) {
 	return $output;
 }
 
-function m_image( $w, $h, $alt = 'Image placeholder', $print = true ) {
+function m_image( $w, $h, $alt = 'Image placeholder', $echo = true ) {
 
 	$ratio  = 100 * bcdiv( $h, $w, 5 );
 	$srcset = 'https://via.placeholder.com/' . $w . 'x' . $h . ' ' . $w . 'w, ' . 'https://via.placeholder.com/' . bcdiv( $w, 2, 0 ) . 'x' . $h / 2 . ' ' . bcdiv( $w, 2, 0 ) . 'w';
@@ -61,8 +61,8 @@ function m_image( $w, $h, $alt = 'Image placeholder', $print = true ) {
 	<img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=" data-sizes="auto" data-srcset="' . $srcset . '" alt="' . $alt . '">
 	</div>';
 
-	if ( $print ) {
-		print $output;
+	if ( $echo ) {
+		echo $output;
 	}
 	return $output;
 }

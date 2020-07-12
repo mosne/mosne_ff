@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mosne/mosne_ff.svg?branch=master)](https://travis-ci.com/mosne/mosne_ff)
+
 #  Mosne Front-end Framework starter theme for WordPress
 ##  What is Mosne FF ?
 

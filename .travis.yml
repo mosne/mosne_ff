@@ -1,0 +1,6 @@
+dist: trusty
+language: node_js
+
+branches:
+  only:
+    - master

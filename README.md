@@ -132,65 +132,6 @@ Generate SVG sprite from the icons files in src/img/icons/ by using :
 $ yarn run icons
 ```
 
-### CSS stylelint 
-#### VScode plugin
-Install the following plugins:
-* [stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
-
-In disperate cases you can disable stylelint using:
-```scss
-/* stylelint-disable */
-a {}
-/* stylelint-enable */
-```
-or
-```scss
-/* stylelint-disable-line */
-a {}
-```
-
-### PHP Coding standads > Wordpress-Extra
-#### Installing PHPCS (and phpcbf)
-Download and install:
-
-```bash
-$ curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-$ curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
-$ chmod +x phpcs.phar
-$ chmod +x phpcbf.phar
-$ sudo mv phpcs.phar /usr/local/bin/phpcs
-$ sudo mv phpcbf.phar /usr/local/bin/phpcbf
-```
-
-#### Installing WPC
-Download WordPress Coding standard:
-
-```bash
-$ git clone -b master https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git wpcs
-```
-#### Configuring PHPCS
-Set the ABSOLUTE path to thw wpcs folder and the default rules.
-```bash
-$ phpcs --config-set installed_paths /User/[your_user_name]/wpcs
-$ phpcs --config-set default_standard WordPress-Extra
-```
-Verify your configuration:
-```bash
-$ phpcs -i
-$ phpcbf -i
-```
-
-#### Configure VScode
-Install the following plugins:
-* [phpcs](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs)
-* [phpcbf](https://marketplace.visualstudio.com/items?itemName=persoderlind.vscode-phpcbf)
-
-Edit your configuration file:
-```javascript
-"phpcs.standard": "WordPress-Extra",
-"phpcbf.enable": true,
-"phpcbf.executablePath": "phpcbf",
-"phpcbf.documentFormattingProvider": true,
-"phpcbf.onsave": true,
-"phpcbf.standard": "WordPress-Extra",
-```
+# PHP Coding standads
+* [SCSS Stylelint WordPress](https://github.com/mosne/mosne_ff/wiki/Coding-standard-SCSS)
+* [PHP WordPress-Extra](https://github.com/mosne/mosne_ff/wiki/PHP-Coding-standads)

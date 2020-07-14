@@ -42,9 +42,9 @@ Next, go to your theme folder.
 $ cd your_theme_name
 ```
 
-Then install node dependencies with NPM or Yarn.
+Then install node dependencies with Pnpm or Yarn on Npm.
 ```bash
-$ yarn install
+$ pnpm install
 ```
 
 ## Configuration
@@ -69,26 +69,26 @@ After installing dependencies, you can run some commands which are explained bel
 
 and run a first time the following command to generate required distributions files to run the server properly.
 ```
-$ yarn run build
+$ pnpm run build
 ```
 
 Then, you can luch Browser Sync proxy by running :
 ```bash
-$ yarn live
+$ pnpm live
 ```
 
 ### Watching files for development purpose
 If you don't need a local server you just can compile AND watch styles and scripts (with sourcemap) by using :
 
 ```bash
-$ yarn run watch
+$ pnpm run watch
 ```
 
 ### Development build
 If you want to build styles and scripts (with sourcemap) by using :
 
 ```bash
-$ yarn run build:dev
+$ pnpm run build:dev
 ```
 
 ### Production build
@@ -101,27 +101,27 @@ $ yarn run build:prod
 If you want to deliver just css and assets run :
 
 ```bash
-$ yarn run fast
+$ pnpm run fast
 ```
 
 ### Batch autofix assets
 Try to auto fix JS using eslint :
 
 ```bash
-$ yarn run fix
+$ pnpm run fix
 ```
 
 Try to auto fix SCSS using stylelint :
 
 ```bash
-$ yarn run fixcss
+$ pnpm run fixcss
 ```
 
 
 Try to auto fix PHP using phpcbf :
 
 ```bash
-$ yarn run fixphp
+$ pnpm run fixphp
 ```
 
 ### Assets
@@ -129,10 +129,11 @@ $ yarn run fixphp
 Generate SVG sprite from the icons files in src/img/icons/ by using :
 
 ```bash
-$ yarn run icons
+$ pnpm run icons
 ```
 
 ### Coding standads
 Read our wiki page to correctly configure your enviroment
-* [SCSS Stylelint for WordPress](https://github.com/mosne/mosne_ff/wiki/Coding-standard-SCSS)
-* [PHPCS WordPress-Extra](https://github.com/mosne/mosne_ff/wiki/PHP-Coding-standads)
+* [setup Eslint](https://github.com/mosne/mosne_ff/wiki/Eslint-setup-for-js)
+* [setup Stylelint](https://github.com/mosne/mosne_ff/wiki/Stylelint-Setup-for-Scss)
+* [setup Phpcs and Phpcbf](https://github.com/mosne/mosne_ff/wiki/Phpcs-and-Phpcbf-setup)

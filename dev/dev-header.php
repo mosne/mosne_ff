@@ -54,12 +54,13 @@ function m_icon( $file_name, $extra_class = '', $echo = true ) {
 }
 
 function m_image( $w, $h, $alt = 'Image placeholder', $echo = true ) {
-
 	$ratio  = 100 * bcdiv( $h, $w, 5 );
 	$srcset = 'https://via.placeholder.com/' . $w . 'x' . $h . ' ' . $w . 'w, ' . 'https://via.placeholder.com/' . bcdiv( $w, 2, 0 ) . 'x' . $h / 2 . ' ' . bcdiv( $w, 2, 0 ) . 'w';
-	$output = '<div class="m-img-wrap" style="padding-bottom:' . $ratio . '%">
-	<img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=" data-sizes="auto" data-srcset="' . $srcset . '" alt="' . $alt . '">
-	</div>';
+	$output = '<picture class="m-img-wrap" style="padding-bottom:' . $ratio . '%">
+					<source data-srcset="' . $srcset . '" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=" type="image/webp">
+					<source data-srcset="' . $srcset . '" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=">
+					<img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=" data-sizes="auto" alt="' . $alt . '">
+				</picture>';
 
 	if ( $echo ) {
 		echo $output;

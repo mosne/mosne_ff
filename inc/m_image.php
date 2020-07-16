@@ -19,7 +19,7 @@ add_filter( 'max_srcset_image_width', 'new_srcset_max' );
  * @return string
  */
 function m_wrapper( $image, $sz = 'medium' ) {
-	return 'class="m-img-wrap" style="padding-bottom:' . m_bottom( $image, $sz ) . '%"';
+	return 'style="padding-bottom:' . m_bottom( $image, $sz ) . '%"';
 }
 
 /**
@@ -83,6 +83,22 @@ function m_bottom( $image, $sz = 'medium' ) {
 		$ratio = 100 * bcdiv( $hh, $ww, 5 );
 
 		return $ratio;
+	}
+}
+
+/**
+ * @param        $image
+ * @param string $sz
+ *
+ * @return float|int
+ */
+function m_maxsize( $image, $sz = 'medium' ) {
+	if ( $image ) {
+		$ww = $image['sizes'][ $sz . '-width' ];
+		if ( $ww == '' ) {
+			$ww = $image['width'];
+		}
+		return '(max-width: ' . $ww . 'px) 100vw, ' . $ww . 'px';
 	}
 }
 
@@ -165,9 +181,17 @@ function mosne_svg( $svg, $mid ) {
 /**
  * @param        $field
  * @param string $sz
- * @param bool   $video
+ * @param string $class
+ * @param array  $arg
+ *
+ * m_image($image,"medium",["fit"=> true, class="gallery__img", "video"=> false, ])
  */
-function m_image( $field, $sz = 'medium', $video = false ) {
+function m_image( $field, $sz = 'medium', $class = 'm-img-wrap', $arg = array(
+	'fit'   => false,
+	'video' => false,
+) ) {
+
+	$html = '';
 
 	if ( is_array( $field ) ) {
 		$image = $field;
@@ -180,16 +204,20 @@ function m_image( $field, $sz = 'medium', $video = false ) {
 		if ( $image ) {
 
 			$svg_file_path = get_attached_file( $image['id'] );
-			echo '<div ' . m_wrapper( $image, $sz ) . '><div class="svg-wrap">
+			$html         .= '<figure ' . m_wrapper( $image, $sz ) . '><picture class="svg-wrap">
                 ' . mosne_svg( $svg_file_path, $image['id'] ) . '
-                </div></div>';
+                </picture></figure>';
 		}
 	} else {
 
-		$srcset = wp_get_attachment_image_srcset( $image['id'], $sz, true );
+		$srcset = wp_get_attachment_image_srcset( $image['id'], $sz, null );
 
 		if ( $srcset == '' ) {
 			$srcset = $image['url'] . ' 320w';
+		}
+
+		if ( empty( $image['alt'] ) ) {
+			$image['alt'] = $image['title'];
 		}
 
 		if ( $image ) {
@@ -197,163 +225,35 @@ function m_image( $field, $sz = 'medium', $video = false ) {
 				$video_url = get_field( 'link', $image['ID'] );
 			}
 			if ( $image['mime_type'] == 'image/gif' ) {
-				echo '<div ' . m_wrapper( $image, $sz ) . '>
+				$html .= '<picture ' . m_wrapper( $image, $sz ) . '>
 				<img src="' . m_placehoder() . '" alt="' . $image['title'] . '" ' . $extraok . '/>
-				</div>';
+				</picture>';
 			} else {
 
 				if ( $video_url != '' ) {
-					echo '<div class="video-push"><a href="' . $video_url . '" class="embedvideo">';
+					$html .= '<div class="video-push"><a href="' . $video_url . '" class="embedvideo">';
 				}
-				echo '<div ' . m_wrapper( $image, $sz ) . '><img class="lazyload" src="' . m_placehoder() . '" data-sizes="auto" data-srcset="' . $srcset . '" alt="' . $image['title'] . '"/></div>';
+
+				if ( $arg['fit'] ) {
+					$html .= '<picture class="' . $class . '">';
+				} else {
+					$html .= '<picture class="' . $class . '" ' . m_wrapper( $image, $sz ) . '>';
+				}
+
+				$html .= '<source  data-srcset="' . $srcset . '"/>
+							<img class="lazyload" src="' . m_placehoder() . '" alt="' . $image['alt'] . '" sizes="' . m_maxsize( $image, $sz ) . '"/>
+						 </picture>';
 				if ( $video_url != '' ) {
-					echo '</a></div>';
+					$html .= '</a></div>';
 				}
 			}
 		}
 	}
+
+	echo $html;
 }
 
 
-/**
- * @param        $field
- * @param string $sz
- * @param string $mode
- */
-function obj_m_image( $field, $sz = 'medium', $mode = 'cover' ) {
-
-	if ( is_array( $field ) ) {
-		$image = $field;
-	} else {
-		$image = get_field( $field );
-	}
-
-	if ( $srcset == '' ) {
-		$srcset = $image['url'] . ' 320w';
-	}
-
-	$aspectratio = bcdiv( m_bottom( $image, $sz ), 100, 2 );
-
-	$srcset = wp_get_attachment_image_srcset( $image['id'], $sz, true );
-
-	if ( $srcset == '' ) {
-		$srcset = $image['url'] . ' 320w';
-	}
-
-	// $srcset_h = preg_replace('/(.*?)(\d+)x(\d+)(.*?)\s(\d+)(w)/', '$0 $3h', $srcset);
-
-	if ( $image ) {
-
-		echo '<img class="imagecontainer-img lazyload" data-sizes="auto" data-parent-fit="' . $mode . '" data-aspectratio="' . $aspectratio . '" src="' . m_placehoder() . '" data-srcset="' . $srcset . '" alt="' . $image['title'] . '"/>';
-	}
-}
-
-
-/**
- * @param        $field
- * @param        $ratio
- * @param string $sz
- */
-function m_ratioimage( $field, $ratio, $sz = 'medium' ) {
-	if ( is_array( $field ) ) {
-		$image = $field;
-	} else {
-		$image = get_field( $field );
-	}
-
-	$srcset = wp_get_attachment_image_srcset( $image['id'], $sz );
-
-	if ( $srcset == '' ) {
-		$srcset = $image['url'] . ' 320w';
-	}
-	$ih = $image['sizes'][ $sz . '-height' ];
-	$ww = $image['sizes'][ $sz . '-width' ];
-	$ch = $ww * $ratio;
-
-	$diff  = ( ( $ch - $ih ) * 100 ) / $ih;
-	$vdiff = ( ( $ch - $ih ) * 100 ) / $ww;
-
-	if ( $diff > 0 ) {
-		$style = 'width:' . ( 100 + $diff ) . '%;margin-left:-' . ( $diff / 2 ) . '%;';
-	} elseif ( $diff < 0 ) {
-		$style = 'margin-top:' . ( $vdiff / 2 ) . '%;';
-	} else {
-		$style = '';
-	}
-
-	if ( $image ) {
-
-		echo '<div class="m-img-wrap m-ratio" style="padding-bottom:' . ( $ratio * 100 ) . '%;"><img class="lazyload" style="' . $style . '"
-                        src="' . $image['sizes']['small'] . '"
-                        data-sizes="auto"
-                        data-srcset="' . $srcset . '"
-                        alt="' . $image['title'] . '"/></div>';
-	}
-}
-
-
-/**
- * @param $media
- */
-function m_caption( $media ) {
-	if ( $media ) {
-		$c_title   = get_field( 'title_' . pll_current_language(), $media['ID'] );
-		$c_caption = get_field( 'caption_' . pll_current_language(), $media['ID'] );
-
-		if ( $c_title != '' ) {
-			echo '<div class="captions">
-    <p><strong>' . $c_title . '</strong><br>
-                ' . $c_caption . '</p>
-         </div>';
-		}
-	}
-}
-
-
-/**
- * @param $file
- */
-function gm_image( $file ) {
-
-	if ( $file ) {
-
-		//m_print($file);
-		$video_url = get_field( 'link', $file['ID'] );
-
-		if ( $file['type'] == 'image' && $video_url == '' ) {
-
-			//immagine
-			echo '<a class="zoom" data-rel="gallery-' . $post->ID . '"  href="' . $file['url'] . '">';
-			m_image( $file, 'medium', false );
-			echo '</a>';
-			m_caption( $file );
-
-		} elseif ( $file['type'] == 'image' && $video_url != '' ) {
-
-			if ( preg_match( '/archivioluce.com/i', $video_url ) ) {
-
-				echo '<div class="video-push"><a class="avideo" data-rel="gallery-media-' . $post->ID . '"  href="' . $video_url . '" target="_blank">';
-
-			} else {
-				echo '<div class="video-push"><a class="zoom avideo" data-rel="gallery-media-' . $post->ID . '"  href="' . $video_url . '">';
-			}
-
-			m_image( $file, 'medium', false );
-			echo '</a></div>';
-			m_caption( $file );
-
-		} elseif ( $file['type'] == 'audio' ) {
-			echo '<figure class="wp-block-audio"><audio controls="" controlsList="nodownload" src="' . $file['url'] . '"></audio></figure>';
-			m_caption( $file );
-		} else {
-
-			echo '<div class="documenti"><a href="' . $file['url'] . '" target="_blank">';
-			m_caption( $file );
-			echo '</a></div>';
-
-		}
-	}
-}
 
 /**
  * @param        $image

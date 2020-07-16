@@ -5,8 +5,8 @@
  */
 
 //error on off
-// ini_set( 'display_errors', 1 );
-// error_reporting( E_ALL ^ E_NOTICE );
+ini_set( 'display_errors', 1 );
+error_reporting( E_ALL ^ E_NOTICE );
 
 show_admin_bar( false );
 

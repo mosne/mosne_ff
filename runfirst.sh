@@ -13,7 +13,6 @@ fi
 echo "Directory node_modules abspath: ${LOCALDIR}${NODEMODULE}"
 xattr -w com.dropbox.ignored 1 "${LOCALDIR}${NODEMODULE}"
 echo "Directory excluded from dropbox."
+nvm use
 pnpm install
 pnpm run build
-
-

@@ -15,8 +15,8 @@ the_post(); ?>
 			//echo $post_thumbnail_id;
 			// $img = wp_get_attachment_image( $post_thumbnail_id , "medium ");
 			?>
-			<?php m_image( 'image', 'hd' ); ?>
-			<?php m_image( 'image', 'hd', 'gallery__img', array( 'fit' => true ) ); ?>
+			<?php echo m_image( 'image', 'hd', 'document__img' ); ?>
+			<?php echo m_image_ofit( 'image', 'hd', 'gallery__img' ); ?>
 		</header>
 		<div class="wysiwyg">
 				<?php the_content(); ?>

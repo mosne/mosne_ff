@@ -178,18 +178,7 @@ function mosne_svg( $svg, $mid ) {
 }
 
 
-/**
- * @param        $field
- * @param string $sz
- * @param string $class
- * @param array  $arg
- *
- * m_image($image,"medium",["fit"=> true, class="gallery__img", "video"=> false, ])
- */
-function m_image( $field, $sz = 'medium', $class = 'm-img-wrap', $arg = array(
-	'fit'   => false,
-	'video' => false,
-) ) {
+function m_source( $field, $sz ) {
 
 	$html = '';
 
@@ -198,76 +187,88 @@ function m_image( $field, $sz = 'medium', $class = 'm-img-wrap', $arg = array(
 	} else {
 		$image = get_field( $field );
 	}
+	if ( $image ) {
 
-	if ( $image['mime_type'] == 'image/svg+xml' ) {
-
-		if ( $image ) {
+		if ( 'image/svg+xml' == $image['mime_type'] ) {
 
 			$svg_file_path = get_attached_file( $image['id'] );
-			$html         .= '<figure ' . m_wrapper( $image, $sz ) . '><picture class="svg-wrap">
-                ' . mosne_svg( $svg_file_path, $image['id'] ) . '
-                </picture></figure>';
-		}
-	} else {
+			$html . mosne_svg( $svg_file_path, $image['id'] );
 
-		$srcset = wp_get_attachment_image_srcset( $image['id'], $sz, null );
+		} else {
 
-		if ( $srcset == '' ) {
-			$srcset = $image['url'] . ' 320w';
-		}
+			$srcset = wp_get_attachment_image_srcset( $image['id'], $sz, null );
 
-		if ( empty( $image['alt'] ) ) {
-			$image['alt'] = $image['title'];
-		}
-
-		if ( $image ) {
-			if ( $video ) {
-				$video_url = get_field( 'link', $image['ID'] );
+			if ( $srcset == '' || $image['mime_type'] == 'image/gif' ) {
+				$srcset = $image['url'] . ' 320w';
 			}
-			if ( $image['mime_type'] == 'image/gif' ) {
-				$html .= '<picture ' . m_wrapper( $image, $sz ) . '>
-				<img src="' . m_placehoder() . '" alt="' . $image['title'] . '" ' . $extraok . '/>
-				</picture>';
-			} else {
 
-				if ( $video_url != '' ) {
-					$html .= '<div class="video-push"><a href="' . $video_url . '" class="embedvideo">';
-				}
-
-				if ( $arg['fit'] ) {
-					$html .= '<picture class="' . $class . '">';
-				} else {
-					$html .= '<picture class="' . $class . '" ' . m_wrapper( $image, $sz ) . '>';
-				}
-
-				$html .= '<source  data-srcset="' . $srcset . '"/>
-							<img class="lazyload" src="' . m_placehoder() . '" alt="' . $image['alt'] . '" sizes="' . m_maxsize( $image, $sz ) . '"/>
-						 </picture>';
-				if ( $video_url != '' ) {
-					$html .= '</a></div>';
-				}
+			if ( empty( $image['alt'] ) ) {
+				$image['alt'] = $image['title'];
 			}
+
+			$html .= '<source  data-srcset="' . $srcset . '"/>
+				 <img class="lazyload" src="' . m_placehoder() . '" alt="' . $image['alt'] . '" sizes="' . m_maxsize( $image, $sz ) . '"/>';
 		}
+		return array(
+			'image'  => $image,
+			'srcset' => $html,
+		);
 	}
 
-	echo $html;
+}
+
+function m_video( $id ) {
+	$open      = '';
+	$close     = '';
+	$video_url = get_field( 'link', $id );
+	if ( '' != $video_url ) {
+		$open  = '<div class="video-push"><a href="' . $video_url . '" class="embedvideo">';
+		$close = '</a></div>';
+	}
+		return array(
+			'head' => $open,
+			'foot' => $close,
+		);
 }
 
 
-
 /**
- * @param        $image
- * @param int    $c
- * @param string $video
+ * @param        $field
+ * @param string $sz
+ * @param string $class
+ * @param bool  $video
+ *
+ * m_image($image,"medium",["fit"=> true, class="gallery__img", "video"=> false, ])
  */
-function zcm_image( $image, $c = 0, $video = '' ) {
-	global $post;
-	if ( $video != '' ) {
-		echo '<a class="zoom" data-rel="gallery-' . $post->ID . '" href="' . $video . '" data-sub-html="#caption-' . $image['id'] . '" title="' . $image['title'] . '">';
-	} else {
-		echo '<a class="zoom" data-rel="gallery-' . $post->ID . '"  href="' . $image['url'] . '" data-sub-html="#caption-' . $image['id'] . '" title="' . $image['title'] . '">';
+function m_media( $field, $sz = 'medium', $class = '', $video = false, $fit = false ) {
+
+	$html               = '';
+	$source             = m_source( $field, $sz );
+	$image              = $source['image'];
+	$srcset             = $source['srcset'];
+	$video_html['head'] = '';
+	$video_html['foot'] = '';
+
+	if ( $video ) {
+		$video_html = m_video( $image['ID'] );
 	}
-	echo $c . '</a>';
-	echo '<div id="caption-' . $image['id'] . '" class="hide"><h4>' . $post->post_title . '</h4></div>';
-	/*'.$image['caption'].'*/
+
+	if ( 'image/svg+xml' == $image['mime_type'] ) {
+		$html .= $video_html['head'] . '<figure ' . m_wrapper( $image, $sz ) . '><picture class="svg-wrap">' . $srcset . '</picture></figure>' . $video_html['foot'];
+	} elseif ( true === $fit ) {
+		$html .= $video_html['head'] . '<picture class="' . $class . '">' . $srcset . '</picture>' . $video_html['foot'];
+	} else {
+		$html .= $video_html['head'] . '<picture class="m-img-wrap ' . $class . '" ' . m_wrapper( $image, $sz ) . '>' . $srcset . '</picture>' . $video_html['foot'];
+	}
+
+	return $html;
+}
+
+
+function m_image( $field, $sz = 'medium', $class = '', $video = false ) {
+	return m_media( $field, $sz, $class, $video );
+}
+
+function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ) {
+	return m_media( $field, $sz, $class, $video, true );
 }

@@ -1,4 +1,4 @@
-![Node.js CI](https://github.com/mosne/mosne_ff/workflows/Node.js%20CI/badge.svg?branch=master) ![PHP Composer (https://github.com/mosne/mosne_ff/workflows/PHP%20Composer/badge.svg)
+![Node.js CI](https://github.com/mosne/mosne_ff/workflows/Node.js%20CI/badge.svg?branch=master) ![PHP Composer](https://github.com/mosne/mosne_ff/workflows/PHP%20Composer/badge.svg)
 
 #  Mosne Front-end Framework starter theme for WordPress
 ##  What is Mosne FF ?

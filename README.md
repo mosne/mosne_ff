@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/mosne/mosne_ff.svg?branch=master)](https://travis-ci.com/mosne/mosne_ff)
+![Node.js CI](https://github.com/mosne/mosne_ff/workflows/Node.js%20CI/badge.svg?branch=master) [![Build Status](https://travis-ci.com/mosne/mosne_ff.svg?branch=master)](https://travis-ci.com/mosne/mosne_ff) 
 
 #  Mosne Front-end Framework starter theme for WordPress
 ##  What is Mosne FF ?

@@ -39,11 +39,11 @@ p {
 
 		&__link {
 
-			@extend .button;
+			@extend .btn;
 
 			&:not([class*="has"]) {
 
-				@extend .button--primary;
+				@extend .btn--primary;
 			}
 		}
 
@@ -52,7 +52,7 @@ p {
 
 				&__link {
 
-					@extend .button--outline;
+					@extend .btn--outline;
 				}
 			}
 		}
@@ -62,7 +62,7 @@ p {
 
 				&__link {
 
-					@extend .button--square;
+					@extend .btn--square;
 				}
 			}
 		}

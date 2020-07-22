@@ -8,5 +8,9 @@
 	"parenSpacing": true,
 	"jsxBracketSameLine": false,
 	"semi": true,
-	"arrowParens": "always"
+	"arrowParens": "always",
+	"[javascript]": {
+		"useTabs": true,
+		"tabWidth": 2
+	}
 }

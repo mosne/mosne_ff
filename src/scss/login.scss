@@ -1,0 +1,95 @@
+@import "abstract/url-config";
+@import "abstract/positioning";
+@import "abstract/colors";
+@import "abstract/borders";
+@import "abstract/mixins";
+@import "abstract/fonts";
+@import "abstract/box-sizing";
+@import "abstract/breakpoints";
+@import "abstract/grid";
+
+$login-logo-path: "#{$images-url}/mosne.svg";
+$login-logo-size: 201px 79px;
+$login-logo-height: 110px;
+$login-body-bg-color: $lightcolor;
+$login-text-color: $textcolor;
+$login-link-color: $maincolor;
+$login-link-hover-color: $textcolor;
+$login-remember-input-check-color: $darkcolor;
+$login-btn-bg-color: $maincolor;
+$login-btn-hover-bg-color: $darkcolor;
+
+html,
+body {
+
+	&::before,
+	&::after {
+		display: none;
+	}
+}
+
+body.login {
+	color: $login-text-color;
+	background: $login-body-bg-color;
+
+	h1 a {
+		display: block;
+		width: 100%;
+		height: $login-logo-height;
+		background-image: url(#{$login-logo-path});
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: $login-logo-size;
+	}
+
+	a {
+		color: $login-link-color;
+		text-decoration: none;
+
+		&:focus,
+		&:hover {
+			color: $login-link-hover-color;
+			text-decoration: underline;
+		}
+	}
+
+	.message,
+	.success,
+	.login-error {
+		border-left-color: $login-text-color;
+	}
+
+	input[type="checkbox"]:checked::before {
+		color: $login-remember-input-check-color;
+	}
+
+	#nav,
+	#backtoblog {
+
+		a {
+			color: $login-link-color;
+
+			&:focus,
+			&:hover {
+				color: $login-link-hover-color;
+				text-decoration: underline;
+			}
+		}
+	}
+
+}
+
+.wp-core-ui {
+
+	.button-primary {
+		text-shadow: none;
+		background-color: $login-btn-bg-color;
+		border: 0;
+		box-shadow: none;
+		transition: all 0.2s ease;
+
+		&:hover {
+			background-color: $login-btn-hover-bg-color;
+		}
+	}
+}

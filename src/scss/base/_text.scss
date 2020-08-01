@@ -28,6 +28,7 @@ body {
 	font-size: $base-fz;
 	line-height: $base-lh;
 	color: $textcolor;
+	background-color: $lightcolor; // must be defined for accessibility
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	//Fonts loading FOUT

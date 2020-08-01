@@ -92,3 +92,13 @@ function tax_cat_active( $output, $args ) {
 	return $output;
 }
 add_filter( 'wp_list_categories', 'tax_cat_active', 10, 2 );
+
+/**
+* Enqueue the WP login page styles
+*/
+function login_enqueue_styles() {
+	$theme = wp_get_theme();
+	// wp_dequeue_style( 'theme-style' );
+	wp_enqueue_style( 'mosne-login', get_stylesheet_directory_uri() . '/dist/login.css', null , $theme->get( 'Version' ) );
+}
+add_action( 'login_enqueue_scripts', 'login_enqueue_styles' );

@@ -17,6 +17,7 @@ $login-link-color: $maincolor;
 $login-link-hover-color: $textcolor;
 $login-remember-input-check-color: $darkcolor;
 $login-btn-bg-color: $maincolor;
+$login-btn-border: $maincolor;
 $login-btn-hover-bg-color: $darkcolor;
 
 html,
@@ -91,5 +92,19 @@ body.login {
 		&:hover {
 			background-color: $login-btn-hover-bg-color;
 		}
+	}
+	.button-secondary {
+		color: $login-btn-border;
+		border-color: $login-btn-border;
+	}
+
+	input[type=email]:focus,
+	input[type=password]:focus,
+	input[type=text]:focus {
+		border-color: $login-btn-border;
+		box-shadow : 0 0 0 1px $login-btn-border;
+	}
+	input[type=checkbox]:checked::before{
+		filter: grayscale(1);
 	}
 }

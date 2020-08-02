@@ -11,10 +11,12 @@
 <body <?php body_class(); ?>>
 
 	<header id="header">
-		<a id="skip-navigation" class="visuallyhidden" href="#bd">skip navigation</a>
-		<div class="grid">
-			<div id="logo"><a class="name" href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a></div>
-			<?php get_template_part( 'components/menu/menu-main' ); ?>
-		</div>
+		<ul class="menu-fastaccess">
+			<li class="menu-fastaccess__item"><a href="#bd"><?php esc_html_e( 'Skip to content', 'mosne' ); ?></a></li>
+			<li class="menu-fastaccess__item"><a href="#nav-primary"><?php esc_html_e( 'Skip to Main Menu', 'mosne' ); ?></a></li>
+			<li class="menu-fastaccess__item"><a href="#search"><?php esc_html_e( 'Skip to Search Form', 'mosne' ); ?></a></li>
+		</ul>
+		<div id="logo"><a class="name" href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a></div>
+		<?php get_template_part( 'template-parts/navigation/menu-main' ); ?>
 		<?php echo get_search_form(); ?>
 	</header>

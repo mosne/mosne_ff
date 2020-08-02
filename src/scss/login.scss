@@ -96,6 +96,15 @@ body.login {
 	.button-secondary {
 		color: $login-btn-border;
 		border-color: $login-btn-border;
+		@include hover{
+			color: $login-btn-border;
+			border-color: $login-btn-border;
+		}
+	}
+
+	.button.wp-hide-pw:focus {
+		border-color: $login-btn-border;
+		box-shadow: 0 0 0 1px $login-btn-border;
 	}
 
 	input[type=email]:focus,

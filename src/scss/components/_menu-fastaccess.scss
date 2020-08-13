@@ -3,7 +3,6 @@
  */
 
 .menu-fastaccess {
-	display: none;
 	margin: 0;
 	font-size: 9px;
 
@@ -23,9 +22,5 @@
 				background-color: $maincolor;
 			}
 		}
-	}
-
-	@include breakpoints(md) {
-		display: block;
 	}
 }

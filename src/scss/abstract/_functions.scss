@@ -103,3 +103,14 @@ $column-preset : (
 
 	@return ($nbColumn * $columnWidth + $nbGutter * $gutterWidth) / ($totalColumn * $columnWidth + ($totalColumn - 1) * $gutterWidth) * 100%;
 }
+
+@function encodecolor($string) {
+
+	@if type-of($string) == "color" {
+		$hex: str-slice(ie-hex-str($string), 4);
+		$string:unquote("#{$hex}");
+	}
+	$string: "%23" + $string;
+
+	@return $string;
+}

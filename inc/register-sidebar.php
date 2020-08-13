@@ -16,10 +16,10 @@ function m_widgets_init() {
 				'name'          => __( 'Footer', 'mosne' ),
 				'id'            => 'footer',
 				'description'   => __( 'The Footer column 2', 'm' ),
-				'before_widget' => '<div id="%1$s" class="item %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h4>',
-				'after_title'   => '</h4>',
+				'before_widget' => '',
+				'after_widget'  => '',
+				'before_title'  => '<div role="heading" aria-level="2" class="footer__title">',
+				'after_title'   => '</div>',
 			)
 		);
 

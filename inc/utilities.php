@@ -73,9 +73,13 @@ function m_the_field( $field ) {
  * @param $after
  */
 function m_if( $string, $before, $after ) {
-	if ( $string != '' ) {
-		echo $before . $string . $after;
+
+	if ( empty( $string ) ) {
+		return;
 	}
+
+	return wp_kses_post( $before . esc_html( $string ) . $after );
+
 }
 
 
@@ -297,3 +301,10 @@ function m_custom_excerpt_length( $length ) {
 }
 
 add_filter( 'excerpt_length', 'm_custom_excerpt_length', 999 );
+
+function m_getlang() {
+
+	$langs = explode( '_', get_locale() );
+	return reset( $langs );
+
+}

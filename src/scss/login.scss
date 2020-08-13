@@ -3,6 +3,7 @@
 @import "abstract/colors";
 @import "abstract/borders";
 @import "abstract/mixins";
+@import "abstract/functions";
 @import "abstract/fonts";
 @import "abstract/box-sizing";
 @import "abstract/breakpoints";
@@ -11,14 +12,16 @@
 $login-logo-path: "#{$images-url}/mosne.svg";
 $login-logo-size: 201px 79px;
 $login-logo-height: 110px;
-$login-body-bg-color: $lightcolor;
+$login-body-bg-color: #eee;
 $login-text-color: $textcolor;
 $login-link-color: $maincolor;
 $login-link-hover-color: $textcolor;
-$login-remember-input-check-color: $darkcolor;
+$login-remember-input-check-color: $maincolor;
 $login-btn-bg-color: $maincolor;
 $login-btn-border: $maincolor;
-$login-btn-hover-bg-color: $darkcolor;
+$login-btn-hover-bg-color: darken($login-btn-bg-color, 5%);
+$login-btn-border: $maincolor;
+$login-icon-color: encodecolor($maincolor);
 
 html,
 body {
@@ -80,6 +83,7 @@ body.login {
 
 }
 
+// submit login form button styles
 .wp-core-ui {
 
 	.button-primary {
@@ -90,14 +94,18 @@ body.login {
 		transition: all 0.2s ease;
 
 		&:hover {
-			background-color: $login-btn-hover-bg-color;
+			background: $login-btn-hover-bg-color;
+			border-color: $login-btn-hover-bg-color;
+			box-shadow: 0 0 0 1px #fff, 0 0 0 3px $login-btn-hover-bg-color;
 		}
 	}
+
 	.button-secondary {
 		color: $login-btn-border;
 		border-color: $login-btn-border;
-		@include hover{
-			color: $login-btn-border;
+
+		@include hover {
+			color: $login-btn-hover-bg-color;
 			border-color: $login-btn-border;
 		}
 	}
@@ -107,13 +115,18 @@ body.login {
 		box-shadow: 0 0 0 1px $login-btn-border;
 	}
 
-	input[type=email]:focus,
-	input[type=password]:focus,
-	input[type=text]:focus {
+	input[type="email"]:focus,
+	input[type="password"]:focus,
+	input[type="checkbox"]:focus,
+	input[type="text"]:focus {
 		border-color: $login-btn-border;
-		box-shadow : 0 0 0 1px $login-btn-border;
+		box-shadow: 0 0 0 1px $login-btn-border;
 	}
-	input[type=checkbox]:checked::before{
-		filter: grayscale(1);
+
+	input[type="checkbox"]:checked::before {
+		color: $login-btn-border;
+		content: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27#{$login-icon-color}%27%2F%3E%3C%2Fsvg%3E");
+		fill: $login-btn-border;
 	}
 }
+

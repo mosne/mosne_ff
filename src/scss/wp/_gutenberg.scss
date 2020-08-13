@@ -37,14 +37,12 @@ p {
 	&-button {
 		margin-bottom: $base-spacing;
 
-		&__link {
+		&__link,
+		&__link:visited {
 
 			@extend .btn;
+			font-size: 0.75em;
 
-			&:not([class*="has"]) {
-
-				@extend .btn--primary;
-			}
 		}
 
 		&.is-style-outline {

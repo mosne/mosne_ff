@@ -2,7 +2,7 @@
 
 # Mosne Front-end Framework starter theme for WordPress
 
-## What is Mosne FF?
+## What is Mosne FF
 
 MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplate to help you to build your own WordPress theme with modern tools and a better productivity.
 
@@ -75,7 +75,7 @@ You can find a `.babelrc` file to modify Babel configuration.
 
 You can find a `.eslintrc.js` file to modify Eslint configuration and ignore files in `.eslintignore`.
 
-## How to use Mosne FF?
+## How to use Mosne FF
 
 After installing dependencies, you can run some commands which are explained below.
 

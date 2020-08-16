@@ -1,7 +1,7 @@
 /**
  * Main Menu
  */
-;(function($) {
+;(function ($) {
 	// Accesible toggle menu
 	$('#nav-primary').accessibleMegaMenu({
 		uuidPrefix: 'amenu',

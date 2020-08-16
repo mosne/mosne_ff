@@ -1,8 +1,6 @@
-![Node.js CI](https://github.com/mosne/mosne_ff/workflows/Node.js%20CI/badge.svg?branch=master) ![PHP Composer](https://github.com/mosne/mosne_ff/workflows/PHP%20Composer/badge.svg)
-
 # Mosne Front-end Framework starter theme for WordPress
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3d820cf47a9543a2824bfe98e68bdc66)](https://app.codacy.com/gh/mosne/mosne_ff?utm_source=github.com&utm_medium=referral&utm_content=mosne/mosne_ff&utm_campaign=Badge_Grade_Settings)
+![Node.js CI](https://github.com/mosne/mosne_ff/workflows/Node.js%20CI/badge.svg?branch=master) ![PHP Composer](https://github.com/mosne/mosne_ff/workflows/PHP%20Composer/badge.svg) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3d820cf47a9543a2824bfe98e68bdc66)](https://app.codacy.com/gh/mosne/mosne_ff?utm_source=github.com&utm_medium=referral&utm_content=mosne/mosne_ff&utm_campaign=Badge_Grade_Settings)
 
 ## What is Mosne FF
 

@@ -2,6 +2,8 @@
 
 # Mosne Front-end Framework starter theme for WordPress
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3d820cf47a9543a2824bfe98e68bdc66)](https://app.codacy.com/gh/mosne/mosne_ff?utm_source=github.com&utm_medium=referral&utm_content=mosne/mosne_ff&utm_campaign=Badge_Grade_Settings)
+
 ## What is Mosne FF
 
 MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplate to help you to build your own WordPress theme with modern tools and a better productivity.

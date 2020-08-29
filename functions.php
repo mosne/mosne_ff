@@ -3,29 +3,24 @@
  * @package WordPress
  * @subpackage Default_Theme
  */
-
-//error on off
-ini_set( 'display_errors', 1 );
-error_reporting( E_ALL ^ E_NOTICE );
-
 show_admin_bar( false );
 
 //get the the role object
 $role_object = get_role( 'editor' );
 $role_object->add_cap( 'edit_theme_options' );
 
-require 'inc/services.php';
-require 'inc/register-menu.php';
-require 'inc/register-sidebar.php';
-require 'inc/utilities.php';
-require 'inc/polylang.php';
-require 'inc/acf.php';
-require 'inc/woocommerce.php';
+require_once __DIR__ . 'inc/services.php';
+require_once __DIR__ . 'inc/register-menu.php';
+require_once __DIR__ . 'inc/register-sidebar.php';
+require_once __DIR__ . 'inc/utilities.php';
+require_once __DIR__ . 'inc/polylang.php';
+require_once __DIR__ . 'inc/acf.php';
+require_once __DIR__ . 'inc/woocommerce.php';
 
 // m functions
-require 'inc/m_image.php';
-require 'inc/m_section.php';
-require 'inc/m_icon.php';
+require_once __DIR__ . 'inc/m_image.php';
+require_once __DIR__ . 'inc/m_section.php';
+require_once __DIR__ . 'inc/m_icon.php';
 
 /*
 function my_theme_deregister_plugin_assets_header() {

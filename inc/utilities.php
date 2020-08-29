@@ -51,7 +51,7 @@ function m_sanitize( $what ) {
 			'strong' => array(),
 			'br'     => array(),
 			'p'      => array(),
-			'a'      => array( 'href', 'target' ),
+			'a'      => array( 'href', 'target', 'rel' ),
 		)
 	);
 
@@ -142,10 +142,10 @@ function m_abs( $id ) {
 
 
 function m_more() {
-	echo '<br><a href="' . get_permalink() . '" class="button">More</a>';
+	echo '<a href="' . get_permalink() . '" class="btn btn--primary">More</a>';
 };
 
-function the_m_list( $field, $label ) {
+function m_list( $field, $label ) {
 
 	$links = array();
 	$items = get_field( $field );
@@ -162,16 +162,6 @@ function the_m_list( $field, $label ) {
 	}
 
 }
-
-
-function mdida( $img ) {
-	//.'<strong>'.__($img["title"]).musbr(__($img["alt"])).'</strong>'.musbr(nl2br(__($img["description"]))).'<br/>'
-
-	echo '<figcaption itemprop="caption description" id="caption' . $img['id'] . '"><span class="wrap">'
-	   . '<span itemprop="copyrightHolder" class="credits">' . nl2br( __( $img['caption'] ) ) . '</span></span>
-        </figcaption>';
-}
-
 
 /**
  * @param        $id

@@ -5,7 +5,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const StylelintPlugin = require('stylelint-webpack-plugin')
-const getServerPort = function(portFile) {
+const getServerPort = function (portFile) {
 	try {
 		require('fs').accessSync(portFile, fs.R_OK | fs.W_OK)
 
@@ -152,7 +152,7 @@ module.exports = (env, argv) => {
 					files: [
 						{
 							match: config.refresh,
-							fn: function(event, file) {
+							fn: function (event, file) {
 								const bs = require('browser-sync').get('bs-webpack-plugin')
 
 								if (
@@ -204,7 +204,7 @@ module.exports = (env, argv) => {
 					files: [
 						{
 							match: config.liverefresh,
-							fn: function(event, file) {
+							fn: function (event, file) {
 								const bs = require('browser-sync').get('bs-webpack-plugin')
 								if (event === 'change' && file.indexOf('.css') === -1) {
 									bs.reload()

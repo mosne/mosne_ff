@@ -29,7 +29,7 @@ the_post();?>
 				echo '<ul>';
 				while ( $the_query->have_posts() ) {
 					$the_query->the_post();
-					echo '<li>' . get_the_title() . '</li>';
+					echo '<li>' . esc_html( get_the_title() ) . '</li>';
 				}
 				echo '</ul>';
 			} else {

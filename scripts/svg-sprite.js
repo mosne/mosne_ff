@@ -93,9 +93,7 @@ const generateSprite = async (src, dist, name, prefix) => {
 			}
 		})
 		const $ = cheerio.load(sprites.toString({ inline: true }))
-		const svg = $('svg')
-			.addClass('svg-sprite')
-			.attr('xmlns', 'http://www.w3.org/2000/svg')
+		const svg = $('svg').addClass('svg-sprite').attr('xmlns', 'http://www.w3.org/2000/svg')
 		fs.writeFileSync(`${dist}/${name}`, svg.toString())
 	})
 }

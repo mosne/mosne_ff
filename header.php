@@ -18,5 +18,5 @@
 		</ul>
 		<div id="logo"><a class="name" href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a></div>
 		<?php get_template_part( 'template-parts/navigation/menu-main' ); ?>
-		<?php echo get_search_form(); ?>
+		<?php get_search_form( array( 'echo' => true ) ); ?>
 	</header>

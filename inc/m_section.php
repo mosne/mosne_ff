@@ -1,9 +1,5 @@
 <?php
 
-/* m_include
- * m_section
- */
-
 /**
  * @param       $filePath
  * @param array $variables

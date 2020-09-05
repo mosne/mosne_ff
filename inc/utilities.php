@@ -25,14 +25,11 @@ function custom_notice_message( $args ) {
 }
 
 
+add_filter( 'kses_allowed_protocols', 'ss_allow_skype_protocol' );
 function ss_allow_skype_protocol( $protocols ) {
 	$protocols[] = 'skype';
-
 	return $protocols;
 }
-
-
-add_filter( 'kses_allowed_protocols', 'ss_allow_skype_protocol' );
 
 function m_print( $val ) {
 	echo '<pre>';

@@ -5,10 +5,14 @@
  * @param string $classes
  * @return string
  */
-function m_icon($fileName, $classes = '') {
+function get_m_icon($fileName, $classes = '') {
 
-		$output = '<svg class="icon icon-' . $fileName . ' '. $classes .'" aria-hidden="true" role="img">
-                <use xlink:href="' . get_template_directory_uri() . '/dist/icons.svg#icon-' . $fileName . '"></use>
-        </svg>';
-	return $output;
+        $output = '<svg class="icon icon-' . $fileName . ' '. $classes .'" aria-hidden="true" role="img">
+        <use xlink:href="' . get_template_directory_uri() . '/dist/icons.svg#icon-' . $fileName . '"></use>
+</svg>';
+return $output;
+}
+
+function m_icon($fileName, $classes = ''){
+        echo get_m_icon($fileName, $classes = '');
 }

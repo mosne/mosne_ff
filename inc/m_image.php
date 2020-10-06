@@ -265,10 +265,18 @@ function m_media( $field, $sz = 'medium', $class = '', $video = false, $fit = fa
 }
 
 
-function m_image( $field, $sz = 'medium', $class = '', $video = false ) {
+function get_m_image( $field, $sz = 'medium', $class = '', $video = false ) {
 	return m_media( $field, $sz, $class, $video );
 }
 
-function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ) {
+function get_m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ) {
 	return m_media( $field, $sz, $class, $video, true );
+}
+
+function m_image( $field, $sz = 'medium', $class = '', $video = false ){
+	echo get_m_image( $field, $sz = 'medium', $class = '', $video = false );
+}
+
+function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ){
+	echo get_m_image_ofit( $field, $sz = 'medium', $class = '', $video = false );
 }

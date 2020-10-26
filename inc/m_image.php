@@ -192,7 +192,7 @@ function m_source( $field, $sz ) {
 		if ( 'image/svg+xml' == $image['mime_type'] ) {
 
 			$svg_file_path = get_attached_file( $image['id'] );
-			$html . mosne_svg( $svg_file_path, $image['id'] );
+			$html .= mosne_svg( $svg_file_path, $image['id'] );
 
 		} else {
 
@@ -223,7 +223,7 @@ function m_video( $id ) {
 	$video_url = get_field( 'link', $id );
 	if ( '' != $video_url ) {
 		$open  = '<div class="video-push"><a href="' . $video_url . '" class="embedvideo">';
-		$close = '</a></div>';
+		$close = '</a>'.get_m_icon("play").'</div>';
 	}
 		return array(
 			'head' => $open,
@@ -274,9 +274,9 @@ function get_m_image_ofit( $field, $sz = 'medium', $class = '', $video = false )
 }
 
 function m_image( $field, $sz = 'medium', $class = '', $video = false ){
-	echo get_m_image( $field, $sz = 'medium', $class = '', $video = false );
+	echo get_m_image( $field, $sz, $class, $video );
 }
 
 function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ){
-	echo get_m_image_ofit( $field, $sz = 'medium', $class = '', $video = false );
+	echo get_m_image_ofit( $field, $sz, $class, $video, true);
 }

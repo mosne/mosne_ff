@@ -1,27 +1,20 @@
-<?php get_header();
-the_post(); ?>
-<main id="bd">
-	<article class="push">
-		<header>
-		   <h1 class="big">
-			<?php the_title(); ?></h1>
-			<?php
-			$a = '<figure class="wp-block-image size-large">
-					<img src="https://2020.mosne.it/wp-content/uploads/2020/06/balance82-55-1024x576.jpg" alt="" class="wp-image-2489" srcset="https://2020.mosne.it/wp-content/uploads/2020/06/balance82-55-1024x576.jpg 1024w, https://2020.mosne.it/wp-content/uploads/2020/06/balance82-55-300x169.jpg 300w, https://2020.mosne.it/wp-content/uploads/2020/06/balance82-55-768x432.jpg 768w, https://2020.mosne.it/wp-content/uploads/2020/06/balance82-55.jpg 1280w" sizes="(max-width: 1024px) 100vw, 1024px">
-				  </figure>';
+<?php
+/**
+ * The Template for displaying all single posts
+ *
+ * Methods for TimberHelper can be found in the /lib sub-directory
+ *
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since    Timber 0.1
+ */
 
-			//echo get_the_post_thumbnail( null, "medium" );
-			// $post_thumbnail_id = get_post_thumbnail_id( $post );
-			//echo $post_thumbnail_id;
-			// $img = wp_get_attachment_image( $post_thumbnail_id , "medium ");
-			?>
-			<?php echo m_image( 'image', 'hd', 'document__img' ); ?>
-			<?php echo m_image_ofit( 'image', 'hd', 'gallery__img' ); ?>
-		</header>
-		<div class="wysiwyg">
-				<?php the_content(); ?>
-		</div>
-	</article>
-</main>
-<?php m_edit(); ?>
-<?php get_footer(); ?>
+$context         = Timber::context();
+$timber_post     = Timber::get_post();
+$context['post'] = $timber_post;
+
+if ( post_password_required( $timber_post->ID ) ) {
+	Timber::render( 'single-password.twig', $context );
+} else {
+	Timber::render( array( 'single-' . $timber_post->ID . '.twig', 'single-' . $timber_post->post_type . '.twig', 'single-' . $timber_post->slug . '.twig', 'single.twig' ), $context );
+}

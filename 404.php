@@ -1,17 +1,13 @@
-<?php get_header();
-the_post(); ?>
-<main id="bd">
-	<article class="page"> 
-		<header>
-		   <h1 class="big">
-			Error 404
-		   </h1>
-		</header>
-		<div class="push">
-			<div class="wysiwyg">
-				page not found
-			</div>
-		</div>
-	</article>
-</main>
-<?php get_footer(); ?>
+<?php
+/**
+ * The template for displaying 404 pages (Not Found)
+ *
+ * Methods for TimberHelper can be found in the /functions sub-directory
+ *
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since    Timber 0.1
+ */
+
+$context = Timber::context();
+Timber::render( '404.twig', $context );

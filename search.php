@@ -1,34 +1,18 @@
-<?php get_header();
-
-?>
-<main id="bd" class="scheda">
-
-<header >
 <?php
-global $wp_query;
-$total_results = $wp_query->found_posts;
-?>
-<h1 class="big">
-<?php
-echo $total_results . ' ';
-_e( 'Risultati', $theme->name );
-?>
-</h1>
-</header>
+/**
+ * Search results page
+ *
+ * Methods for TimberHelper can be found in the /lib sub-directory
+ *
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since   Timber 0.1
+ */
 
-<?php if ( have_posts() ) : ?>
-		<?php
-		while ( have_posts() ) :
-			the_post();
-			?>
+$templates = array( 'search.twig', 'archive.twig', 'index.twig' );
 
-			<?php include 'loop-opere.php'; ?>
+$context          = Timber::context();
+$context['title'] = 'Search results for ' . get_search_query();
+$context['posts'] = new Timber\PostQuery();
 
-			<?php
-	endwhile;
-endif;
-?>
-
-</main>
-<?php m_edit(); ?>
-<?php get_footer(); ?>
+Timber::render( $templates, $context );

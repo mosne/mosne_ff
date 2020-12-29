@@ -1,0 +1,7 @@
+<figure>
+	<picture class="m-img-wrap " style="padding-bottom:{{ (100 * post.thumbnail.height / post.thumbnail.width)|round(3, 'floor') }}%">
+		<source  data-srcset="{{ post.thumbnail.srcset }}"/>
+		<img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=" alt="{{ post.thumbnail.alt }}" sizes="auto"/></picture>
+	</picture>
+	<figcaption>{{ post.thumbnail.title }}</figcaption>
+</figure>

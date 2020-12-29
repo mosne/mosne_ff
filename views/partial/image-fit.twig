@@ -1,0 +1,7 @@
+<figure>
+	<picture class="m-img-wrap " style="padding-bottom:50%">
+		<source  data-srcset="{{ post.thumbnail.src | resize(480 , 240, 'bottom') }} 480w, {{ post.thumbnail.src | resize(1000 , 500, 'bottom' ) }} 1000w"/>
+		<img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=" alt="{{ post.thumbnail.alt }}" sizes="auto"/></picture>
+	</picture>
+	<figcaption>{{ post.thumbnail.title }}</figcaption>
+</figure>

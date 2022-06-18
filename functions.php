@@ -17,6 +17,16 @@ require_once __DIR__ . '/inc/polylang.php';
 require_once __DIR__ . '/inc/acf.php';
 require_once __DIR__ . '/inc/woocommerce.php';
 
+//editor
+require_once __DIR__ . '/inc/editor-white-list.php';
+require_once __DIR__ . '/inc/editor-color-palette.php';
+require_once __DIR__ . '/inc/editor-font-size.php';
+require_once __DIR__ . '/inc/editor-block-styles.php';
+
+//patterns
+require_once __DIR__ . '/inc/erditor-patterns-categories.php';
+require_once __DIR__ . '/inc/erditor-patterns.php';
+
 // m functions
 require_once __DIR__ . '/inc/m_image.php';
 require_once __DIR__ . '/inc/m_section.php';
@@ -40,6 +50,7 @@ add_action( 'wp_footer', 'my_theme_deregister_plugin_assets_footer' );
 function nicelink_url( $url ) {
 
 	preg_match( '/[a-z0-9\-]{1,63}\.[a-z\.]{2,6}$/', parse_url( $url, PHP_URL_HOST ), $_domain_tld );
+
 	return $_domain_tld[0];
 
 }

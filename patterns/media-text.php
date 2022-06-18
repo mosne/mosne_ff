@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Media Text
- * Slug: beapi-frontend-framework/media-text
+ * Slug: mosne/media-text
  * categories: common
  */
 ?>

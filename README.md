@@ -10,7 +10,7 @@ MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplat
 
 ## Based on Be API FrontEnd Framewok
 
--   [Be API FrontEnd Framewok](https://github.com/BeAPI/beapi-frontend-framework)
+-   [Be API FrontEnd Framewok](https://github.com/BeAPI/mosne)
 
 ## Tools
 

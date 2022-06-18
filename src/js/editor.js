@@ -29,7 +29,7 @@ if (window.acf) {
   // Do stuff
 }
 
-wp.hooks.addFilter('blocks.registerBlockType', 'beapi-framework', function (settings, name) {
+wp.hooks.addFilter('blocks.registerBlockType', 'mosne', function (settings, name) {
   if (name === 'core/list') {
     // compact preview for block list
     settings.example.attributes.values = '<li><a>Lorem ipsum</a></li><li><a>Dolor sit amet</a></li>'

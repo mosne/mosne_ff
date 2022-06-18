@@ -31,11 +31,12 @@ $color-grey-900: #111;
 // Palette colors
 // ----
 $color-yellow-500: #ffe600;
+$color-red-600: #d84b55;
 
 // ----
 // Theme colors
 // ----
-$color-primary: $color-yellow-500;
+$color-primary: $color-red-600;
 $color-secondary: $color-grey-400;
 $color-text: $color-grey-900;
 
@@ -81,7 +82,7 @@ $external-gutter: 25px;
 $breakpoints: (
     xs: 480,
     s: 600,
-    sm: 768,
+    sm: 782,
     admin-bar: 784,
     md: 1024,
     lg: $container-wide + $external-gutter,

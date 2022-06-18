@@ -7,9 +7,29 @@
     @include button-block;
 }
 
+%button-block-arrow {
+    @extend %button-block;
+    @include button-block-arrow;
+}
+
 %button-block-outline {
     @extend %button-block;
     @include button-block-outline;
+}
+
+%button-block-reverse {
+    @extend %button-block;
+    @include button-block-reverse;
+}
+
+%button-block-reverse-outline {
+    @extend %button-block;
+    @include button-block-reverse-outline;
+}
+
+%button-text-arrow {
+    @extend %button;
+    @include button-text-arrow;
 }
 
 .button {
@@ -20,6 +40,14 @@
     @extend %button-block;
 }
 
+.button-block-arrow {
+    @extend %button-block-arrow;
+}
+
 .button-outline {
     @extend %button-block-outline;
+}
+
+.button-reverse-outline {
+    @extend %button-block-reverse-outline;
 }

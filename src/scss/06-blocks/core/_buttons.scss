@@ -3,22 +3,48 @@
     // container
     // ----
     // &-buttons {
+    //
     // }
 
     // ----
     // button
     // ----
     &-button {
-        .wp-block-button__link {
-            @extend %button-block;
+        &:not(.is-style-text-arrow) {
+            .wp-block-button__link {
+                @extend %button-block;
+            }
+        }
+
+        &.is-style-button-arrow .wp-block-button__link {
+            @extend %button-block-arrow;
         }
 
         &.is-style-outline .wp-block-button__link {
             @extend %button-block-outline;
         }
 
+        &.is-style-reverse .wp-block-button__link {
+            @extend %button-block-reverse;
+        }
+
+        &.is-style-reverse-outline .wp-block-button__link {
+            @extend %button-block-reverse-outline;
+        }
+
+        &.is-style-text-arrow .wp-block-button__link {
+            @extend %button-text-arrow;
+        }
+
         &.has-custom-font-size .wp-block-button__link {
             font-size: inherit;
+        }
+
+        @include breakpoints (sm,max) {
+            &,
+            & .wp-block-button__link {
+                width: 100%;
+            }
         }
     }
 }

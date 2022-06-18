@@ -1,4 +1,4 @@
-<!doctype html>
+yarn set version berry<!doctype html>
 <html <?php language_attributes(); ?> class="no-js" data-whatintent data-whatinput>
 <head>
 	<meta charset="utf-8">

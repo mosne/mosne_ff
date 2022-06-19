@@ -18,10 +18,10 @@ the_post();?>
 		<?php
 			// The Query
 			$the_query = new WP_Query(
-				array(
+				[
 					'post_type'      => 'post',
 					'posts_per_page' => -1,
-				)
+				]
 			);
 
 			// The Loop

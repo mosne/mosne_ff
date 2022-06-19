@@ -27,7 +27,7 @@ if ( ! function_exists( 'bcdiv' ) ) {
 function theme_name_scripts() {
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', null, '3.3.1', true );
-	wp_register_script( 'mosne_app', get_template_directory_uri() . '/dist/app.js', array( 'jquery' ), '1.0', true );
+	wp_register_script( 'mosne_app', get_template_directory_uri() . '/dist/app.js', [ 'jquery' ], '1.0', true );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'mosne_app' );
 	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap', null, '1.0', 'all' );

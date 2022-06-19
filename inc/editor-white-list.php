@@ -28,14 +28,14 @@ function wpdocs_allowed_block_types( $block_editor_context, $editor_context ) {
 			'core/embed',
 			// custom
 		];
-//		if ( 'news' === $editor_context->post->post_type ) {
-//			return array(
-//				'core/paragraph',
-//				'core/list',
-//				'core/image',
-//				'core/buttons',
-//			);
-//		}
+		//      if ( 'news' === $editor_context->post->post_type ) {
+		//          return array(
+		//              'core/paragraph',
+		//              'core/list',
+		//              'core/image',
+		//              'core/buttons',
+		//          );
+		//      }
 	}
 
 	return $block_editor_context;

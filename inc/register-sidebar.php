@@ -2,17 +2,17 @@
 function m_widgets_init() {
 
 		register_sidebar(
-			array(
+			[
 				'name'          => __( 'Header', 'mosne' ),
 				'id'            => 'header',
 				'description'   => __( 'The Header widget area', 'm' ),
 				'before_widget' => '',
 				'after_widget'  => '',
-			)
+			]
 		);
 
 		register_sidebar(
-			array(
+			[
 				'name'          => __( 'Footer', 'mosne' ),
 				'id'            => 'footer',
 				'description'   => __( 'The Footer column 2', 'm' ),
@@ -20,7 +20,7 @@ function m_widgets_init() {
 				'after_widget'  => '',
 				'before_title'  => '<div role="heading" aria-level="2" class="footer__title">',
 				'after_title'   => '</div>',
-			)
+			]
 		);
 
 }

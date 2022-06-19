@@ -6,14 +6,14 @@ function my_acf_op_init() {
 
 		// Add parent.
 		$parent = acf_add_options_page(
-			array(
+			[
 				'page_title' => __( 'Theme General options' ),
 				'menu_title' => __( 'Options' ),
 				'menu_slug'  => 'mosne-options',
 				'redirect'   => false,
 				'icon_url'   => 'dashicons-visibility',
 				'position'   => 63,
-			)
+			]
 		);
 
 		/*
@@ -27,11 +27,11 @@ function my_acf_op_init() {
 
 		// Add tho the apparence menu.
 		$apparence = acf_add_options_page(
-			array(
+			[
 				'page_title'  => __( 'Footer options' ),
 				'menu_title'  => __( 'Footer options' ),
 				'parent_slug' => 'themes.php',
-			)
+			]
 		);
 	}
 

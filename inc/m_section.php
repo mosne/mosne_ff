@@ -8,16 +8,16 @@
  *
  * @return false|string|null
  */
-function m_include( $filePath, $variables = array(), $print = true, $nbinclude = 1 ) {
+function m_include( $filePath, $variables = [], $print = true, $nbinclude = 1 ) {
 
 	// if $variables is integer switch with $nbInclude
 	if ( gettype( $variables ) === 'integer' ) {
 		$nbinclude = $variables;
-		$variables = array();
+		$variables = [];
 	}
 	// else convert other types as array
 	elseif ( gettype( $variables ) !== 'array' ) {
-		$variables = array( 'variable' => $variables );
+		$variables = [ 'variable' => $variables ];
 	}
 
 	$output = null;
@@ -50,7 +50,7 @@ function m_include( $filePath, $variables = array(), $print = true, $nbinclude =
  *
  * @return false|string|null
  */
-function m_section( $file, $variables = array(), $nbInclude = 1, $print = true ) {
+function m_section( $file, $variables = [], $nbInclude = 1, $print = true ) {
 	if ( $nbInclude === false ) {
 		$nbInclude = 1;
 		$print     = false;

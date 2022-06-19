@@ -42,10 +42,10 @@ function m_get_dimensions( $svg ) {
 	$width      = (int) $viewbox_v[2];
 	$height     = (int) $viewbox_v[3];
 
-	return (object) array(
+	return (object) [
 		'width'  => $width,
 		'height' => $height,
-	);
+	];
 }
 
 
@@ -108,7 +108,7 @@ function m_maxsize( $image, $sz = 'medium' ) {
  * @return string
  */
 function m_file_size( $size ) {
-	$a = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
+	$a = [ 'B', 'KB', 'MB', 'GB', 'TB', 'PB' ];
 
 	$pos = 0;
 
@@ -159,13 +159,13 @@ function mosne_svg( $svg, $mid ) {
 		$document = $svgx->asXML();
 
 		/* cleanup */
-		$search = array(
+		$search = [
 			'@<\?[\s\S]*?[ \t\n\r]*>@',            // Remove XML
 			'@<!DOCTYPE[\s\S]*?[ \t\n\r]*>@',       // Remove !DOCTYPE
 			'@<![\s\S]*?--[ \t\n\r]*>@',            // Remove COMMENTS
-		);
+		];
 
-		$replace       = array( '', '', '', '', '', '' );
+		$replace       = [ '', '', '', '', '', '' ];
 		$clean         = preg_replace( $search, $replace, $document );
 		$svg_md5_cache = $clean;
 
@@ -192,7 +192,7 @@ function m_source( $field, $sz ) {
 		if ( 'image/svg+xml' == $image['mime_type'] ) {
 
 			$svg_file_path = get_attached_file( $image['id'] );
-			$html .= mosne_svg( $svg_file_path, $image['id'] );
+			$html         .= mosne_svg( $svg_file_path, $image['id'] );
 
 		} else {
 
@@ -209,10 +209,10 @@ function m_source( $field, $sz ) {
 			$html .= '<source  data-srcset="' . $srcset . '"/>
 				 <img class="lazyload" src="' . m_placehoder() . '" alt="' . $image['alt'] . '" sizes="' . m_maxsize( $image, $sz ) . '"/>';
 		}
-		return array(
+		return [
 			'image'  => $image,
 			'srcset' => $html,
-		);
+		];
 	}
 
 }
@@ -223,12 +223,12 @@ function m_video( $id ) {
 	$video_url = get_field( 'link', $id );
 	if ( '' != $video_url ) {
 		$open  = '<div class="video-push"><a href="' . $video_url . '" class="embedvideo">';
-		$close = '</a>'.get_m_icon("play").'</div>';
+		$close = '</a>' . get_m_icon( 'play' ) . '</div>';
 	}
-		return array(
+		return [
 			'head' => $open,
 			'foot' => $close,
-		);
+		];
 }
 
 
@@ -273,10 +273,10 @@ function get_m_image_ofit( $field, $sz = 'medium', $class = '', $video = false )
 	return m_media( $field, $sz, $class, $video, true );
 }
 
-function m_image( $field, $sz = 'medium', $class = '', $video = false ){
+function m_image( $field, $sz = 'medium', $class = '', $video = false ) {
 	echo get_m_image( $field, $sz, $class, $video );
 }
 
-function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ){
-	echo get_m_image_ofit( $field, $sz, $class, $video, true);
+function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ) {
+	echo get_m_image_ofit( $field, $sz, $class, $video, true );
 }

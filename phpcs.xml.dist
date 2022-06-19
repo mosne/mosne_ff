@@ -13,30 +13,26 @@
     <exclude-pattern>src/</exclude-pattern>
 	<exclude-pattern>dev/</exclude-pattern>
     <exclude-pattern>dist/</exclude-pattern>
+    <exclude-pattern>vendor/</exclude-pattern>
 
     <!-- Exclude the Node Modules directory. -->
     <exclude-pattern>node_modules/*</exclude-pattern>
 
-    <rule ref="WordPress-Extra">
-        <!-- Exclude as we use a custom autoloader. -->
-        <exclude name="WordPress.Files.FileName"/>
+   <rule ref="WordPress-Extra">
+       <!-- Exclude as we use a custom autoloader. -->
+       <exclude name="WordPress.Files.FileName"/>
 
-        <!-- Exclude as it conflict with @var declaration. -->
-        <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
+       <!-- Exclude as it conflict with @var declaration. -->
+       <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
 
-        <!-- Exclude as we use the short array syntax over the long one. -->
-        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+       <!-- Exclude as we use the short array syntax over the long one. -->
+       <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
 
-        <!-- Allow to use short ternary operators since they are very usefull. -->
-        <exclude name="WordPress.PHP.DisallowShortTernary.Found"/>
+       <!-- Allow to use short ternary operators since they are very usefull. -->
+       <exclude name="WordPress.PHP.DisallowShortTernary.Found"/>
+   </rule>
 
-        <!-- Allow custom hooks naming. -->
-        <exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores"/>
-        <exclude name="WordPress.NamingConventions.ValidHookName.NotLowercase"/>
-
-        <!-- Allow extracting -->
-        <exclude name="WordPress.PHP.DontExtract.extract_extract"/>
-    </rule>
+   <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
     <!-- Show sniff name in report. -->
     <arg value="sp"/>

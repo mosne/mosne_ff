@@ -38,7 +38,7 @@ function register_patterns(): void {
 		return;
 	}
 
-	$default_headers = array(
+	$default_headers = [
 		'title'         => 'Title',
 		'slug'          => 'Slug',
 		'description'   => 'Description',
@@ -47,11 +47,11 @@ function register_patterns(): void {
 		'keywords'      => 'Keywords',
 		'blockTypes'    => 'Block Types',
 		'inserter'      => 'Inserter',
-	);
+	];
 
 	// Register patterns for the active theme. If the theme is a child theme,
 	// let it override any patterns from the parent theme that shares the same slug.
-	$themes     = array();
+	$themes     = [];
 	$stylesheet = get_stylesheet();
 	$template   = get_template();
 	if ( $stylesheet !== $template ) {
@@ -112,7 +112,7 @@ function register_patterns(): void {
 				}
 
 				// For properties of type array, parse data as comma-separated.
-				foreach ( array( 'categories', 'keywords', 'blockTypes' ) as $property ) {
+				foreach ( [ 'categories', 'keywords', 'blockTypes' ] as $property ) {
 					if ( ! empty( $pattern_data[ $property ] ) ) {
 						$pattern_data[ $property ] = array_filter(
 							preg_split(
@@ -126,7 +126,7 @@ function register_patterns(): void {
 				}
 
 				// Parse properties of type int.
-				foreach ( array( 'viewportWidth' ) as $property ) {
+				foreach ( [ 'viewportWidth' ] as $property ) {
 					if ( ! empty( $pattern_data[ $property ] ) ) {
 						$pattern_data[ $property ] = (int) $pattern_data[ $property ];
 					} else {
@@ -135,11 +135,11 @@ function register_patterns(): void {
 				}
 
 				// Parse properties of type bool.
-				foreach ( array( 'inserter' ) as $property ) {
+				foreach ( [ 'inserter' ] as $property ) {
 					if ( ! empty( $pattern_data[ $property ] ) ) {
 						$pattern_data[ $property ] = in_array(
 							strtolower( $pattern_data[ $property ] ),
-							array( 'yes', 'true' ),
+							[ 'yes', 'true' ],
 							true
 						);
 					} else {

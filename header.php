@@ -2,13 +2,13 @@
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
 	<script type="text/javascript">
-      //<![CDATA[
-      (function(){
-        var c = document.documentElement.className;
-        c = c.replace(/no-js/, 'js');
-        document.documentElement.className = c;
-      })();
-      //]]>
+	  //<![CDATA[
+	  (function(){
+		var c = document.documentElement.className;
+		c = c.replace(/no-js/, 'js');
+		document.documentElement.className = c;
+	  })();
+	  //]]>
 	</script>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />

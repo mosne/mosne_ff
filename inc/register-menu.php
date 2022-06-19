@@ -38,10 +38,10 @@ class Accessible_Menu_Walker extends Walker_Nav_Menu {
 
 function mosne_ff_menus() {
 
-	$locations = array(
+	$locations = [
 		'primary' => __( 'Primary Menu', 'mosne' ),
 		'social'  => __( 'Social Menu', 'mosne' ),
-	);
+	];
 
 	register_nav_menus( $locations );
 }

@@ -40,16 +40,16 @@ function m_print( $val ) {
 function m_sanitize( $what ) {
 	$clean = wp_kses(
 		$what,
-		array(
-			'h1'     => array(),
-			'h2'     => array(),
-			'h3'     => array(),
-			'h4'     => array(),
-			'strong' => array(),
-			'br'     => array(),
-			'p'      => array(),
-			'a'      => array( 'href', 'target', 'rel' ),
-		)
+		[
+			'h1'     => [],
+			'h2'     => [],
+			'h3'     => [],
+			'h4'     => [],
+			'strong' => [],
+			'br'     => [],
+			'p'      => [],
+			'a'      => [ 'href', 'target', 'rel' ],
+		]
 	);
 
 	return $clean;
@@ -144,7 +144,7 @@ function m_more() {
 
 function m_list( $field, $label ) {
 
-	$links = array();
+	$links = [];
 	$items = get_field( $field );
 	if ( $items ) {
 		echo '<h4>' . $label . '</h4>';
@@ -172,7 +172,7 @@ function m_list( $field, $label ) {
 function m_terms( $id, $tax, $before = '', $sep = '', $after = '' ) {
 	$at = get_the_terms( $id, $tax );
 	if ( is_array( $at ) ) {
-		$final = array();
+		$final = [];
 		if ( count( $at ) >= 1 ) {
 			foreach ( $at as $term ) {
 				$final[] = $term->name;
@@ -212,12 +212,12 @@ function m_tags() {
 
 	$terms = get_terms(
 		'post_tag',
-		array(
+		[
 			'hide_empty' => true,
-		)
+		]
 	);
 
-	$names = array();
+	$names = [];
 	foreach ( $terms as $term ) {
 		$names[] = $term->name;
 	}
@@ -269,7 +269,7 @@ function m_check( $input, $tag = null, $class = null, $strip = 'false' ) {
  * @return array
  */
 function m_pattern( $array, $tot = 10 ) {
-	$new_array = array();
+	$new_array = [];
 	$x         = 0;
 	for ( $i = 0; $i <= $tot; $i ++ ) {
 		if ( $x == count( $array ) ) {

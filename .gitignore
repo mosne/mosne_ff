@@ -79,13 +79,6 @@ config/host.js
 dist/
 src/conf-img/*.csv
 
-### Lock files
-package-lock.json
-yarn.lock
-composer.lock
-.yarnclean
-
-
 ### config
 .port
 .bs-port

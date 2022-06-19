@@ -6359,6 +6359,8 @@ __metadata:
     webpack-merge: ^5.7.3
     webpackbar: ^5.0.0-3
     what-input: ^5.2.10
+  peerDependencies:
+    stylelint-scss: "*"
   languageName: unknown
   linkType: soft
 

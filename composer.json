@@ -52,6 +52,17 @@
 		"wpackagist-plugin/safe-svg": "^1.9",
 		"wpackagist-plugin/media-file-renamer": "^4.7"
 	},
+	"scripts": {
+		"cs": [
+			"./vendor/bin/phpcs ."
+		],
+		"cb": [
+			"./vendor/bin/phpcbf ."
+		],
+		"psalm": [
+			"./vendor/bin/psalm"
+		]
+	},
 	"extra": {
 		"wordpress-install-dir": "../../../",
 		"installer-paths": {

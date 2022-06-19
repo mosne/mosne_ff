@@ -12,26 +12,13 @@ MOSNE FrontEnd Framework (FF) is a Front-end WordPress theme friendly boilerplat
 
 -   [Be API FrontEnd Framewok](https://github.com/BeAPI/mosne)
 
-## Tools
-
--   [Webpack 4](https://www.npmjs.com/package/webpack)
--   [Node SASS](https://www.npmjs.com/package/node-sass)
--   [SVGStore](https://www.npmjs.com/package/svgstore)
--   [SVGGo](https://www.npmjs.com/package/svgstore)
--   [svg4all](https://www.marketplacerating.com/etsy/svg4all)
--   [Lazysizes](https://www.npmjs.com/package/lazysizes)
--   [Eslint](https://www.npmjs.com/package/eslint)
--   [Stylelint](https://stylelint.io/)
--   [Babel Loader](https://www.npmjs.com/package/babel-loader)
--   [Browser Sync](https://www.npmjs.com/package/browser-sync-webpack-plugin)
--   [polyfill.io](https://polyfill.io)
--   [Accessible-Mega-Menu](https://github.com/adobe-accessibility/Accessible-Mega-Menu)
-
 ## Requirements
 
-### Node 10
+### Node and Yarn
 
-You need a minimum of Node 10.
+You need a minimum of Node 16.
+Volta and Yarn pnp.
+-   [Volta](https://volta.sh/)
 
 ## Installation
 
@@ -46,34 +33,37 @@ git clone git@github.com:mosne/mosne_ff.git your_theme_name
 Next, go to your theme folder.
 
 ```bash
-cd your_theme_name
+rm .git
 ```
 
-Then install node dependencies with Pnpm or Yarn on Npm.
+Then install node dependencies with Yarn.
 
 ```bash
-pnpm install
+volta install node@16
+```
+
+```bash
+volta install yarn
+```
+
+```bash
+yarn set version berry
+```
+
+```bash
+yarn && yarn build
 ```
 
 ## Configuration
 
 ### Webpack
 
-You can edit Webpack configuration with `webpack.config.js` file and settings by editing `webpack.settings.js`.
-For live editing edit the website url and the server path to the dist folder.
+You can edit Webpack configuration with `config/entries.js` file and settings by editing `webpack.settings.js`.
+For live editing edit the proxy url in the file `config/browsersync.config.js`and the server path to the dist folder.
 
 ```javascript
-  liveServer: 'https://2020.mosne.it',
-  liveServerRoute: '/wp-content/themes/mosne_2020/dist',
+  proxy: `https://projectname.monse.it/`
 ```
-
-### Babel
-
-You can find a `.babelrc` file to modify Babel configuration.
-
-### Eslint
-
-You can find a `.eslintrc.js` file to modify Eslint configuration and ignore files in `.eslintignore`.
 
 ## How to use Mosne FF
 
@@ -84,43 +74,13 @@ After installing dependencies, you can run some commands which are explained bel
 and run a first time the following command to generate required distributions files to run the server properly.
 
 ```bash
-pnpm run build
+yarn build
 ```
 
 Then, you can luch Browser Sync proxy by running :
 
 ```bash
-pnpm live
-```
-
-### Watching files for development purpose
-
-If you don't need a local server you just can compile AND watch styles and scripts (with sourcemap) by using :
-
-```bash
-pnpm run watch
-```
-
-### Development build
-
-If you want to build styles and scripts (with sourcemap) by using :
-
-```bash
-pnpm run build:dev
-```
-
-### Production build
-
-For production purpose, you can compile all of your assets by using :
-
-```bash
-yarn run build:prod
-```
-
-If you want to deliver just css and assets run :
-
-```bash
-pnpm run fast
+yarn start
 ```
 
 ### Batch autofix assets
@@ -128,29 +88,19 @@ pnpm run fast
 Try to auto fix JS using eslint :
 
 ```bash
-pnpm run fix
+yarn fixjs
 ```
 
 Try to auto fix SCSS using stylelint :
 
 ```bash
-pnpm run fixcss
+yarn fixcss
 ```
 
 Try to auto fix PHP using phpcbf :
 
 ```bash
-pnpm run fixphp
-```
-
-### Assets
-
-#### SVG Icons
-
-Generate SVG sprite from the icons files in src/img/icons/ by using :
-
-```bash
-pnpm run icons
+yarn fixphp
 ```
 
 ### Coding standads

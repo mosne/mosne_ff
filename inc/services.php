@@ -42,12 +42,12 @@ add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 // Add custom taxonomies to the post class
 add_filter( 'post_class', 'custom_taxonomy_post_class', 10, 3 );
 if ( ! function_exists( 'custom_taxonomy_post_class' ) ) {
-	function custom_taxonomy_post_class( $classes, $class, $ID ) {
+	function custom_taxonomy_post_class( $classes, $class, $id ) {
 		$taxonomy = 'anno';
-		$terms    = get_the_terms( (int) $ID, $taxonomy );
+		$terms    = get_the_terms( (int) $id, $taxonomy );
 		if ( ! empty( $terms ) ) {
 			foreach ( (array) $terms as $order => $term ) {
-				if ( ! in_array( $term->slug, $classes ) ) {
+				if ( ! in_array( $term->slug, $classes, true ) ) {
 					$classes[] = $term->taxonomy . '-' . $term->slug;
 				}
 			}
@@ -88,14 +88,14 @@ add_action( 'init', 'custom_editor_style' );
  */
 function mosne_editor_enqueue_scripts() {
 
-	$scriptPath = '/dist/editor.js';
+	$script_path = '/dist/editor.js';
 
 	// Enqueue the block index.js file
 	wp_enqueue_script(
 		'mosne-editor-script', // unique handle
-		get_template_directory_uri() . $scriptPath,
+		get_template_directory_uri() . $script_path,
 		[ 'wp-blocks', 'wp-dom', 'wp-element', 'wp-i18n' ], // required dependencies for blocks
-		filemtime( get_template_directory() . $scriptPath )
+		filemtime( get_template_directory() . $script_path )
 	);
 
 }
@@ -128,3 +128,18 @@ function login_enqueue_styles() {
 }
 
 add_action( 'login_enqueue_scripts', 'login_enqueue_styles' );
+
+
+/*
+function my_theme_deregister_plugin_assets_header() {
+	wp_dequeue_style('yarppWidgetCss');
+	wp_deregister_style('yarppRelatedCss');
+}
+
+add_action( 'wp_print_styles', 'my_theme_deregister_plugin_assets_header' );
+
+function my_theme_deregister_plugin_assets_footer() {
+	wp_dequeue_style('yarppRelatedCss');
+}
+add_action( 'wp_footer', 'my_theme_deregister_plugin_assets_footer' );
+*/

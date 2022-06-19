@@ -1,16 +1,18 @@
 <?php get_header();
-the_post(); ?>
-<main id="bd">
-	<article class="push">
-		<header>
-		   <h1 class="big">
-			<?php the_title(); ?>
-		   </h1>
+if ( have_posts() ) :
+	while ( have_posts() ) :
+		the_post();
+		?>
+		<header class="container">
+			<h1><?php the_title(); ?></h1>
 		</header>
-		<div class="wysiwyg">
-				<?php the_content(); ?>
+		<div class="blocks-container">
+			<?php
+			the_content();
+			m_edit();
+			?>
 		</div>
-	</article>
-</main>
-<?php m_edit(); ?>
-<?php get_footer(); ?>
+		<?php
+	endwhile;
+endif;
+get_footer();

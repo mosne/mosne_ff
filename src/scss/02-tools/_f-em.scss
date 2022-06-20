@@ -3,7 +3,7 @@
  *
  * convert value from px to em
  */
-
+@use "sass:math";
 @function em($pxval, $base: $font-size-base) {
 
     @if not unitless($pxval) {
@@ -14,5 +14,5 @@
         $base: strip-units($base);
     }
 
-    @return ($pxval / $base) * 1em;
+    @return math.div($pxval , $base) * 1em;
 }

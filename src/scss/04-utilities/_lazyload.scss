@@ -34,8 +34,8 @@ $loading-dimensions: 50px;
 
     &::after {
         position: absolute;
-        top: calc(50% - #{$loading-dimensions / 2});
-        left: calc(50% - #{$loading-dimensions / 2});
+        top: calc(50% - #{$loading-dimensions * .5});
+        left: calc(50% - #{$loading-dimensions * .5});
         z-index: 3;
         width: $loading-dimensions;
         height: $loading-dimensions;

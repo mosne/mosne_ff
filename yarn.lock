@@ -1628,7 +1628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^2.0.0, chalk@npm:^2.4.1, chalk@npm:^2.4.2":
+"chalk@npm:^2.0.0, chalk@npm:^2.4.1":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
   dependencies:
@@ -6342,7 +6342,7 @@ __metadata:
     mini-css-extract-plugin: ^1.5.0
     oneloop.js: ^3.0.0
     portfinder: ^1.0.28
-    postcss: ^8.3.3
+    postcss: ^8.4.14
     postcss-import: ^14.1.0
     postcss-loader: ^7.0.0
     postcss-preset-env: ^7.7.1
@@ -6351,12 +6351,12 @@ __metadata:
     postcss-sort-media-queries: ^4.2.1
     prettier: ^2.2.1
     sass: ^1.52.3
-    sass-loader: ^11.0.1
-    style-loader: ^2.0.0
+    sass-loader: ^13.0.0
+    style-loader: ^3.3.1
     stylelint: ^14.9.1
     stylelint-config-recess-order: ^3.0.0
-    stylelint-config-recommended: ^8.0.0
     stylelint-config-recommended-scss: ^6.0.0
+    stylelint-scss: ^4.2.0
     stylelint-webpack-plugin: ^3.3.0
     svg-sprite-loader: ^6.0.10
     svgo-loader: ^3.0.0
@@ -6367,7 +6367,7 @@ __metadata:
     webpackbar: ^5.0.0-3
     what-input: ^5.2.10
   peerDependencies:
-    stylelint-scss: "*"
+    stylelint-config-recommended: ^8.0.0
   languageName: unknown
   linkType: soft
 
@@ -6411,15 +6411,6 @@ __metadata:
   dependencies:
     node-gyp: latest
   checksum: 33e1bb4dfca447fe37d4bb5889be55de154828632c8d38646db67293a21afd61ed9909cdf1b886214a64707d935926c4e60e2b09de9edfc2ad58de31d6ce8f39
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^3.1.22":
-  version: 3.1.22
-  resolution: "nanoid@npm:3.1.22"
-  bin:
-    nanoid: bin/nanoid.cjs
-  checksum: 42378ebee489ab521aff0722b54ed7d1bcadb023398925f84ce5e160d0b61693f251e94714a3f4c16c7298b06b0f6871c52fdebc967fc48c0bdcffb096f0ee17
   languageName: node
   linkType: hard
 
@@ -7102,6 +7093,13 @@ __metadata:
   version: 1.2.0
   resolution: "pend@npm:1.2.0"
   checksum: 6c72f5243303d9c60bd98e6446ba7d30ae29e3d56fdb6fae8767e8ba6386f33ee284c97efe3230a0d0217e2b1723b8ab490b1bbf34fcbb2180dbc8a9de47850d
+  languageName: node
+  linkType: hard
+
+"picocolors@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "picocolors@npm:0.2.1"
+  checksum: 3b0f441f0062def0c0f39e87b898ae7461c3a16ffc9f974f320b44c799418cabff17780ee647fda42b856a1dc45897e2c62047e1b546d94d6d5c6962f45427b2
   languageName: node
   linkType: hard
 
@@ -8076,28 +8074,16 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^7.0.0":
-  version: 7.0.35
-  resolution: "postcss@npm:7.0.35"
+  version: 7.0.39
+  resolution: "postcss@npm:7.0.39"
   dependencies:
-    chalk: ^2.4.2
+    picocolors: ^0.2.1
     source-map: ^0.6.1
-    supports-color: ^6.1.0
-  checksum: 6b197769057f38b9d4d8778c7e3b8b4a56c0c2c3ac8edf7552b06ac964e1a3601567fa2c5335a54fba103492305b0fc1347ce786fd72e30903a22f09f86525ae
+  checksum: 4ac793f506c23259189064bdc921260d869a115a82b5e713973c5af8e94fbb5721a5cc3e1e26840500d7e1f1fa42a209747c5b1a151918a9bc11f0d7ed9048e3
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.10":
-  version: 8.2.12
-  resolution: "postcss@npm:8.2.12"
-  dependencies:
-    colorette: ^1.2.2
-    nanoid: ^3.1.22
-    source-map: ^0.6.1
-  checksum: de4c3d123254e6279b1ed88491ea971dd8a515ef2c77aa0af0e19408f3531c13a02a7d0dfd52815a0599ae4426875ab9f39c828e19ae58a82015f004459031d6
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.3.11, postcss@npm:^8.3.3, postcss@npm:^8.4.14":
+"postcss@npm:^8.2.10, postcss@npm:^8.3.11, postcss@npm:^8.4.14":
   version: 8.4.14
   resolution: "postcss@npm:8.4.14"
   dependencies:
@@ -8714,16 +8700,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^11.0.1":
-  version: 11.0.1
-  resolution: "sass-loader@npm:11.0.1"
+"sass-loader@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "sass-loader@npm:13.0.0"
   dependencies:
     klona: ^2.0.4
     neo-async: ^2.6.2
   peerDependencies:
     fibers: ">= 3.1.0"
-    node-sass: ^4.0.0 || ^5.0.0
+    node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
     sass: ^1.3.0
+    sass-embedded: "*"
     webpack: ^5.0.0
   peerDependenciesMeta:
     fibers:
@@ -8732,7 +8719,9 @@ __metadata:
       optional: true
     sass:
       optional: true
-  checksum: 23b4b46b0d2b35991fe1af2bd5d41ac2ccd3ef61fc905cd3d2b750f03a407c0af5fa891f277e9ef7f421d408c6b0e95b957b7ebea8a99fbb7b40879e6a1647da
+    sass-embedded:
+      optional: true
+  checksum: f7af03813dccf0405eb02917cd10c97571ab81f42e9ea1f3da6d9e96991e076521809a452ad319d57c1a63273ce07c23ddfdbda5cd071a56d261dc28913afdaa
   languageName: node
   linkType: hard
 
@@ -9571,15 +9560,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-loader@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "style-loader@npm:2.0.0"
-  dependencies:
-    loader-utils: ^2.0.0
-    schema-utils: ^3.0.0
+"style-loader@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "style-loader@npm:3.3.1"
   peerDependencies:
-    webpack: ^4.0.0 || ^5.0.0
-  checksum: 21425246a5a8f14d1625a657a3a56f8a323193fa341a71af818a2ed2a429efa2385a328b4381cf2f12c2d0e6380801eb9e0427ed9c3a10ff95c86e383184d632
+    webpack: ^5.0.0
+  checksum: 470feef680f59e2fce4d6601b5c55b88c01ad8d1dd693c528ffd591ff5fd7c01a4eff3bdbe62f26f847d6bd2430c9ab594be23307cfe7a3446ab236683f0d066
   languageName: node
   linkType: hard
 
@@ -9657,15 +9643,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "stylelint-config-recommended@npm:8.0.0"
-  peerDependencies:
-    stylelint: ^14.8.0
-  checksum: 0c5ca94625e5308a7afb8315bb350a2b48f46fdd8d8922dd9a8c2e37b3407f2294794d930726ad6bf2007abcde1abd34084808cf83adf150efe3a643e0eb5ac4
-  languageName: node
-  linkType: hard
-
 "stylelint-order@npm:5.x":
   version: 5.0.0
   resolution: "stylelint-order@npm:5.0.0"
@@ -9678,7 +9655,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-scss@npm:^4.0.0":
+"stylelint-scss@npm:^4.0.0, stylelint-scss@npm:^4.2.0":
   version: 4.2.0
   resolution: "stylelint-scss@npm:4.2.0"
   dependencies:
@@ -9781,15 +9758,6 @@ __metadata:
   dependencies:
     has-flag: ^3.0.0
   checksum: 95f6f4ba5afdf92f495b5a912d4abee8dcba766ae719b975c56c084f5004845f6f5a5f7769f52d53f40e21952a6d87411bafe34af4a01e65f9926002e38e1dac
-  languageName: node
-  linkType: hard
-
-"supports-color@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "supports-color@npm:6.1.0"
-  dependencies:
-    has-flag: ^3.0.0
-  checksum: 74358f9535c83ee113fbaac354b11e808060f6e7d8722082ee43af3578469134e89d00026dce2a6b93ce4e5b89d0e9a10f638b2b9f64c7838c2fb2883a47b3d5
   languageName: node
   linkType: hard
 

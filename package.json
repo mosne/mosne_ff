@@ -40,7 +40,7 @@
     "json2csv": "^5.0.6",
     "mini-css-extract-plugin": "^1.5.0",
     "portfinder": "^1.0.28",
-    "postcss": "^7.0.36",
+    "postcss": "^8.4.14",
     "postcss-import": "^14.1.0",
     "postcss-loader": "^7.0.0",
     "postcss-preset-env": "^7.7.1",

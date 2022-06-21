@@ -18,7 +18,7 @@ add_filter( 'max_srcset_image_width', 'new_srcset_max' );
  *
  * @return string
  */
-function m_wrapper( $image, $sz = 'medium' ) {
+function m_wrapper( $image, string $sz = 'medium' ) {
 	return 'style="padding-bottom:' . m_bottom( $image, $sz ) . '%"';
 }
 
@@ -35,17 +35,17 @@ function m_placehoder() {
  * @return object
  */
 function m_get_dimensions( $svg ) {
-	$svg        = simplexml_load_file( $svg );
+	$svg        = simplexml_load_file( $svg ); //phpcs:ignore
 	$attributes = $svg->attributes();
-	$viewbox    = (string) $attributes->viewBox;
+	$viewbox    = (string) $attributes->viewBox; //phpcs:ignore
 	$viewbox_v  = explode( ' ', $viewbox );
 	$width      = (int) $viewbox_v[2];
 	$height     = (int) $viewbox_v[3];
 
-	return (object) array(
+	return (object) [
 		'width'  => $width,
 		'height' => $height,
-	);
+	];
 }
 
 
@@ -59,12 +59,12 @@ function m_bottom( $image, $sz = 'medium' ) {
 	if ( $image ) {
 		$hh = $image['sizes'][ $sz . '-height' ];
 		$ww = $image['sizes'][ $sz . '-width' ];
-		if ( $hh == '' ) {
+		if ( '' === $hh ) {
 			$hh = $image['height'];
 			$ww = $image['width'];
 		}
 
-		if ( $image['mime_type'] == 'image/svg+xml' ) {
+		if ( 'image/svg+xml' === $image['mime_type'] ) {
 
 			$svg_file_path = get_attached_file( $image['id'] );
 			$dimensions    = m_get_dimensions( $svg_file_path );
@@ -80,9 +80,7 @@ function m_bottom( $image, $sz = 'medium' ) {
 			}
 		}
 
-		$ratio = 100 * bcdiv( $hh, $ww, 5 );
-
-		return $ratio;
+		return 100 * bcdiv( int( $hh ), int( $ww ), 5 );
 	}
 }
 
@@ -90,14 +88,15 @@ function m_bottom( $image, $sz = 'medium' ) {
  * @param        $image
  * @param string $sz
  *
- * @return float|int
+ * @return string|void
  */
 function m_maxsize( $image, $sz = 'medium' ) {
 	if ( $image ) {
 		$ww = $image['sizes'][ $sz . '-width' ];
-		if ( $ww == '' ) {
+		if ( '' === $ww ) {
 			$ww = $image['width'];
 		}
+
 		return '(max-width: ' . $ww . 'px) 100vw, ' . $ww . 'px';
 	}
 }
@@ -107,8 +106,8 @@ function m_maxsize( $image, $sz = 'medium' ) {
  *
  * @return string
  */
-function m_file_size( $size ) {
-	$a = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
+function m_file_size( $size ): string {
+	$a = [ 'B', 'KB', 'MB', 'GB', 'TB', 'PB' ];
 
 	$pos = 0;
 
@@ -126,22 +125,23 @@ function m_file_size( $size ) {
  * @param $mid
  *
  * @return string|string[]|null
+ * @throws Exception
  */
 function mosne_svg( $svg, $mid ) {
 
 	$trans_p = 'mosne_svg_';
-	if ( $_GET['cache'] == 'svg' ) {
+	if ( 'svg' === $_GET['cache'] ) { //phpcs:ignore
 		delete_transient( $trans_p . $mid );
 	}
 
-	if ( false === ( $svg_md5_cache = get_transient( $trans_p . $mid ) ) ) {
+	if ( false === ( $svg_md5_cache = get_transient( $trans_p . $mid ) ) ) { //phpcs:ignore
 
 		$svgx          = '';
 		$document      = '';
 		$svg_md5_cache = '';
 		$result        = '';
 
-		$svgx   = new SimpleXMLElement( file_get_contents( $svg ) );
+		$svgx   = new SimpleXMLElement( file_get_contents( $svg ) ); //phpcs:ignore
 		$result = $svgx->xpath( '/svg' );
 		unset( $svgx['x'] );
 		unset( $svgx['y'] );
@@ -159,13 +159,13 @@ function mosne_svg( $svg, $mid ) {
 		$document = $svgx->asXML();
 
 		/* cleanup */
-		$search = array(
+		$search = [
 			'@<\?[\s\S]*?[ \t\n\r]*>@',            // Remove XML
 			'@<!DOCTYPE[\s\S]*?[ \t\n\r]*>@',       // Remove !DOCTYPE
 			'@<![\s\S]*?--[ \t\n\r]*>@',            // Remove COMMENTS
-		);
+		];
 
-		$replace       = array( '', '', '', '', '', '' );
+		$replace       = [ '', '', '', '', '', '' ];
 		$clean         = preg_replace( $search, $replace, $document );
 		$svg_md5_cache = $clean;
 
@@ -189,16 +189,19 @@ function m_source( $field, $sz ) {
 	}
 	if ( $image ) {
 
-		if ( 'image/svg+xml' == $image['mime_type'] ) {
+		if ( 'image/svg+xml' === $image['mime_type'] ) {
 
 			$svg_file_path = get_attached_file( $image['id'] );
-			$html .= mosne_svg( $svg_file_path, $image['id'] );
-
+			try {
+				$html .= mosne_svg( $svg_file_path, $image['id'] );
+			} catch ( Exception $e ) {
+				return;
+			}
 		} else {
 
 			$srcset = wp_get_attachment_image_srcset( $image['id'], $sz, null );
 
-			if ( $srcset == '' || $image['mime_type'] == 'image/gif' ) {
+			if ( '' === $srcset || 'image/gif' === $image['mime_type'] ) {
 				$srcset = $image['url'] . ' 320w';
 			}
 
@@ -209,10 +212,11 @@ function m_source( $field, $sz ) {
 			$html .= '<source  data-srcset="' . $srcset . '"/>
 				 <img class="lazyload" src="' . m_placehoder() . '" alt="' . $image['alt'] . '" sizes="' . m_maxsize( $image, $sz ) . '"/>';
 		}
-		return array(
+
+		return [
 			'image'  => $image,
 			'srcset' => $html,
-		);
+		];
 	}
 
 }
@@ -221,14 +225,15 @@ function m_video( $id ) {
 	$open      = '';
 	$close     = '';
 	$video_url = get_field( 'link', $id );
-	if ( '' != $video_url ) {
+	if ( '' !== $video_url ) {
 		$open  = '<div class="video-push"><a href="' . $video_url . '" class="embedvideo">';
-		$close = '</a>'.get_m_icon("play").'</div>';
+		$close = '</a>' . get_m_icon( 'play' ) . '</div>';
 	}
-		return array(
-			'head' => $open,
-			'foot' => $close,
-		);
+
+	return [
+		'head' => $open,
+		'foot' => $close,
+	];
 }
 
 
@@ -236,11 +241,11 @@ function m_video( $id ) {
  * @param        $field
  * @param string $sz
  * @param string $class
- * @param bool  $video
+ * @param bool $video
  *
  * m_image($image,"medium",["fit"=> true, class="gallery__img", "video"=> false, ])
  */
-function m_media( $field, $sz = 'medium', $class = '', $video = false, $fit = false ) {
+function m_media( $field, string $sz = 'medium', string $class = '', bool $video = false, $fit = false ): string {
 
 	$html               = '';
 	$source             = m_source( $field, $sz );
@@ -253,7 +258,7 @@ function m_media( $field, $sz = 'medium', $class = '', $video = false, $fit = fa
 		$video_html = m_video( $image['ID'] );
 	}
 
-	if ( 'image/svg+xml' == $image['mime_type'] ) {
+	if ( 'image/svg+xml' === $image['mime_type'] ) {
 		$html .= $video_html['head'] . '<figure ' . m_wrapper( $image, $sz ) . '><picture class="svg-wrap">' . $srcset . '</picture></figure>' . $video_html['foot'];
 	} elseif ( true === $fit ) {
 		$html .= $video_html['head'] . '<picture class="' . $class . '">' . $srcset . '</picture>' . $video_html['foot'];
@@ -265,18 +270,18 @@ function m_media( $field, $sz = 'medium', $class = '', $video = false, $fit = fa
 }
 
 
-function get_m_image( $field, $sz = 'medium', $class = '', $video = false ) {
+function get_m_image( $field, $sz = 'medium', $class = '', $video = false ): string {
 	return m_media( $field, $sz, $class, $video );
 }
 
-function get_m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ) {
+function get_m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ): string {
 	return m_media( $field, $sz, $class, $video, true );
 }
 
-function m_image( $field, $sz = 'medium', $class = '', $video = false ){
-	echo get_m_image( $field, $sz, $class, $video );
+function m_image( $field, $sz = 'medium', $class = '', $video = false ) {
+	echo wp_kses_post( get_m_image( $field, $sz, $class, $video ) );
 }
 
-function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ){
-	echo get_m_image_ofit( $field, $sz, $class, $video, true);
+function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ) {
+	echo wp_kses_post( get_m_image_ofit( $field, $sz, $class, $video ) );
 }

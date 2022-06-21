@@ -2,9 +2,9 @@
 
 // POLYLANG
 
-$m_strings = array(
+$m_strings = [
 	'STRING',
-);
+];
 
 /**
  * @param $strings

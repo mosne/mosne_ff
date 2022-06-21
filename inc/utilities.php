@@ -2,7 +2,7 @@
 
 function m_edit() {
 	if ( current_user_can( 'level_3' ) ) {
-		echo edit_post_link( 'edit', '', '' );
+		echo esc_html( edit_post_link( 'edit', '', '' ) );
 	};
 }
 
@@ -12,44 +12,36 @@ function m_edit() {
  * @return string
  */
 function m_clean( $val ) {
-	return trim( preg_replace( '/\s+/', ' ', strip_tags( $val ) ) );
-}
-
-
-function custom_notice_message( $args ) {
-	$args['see_more_opt']['text'] = __( $args['see_more_opt']['text'] );
-	$args['accept_text']          = __( $args['accept_text'] );
-	$args['message_text']         = __( $args['message_text'] );
-
-	return $args;
+	return trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( $val ) ) );
 }
 
 
 add_filter( 'kses_allowed_protocols', 'ss_allow_skype_protocol' );
 function ss_allow_skype_protocol( $protocols ) {
 	$protocols[] = 'skype';
+
 	return $protocols;
 }
 
 function m_print( $val ) {
 	echo '<pre>';
-	print_r( $val );
+	print_r( $val ); //phpcs:ignore
 	echo '</pre>';
 }
 
 function m_sanitize( $what ) {
 	$clean = wp_kses(
 		$what,
-		array(
-			'h1'     => array(),
-			'h2'     => array(),
-			'h3'     => array(),
-			'h4'     => array(),
-			'strong' => array(),
-			'br'     => array(),
-			'p'      => array(),
-			'a'      => array( 'href', 'target', 'rel' ),
-		)
+		[
+			'h1'     => [],
+			'h2'     => [],
+			'h3'     => [],
+			'h4'     => [],
+			'strong' => [],
+			'br'     => [],
+			'p'      => [],
+			'a'      => [ 'href', 'target', 'rel' ],
+		]
 	);
 
 	return $clean;
@@ -60,7 +52,7 @@ function m_sanitize( $what ) {
  * @param $field
  */
 function m_the_field( $field ) {
-	echo m_sanitize( get_field( $field ) );
+	echo esc_html( m_sanitize( get_field( $field ) ) );
 }
 
 
@@ -68,6 +60,8 @@ function m_the_field( $field ) {
  * @param $string
  * @param $before
  * @param $after
+ *
+ * @return string|void
  */
 function m_if( $string, $before, $after ) {
 
@@ -82,14 +76,14 @@ function m_if( $string, $before, $after ) {
 
 /**
  * @param string $apost_id
- * @param bool   $echo
+ * @param bool $echo
  *
  * @return mixed
  */
 function m_short( $apost_id = '', $echo = false ) {
 
 	$short = get_field( 'short', $apost_id );
-	if ( $short == '' ) {
+	if ( '' === $short ) {
 		$tit = get_the_title( $apost_id );
 	} else {
 		$tit = $short;
@@ -98,11 +92,11 @@ function m_short( $apost_id = '', $echo = false ) {
 	if ( $echo ) {
 		return $tit;
 	} else {
-		echo $tit;
+		echo esc_html( $tit );
 	}
 }
 
-function new_excerpt_more( $more ) {
+function new_excerpt_more( $more ): string {
 	return '&hellip;';
 }
 
@@ -111,17 +105,14 @@ add_filter( 'excerpt_more', 'new_excerpt_more' );
 
 function m_post_image( $id ) {
 	$thumbnail_id = get_post_thumbnail_id( $id );
-	if ( $thumbnail_id != '' ) {
-		$cover = acf_get_attachment( $thumbnail_id );
-
-		return $cover;
+	if ( ! empty( $thumbnail_id ) ) {
+		return acf_get_attachment( $thumbnail_id );
 	}
-
 }
 
 function m_pr( $id ) {
 	$thumbnail_id = get_post_thumbnail_id( $id );
-	if ( $thumbnail_id != '' ) {
+	if ( ! empty( $thumbnail_id ) ) {
 		$cover = acf_get_attachment( $thumbnail_id );
 		m_image( $cover );
 	}
@@ -130,8 +121,8 @@ function m_pr( $id ) {
 
 function m_abs( $id ) {
 	$text = wp_trim_words( get_field( 'seo_text' ), 42, '...' );
-	if ( $text != '' ) {
-		echo( $text );
+	if ( ! empty( $text ) ) {
+		echo esc_html( $text );
 	} else {
 		the_excerpt();
 	}
@@ -139,22 +130,22 @@ function m_abs( $id ) {
 
 
 function m_more() {
-	echo '<a href="' . get_permalink() . '" class="btn btn--primary">More</a>';
-};
+	echo '<a href="' . esc_url( get_permalink() ) . '" class="btn btn--primary">More</a>';
+}
 
 function m_list( $field, $label ) {
 
-	$links = array();
+	$links = [];
 	$items = get_field( $field );
 	if ( $items ) {
-		echo '<h4>' . $label . '</h4>';
+		echo '<h4>' . esc_html( $label ) . '</h4>';
 
 		foreach ( $items as $item ) {
 
 			$links[] = '<a href="' . get_permalink( $item->ID ) . '">' . m_short( $item->ID, true ) . '</a>';
 		}
 
-		echo implode( ', ', $links ) . '.';
+		echo esc_html( implode( ', ', $links ) . '.' );
 
 	}
 
@@ -169,10 +160,10 @@ function m_list( $field, $label ) {
  *
  * @return string
  */
-function m_terms( $id, $tax, $before = '', $sep = '', $after = '' ) {
+function m_terms( $id, $tax, string $before = '', string $sep = '', string $after = '' ): string {
 	$at = get_the_terms( $id, $tax );
 	if ( is_array( $at ) ) {
-		$final = array();
+		$final = [];
 		if ( count( $at ) >= 1 ) {
 			foreach ( $at as $term ) {
 				$final[] = $term->name;
@@ -194,7 +185,7 @@ function m_limit_text( $text, $limit ) {
 		$pos   = array_keys( $words );
 		$text  = substr( $text, 0, $pos[ $limit ] ) . '...';
 	}
-	echo $text;
+	echo esc_html( $text );
 }
 
 
@@ -202,7 +193,7 @@ add_action( 'wp_footer', 'm_ajaxurl' );
 function m_ajaxurl() {
 
 	echo '<script type="text/javascript">
-           var m_ajaxurl = "' . admin_url( 'admin-ajax.php' ) . '";
+           const m_ajaxurl = "' . esc_url( admin_url( 'admin-ajax.php' ) ) . '";
          </script>';
 }
 
@@ -212,30 +203,30 @@ function m_tags() {
 
 	$terms = get_terms(
 		'post_tag',
-		array(
+		[
 			'hide_empty' => true,
-		)
+		]
 	);
 
-	$names = array();
+	$names = [];
 	foreach ( $terms as $term ) {
 		$names[] = $term->name;
 	}
-	echo json_encode( $names );
+	echo wp_json_encode( $names );
 }
 
 /**
  * @param        $input
- * @param null   $tag
- * @param null   $class
- * @param string $strip
+ * @param null $tag
+ * @param null $class
+ * @param bool $strip
  */
-function m_check( $input, $tag = null, $class = null, $strip = 'false' ) {
+function m_check( $input, $tag = null, $class = null, bool $strip = false ) {
 	if ( $input ) {
-		if ( $strip == 'true' ) {
-			$input_s = strip_tags( $input );
-		} elseif ( $strip !== 'false' ) {
-			$input_s = strip_tags( $input, $strip );
+		if ( true === $strip ) {
+			$input_s = wp_strip_all_tags( $input );
+		} elseif ( false !== $strip ) {
+			$input_s = wp_strip_all_tags( $input, $strip );
 		} else {
 			$input_s = $input;
 		}
@@ -245,9 +236,9 @@ function m_check( $input, $tag = null, $class = null, $strip = 'false' ) {
 			} else {
 				$otag = '<' . $tag . '>';
 			}
-			echo $otag . $input_s . '</' . $tag . '>';
+			echo wp_kses_post( $otag . $input_s . '</' . $tag . '>' );
 		} else {
-			echo $input_s;
+			echo wp_kses_post( $input_s );
 		}
 	}
 }
@@ -269,10 +260,10 @@ function m_check( $input, $tag = null, $class = null, $strip = 'false' ) {
  * @return array
  */
 function m_pattern( $array, $tot = 10 ) {
-	$new_array = array();
+	$new_array = [];
 	$x         = 0;
 	for ( $i = 0; $i <= $tot; $i ++ ) {
-		if ( $x == count( $array ) ) {
+		if ( count( $array ) === $x ) {
 			$x = 0;
 		}
 		$new_array[] = $array[ $x ];
@@ -283,7 +274,7 @@ function m_pattern( $array, $tot = 10 ) {
 }
 
 
-function m_custom_excerpt_length( $length ) {
+function m_custom_excerpt_length( $length ): int {
 	return 20;
 }
 
@@ -292,6 +283,7 @@ add_filter( 'excerpt_length', 'm_custom_excerpt_length', 999 );
 function m_getlang() {
 
 	$langs = explode( '_', get_locale() );
+
 	return reset( $langs );
 
 }

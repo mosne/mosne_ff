@@ -1,0 +1,19 @@
+/**
+ * Hover
+ *
+ *          Hover Active Focus pseudo selector mixin
+ */
+
+@mixin hover {
+    &:hover,
+    &:active,
+    &:focus {
+        @content;
+    }
+}
+
+@mixin hover-underline {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}

@@ -1,132 +1,92 @@
-@import "abstract/url-config";
-@import "abstract/positioning";
-@import "abstract/colors";
-@import "abstract/borders";
-@import "abstract/mixins";
-@import "abstract/functions";
-@import "abstract/fonts";
-@import "abstract/box-sizing";
-@import "abstract/breakpoints";
-@import "abstract/grid";
+// SCSS variables to customise the login page styles
+// The CSS file generated in dist/ by webpack is called automatically thanks to the WP Login Page mu-plugin present in the WP Skeleton.
 
-$login-logo-path: "#{$images-url}/mosne.svg";
-$login-logo-size: 201px 79px;
-$login-logo-height: 110px;
-$login-body-bg-color: #eee;
-$login-text-color: $textcolor;
-$login-link-color: $maincolor;
-$login-link-hover-color: $textcolor;
-$login-remember-input-check-color: $maincolor;
-$login-btn-bg-color: $maincolor;
-$login-btn-border: $maincolor;
-$login-btn-hover-bg-color: darken($login-btn-bg-color, 5%);
-$login-btn-border: $maincolor;
-$login-icon-color: encodecolor($maincolor);
+$login-logo-path: "../../src/img/static/logo.jpg";
+$login-logo-size: 312px 43px;
+$login-logo-height: 60px;
+$login-body-bg-color: #666;
+$login-text-color: #fff;
+$login-link-color: #fff;
+$login-link-hover-color: #eee;
+$login-remember-input-check-color: #222;
+$login-btn-bg-color: #666;
+$login-btn-hover-bg-color: #222;
+
+// Except for specific needs, it is not necessary to modify the SCSS rules below (modification of the SCSS variables is sufficient)
 
 html,
 body {
-
-	&::before,
-	&::after {
-		display: none;
-	}
+    &::before,
+    &::after {
+        display: none;
+    }
 }
 
 body.login {
-	color: $login-text-color;
-	background: $login-body-bg-color;
+    // screen background color
+    background: $login-body-bg-color;
 
-	h1 a {
-		display: block;
-		width: 100%;
-		height: $login-logo-height;
-		background-image: url(#{$login-logo-path});
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: $login-logo-size;
-	}
+    // logo (before login form) path and size
+    h1 a {
+        display: block;
+        width: 100%;
+        height: $login-logo-height;
+        background-image: url(#{$login-logo-path});
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: $login-logo-size;
+    }
 
-	a {
-		color: $login-link-color;
-		text-decoration: none;
+    // default link styles
+    a {
+        color: $login-link-color;
+        text-decoration: none;
 
-		&:focus,
-		&:hover {
-			color: $login-link-hover-color;
-			text-decoration: underline;
-		}
-	}
+        &:hover,
+        &:focus {
+            color: $login-link-hover-color;
+            text-decoration: underline;
+        }
+    }
 
-	.message,
-	.success,
-	.login-error {
-		border-left-color: $login-text-color;
-	}
+    // notice block border-left color
+    .message,
+    .success,
+    #login_error { // stylelint-disable-line selector-id-pattern
+        border-left-color: $login-text-color;
+    }
 
-	input[type="checkbox"]:checked::before {
-		color: $login-remember-input-check-color;
-	}
+    // remember input checkbox check color
+    input[type="checkbox"]:checked::before {
+        color: $login-remember-input-check-color;
+    }
 
-	#nav,
-	#backtoblog {
+    // link after login form styles
+    #nav,
+    #backtoblog {
+        a {
+            color: $login-link-color;
 
-		a {
-			color: $login-link-color;
-
-			&:focus,
-			&:hover {
-				color: $login-link-hover-color;
-				text-decoration: underline;
-			}
-		}
-	}
-
+            &:focus,
+            &:hover {
+                color: $login-link-hover-color;
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 // submit login form button styles
 .wp-core-ui {
+    .button-primary {
+        text-shadow: none;
+        background-color: $login-btn-bg-color;
+        border: 0;
+        box-shadow: none;
+        transition: all .2s ease;
 
-	.button-primary {
-		text-shadow: none;
-		background-color: $login-btn-bg-color;
-		border: 0;
-		box-shadow: none;
-		transition: all 0.2s ease;
-
-		&:hover {
-			background: $login-btn-hover-bg-color;
-			border-color: $login-btn-hover-bg-color;
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px $login-btn-hover-bg-color;
-		}
-	}
-
-	.button-secondary {
-		color: $login-btn-border;
-		border-color: $login-btn-border;
-
-		@include hover {
-			color: $login-btn-hover-bg-color;
-			border-color: $login-btn-border;
-		}
-	}
-
-	.button.wp-hide-pw:focus {
-		border-color: $login-btn-border;
-		box-shadow: 0 0 0 1px $login-btn-border;
-	}
-
-	input[type="email"]:focus,
-	input[type="password"]:focus,
-	input[type="checkbox"]:focus,
-	input[type="text"]:focus {
-		border-color: $login-btn-border;
-		box-shadow: 0 0 0 1px $login-btn-border;
-	}
-
-	input[type="checkbox"]:checked::before {
-		color: $login-btn-border;
-		content: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27#{$login-icon-color}%27%2F%3E%3C%2Fsvg%3E");
-		fill: $login-btn-border;
-	}
+        &:hover {
+            background-color: $login-btn-hover-bg-color;
+        }
+    }
 }
-

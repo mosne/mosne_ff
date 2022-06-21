@@ -1,55 +1,65 @@
-//normalize
-@import "../../node_modules/normalize-scss/sass/normalize/import-now";
+$entry-file-name: "style";
 
-// Abstract
-@import "abstract/url-config";
-@import "abstract/mixins";
-@import "abstract/functions";
-@import "abstract/fonts";
-@import "abstract/colors";
-@import "abstract/breakpoints";
-@import "abstract/grid";
-@import "abstract/positioning";
-@import "abstract/borders";
-@import "abstract/box-sizing";
-@import "abstract/zindex";
-@import "abstract/easing";
+/**
+ * Abstract
+ * == Contain SCSS and CSS variables and webfonts declarations.
+ */
 
-// Base
-@import "base/utilities";
-@import "base/svg-icons";
-@import "base/text";
-@import "base/form";
-@import "base/seo";
-@import "base/lazyload";
-@import "base/layout";
-@import "base/focus";
+@import "01-abstract/abstract";
 
-// Components
-@import "components/buttons";
-@import "components/menu-trigger";
-@import "components/menu-fastaccess";
-@import "components/menu-accessible";
-@import "components/card";
-@import "components/messages";
+/**
+ * Tools
+ * == Contains functions and mixins.
+ */
 
-// Patterns
-@import "patterns/header";
-@import "patterns/footer";
-@import "patterns/menu";
-@import "patterns/hero";
-@import "patterns/searchform";
+@import "02-tools/tools";
 
-//Wordpress
-@import "wp/img";
-@import "wp/wysiwyg";
-@import "wp/gutenberg";
-@import "wp/woocommerce";
+/**
+ * Base
+ * == Contain generic styles such as normalize or reset.
+ */
 
-// Pages
-@import "pages/index.scss";
-@import "pages/home";
-@import "pages/single";
+@import "03-base/base";
 
-//Print
-@import "pages/print";
+/**
+ * Utilities
+ * == Utility classes that are not assigned to a specific component.
+ */
+
+@import "04-utilities/utilities";
+
+/**
+ * Components
+ * == Contain any default component. Just give the components some basic styles.
+ */
+
+@import "05-components/components";
+
+/**
+ * Blocks
+ * == Gutenberg core blocks styles, style for front-end layout and editor.
+ */
+
+@import "06-blocks/gutenberg";
+@import "06-blocks/blocks";
+
+/**
+ * Patterns
+ * == Contains styles for site patterns such as header, footer or menu.
+ */
+
+@import "07-patterns/patterns";
+
+/**
+ * Vendor
+ * == Plugins or libraries custom styles.
+ */
+
+@import "08-vendor/vendor";
+
+/**
+ * Pages
+ * == If you want to add custom styles for specifics page templates.
+ */
+
+@import "09-pages/pages";

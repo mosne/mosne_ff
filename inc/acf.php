@@ -43,35 +43,26 @@ function my_acf_op_init() {
 		}
 	);
 
-	/*
-
 	// check function exists
-	if( function_exists('acf_register_block') ) {
+	if ( function_exists( 'acf_register_block' ) ) {
 
-		// register a testimonial block
-		acf_register_block(array(
-				'name'    => 'mosne-svg',
-				'title'    => __('Svg block'),
-				'description'  => __('A custom svg block.'),
-				'render_callback' => 'my_acf_block_render_callback',
-				'category'   => 'common',
-				'icon'    => 'format-image',
-				'keywords'   => array( 'image', 'svg','inline','vector' )
-			));
-		}
+		acf_register_block(
+			[
+				'name'            => 'mosne-cards',
+				'title'           => __( 'Cards' ),
+				'description'     => __( 'A custom query block.' ),
+				'render_callback' => 'mosne_cards_acf_block_render_callback',
+				'category'        => 'common',
+				'icon'            => 'grid-view',
+				'mode'            => 'auto',
+				'align'           => 'wide',
+				'supports'        => [
+					'align' => [ 'full', 'wide', 'default' ],
+				],
+				'keywords'        => [ 'query', 'card', 'loop', 'latest', 'manual', 'auto' ],
+				'render_template' => 'template-parts/blocks/mosne-cards.php',
+			]
+		);
 	}
 
-
-	function my_acf_block_render_callback( $block ) {
-
-		// convert name ("acf/testimonial") into path friendly slug ("testimonial")
-		$slug = str_replace('acf/', '', $block['name']);
-
-		// include a template part from within the "template-parts/block" folder
-		if( file_exists(STYLESHEETPATH . "/block-{$slug}.php") ) {
-			include( STYLESHEETPATH . "/block-{$slug}.php" );
-		}
-	}
-
-	*/
 }

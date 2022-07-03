@@ -28,6 +28,7 @@ require_once __DIR__ . '/inc/erditor-patterns-categories.php';
 require_once __DIR__ . '/inc/erditor-patterns.php';
 
 // helpers
+require_once __DIR__ . '/inc/m_query.php';
 require_once __DIR__ . '/inc/m_image.php';
 require_once __DIR__ . '/inc/m_icon.php';
 

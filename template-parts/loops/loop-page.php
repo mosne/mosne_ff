@@ -1,4 +1,4 @@
-<article class="loop loop--post" data-seo-container>
+<article class="loop loop--page" data-seo-container>
 	<figure role="figure" class="loop__thumb">
 		<?php the_post_thumbnail(); ?>
 	</figure>

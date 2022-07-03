@@ -99,7 +99,8 @@
             },
             "choices": {
                 "post": "Latest posts",
-                "page": "Latest pages"
+                "page": "Latest pages",
+                "custom": "Mix"
             },
             "default_value": "post",
             "allow_null": 0,
@@ -173,7 +174,7 @@
         {
             "key": "field_62c1548488976",
             "label": "Number of Items",
-            "name": "number_number",
+            "name": "cards_number",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -286,5 +287,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1656849964
+    "modified": 1656936000
 }

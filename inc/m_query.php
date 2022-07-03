@@ -15,20 +15,24 @@ function get_m_query( string $name = 'post', array $args = [] ): WP_Query {
 	// all others pages
 	if ( 'page' === $name ) {
 		$mosne_query_args = [
-			'post_type'      => 'page',
-			'posts_per_page' => 3,
-			'no_found_rows'  => true,
+			'post_type'     => 'page',
+			'no_found_rows' => true,
 		];
 	} elseif ( 'manual' === $name ) {
+		$mosne_query_args = [
+			'post_type' => [ 'page', 'post' ],
+			'order'     => 'ASC',
+			'orderby'   => 'post__in',
+		];
+	} elseif ( 'custom' === $name ) {
 		$mosne_query_args = [
 			'post_type' => [ 'page', 'post' ],
 		];
 	} else {
 		// default output: all others posts
 		$mosne_query_args = [
-			'post_type'      => 'post',
-			'posts_per_page' => 3,
-			'no_found_rows'  => true,
+			'post_type'     => 'post',
+			'no_found_rows' => true,
 		];
 	}
 

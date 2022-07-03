@@ -9,18 +9,18 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'wp-block-' . $block['id'];
+$card_id = 'wp-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
-	$id = $block['anchor'];
+	$card_id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$className = 'mosne-cards';
+$card_class_name = 'mosne-cards';
 if ( ! empty( $block['className'] ) ) {
-	$className .= ' ' . $block['className'];
+	$card_class_name .= ' ' . $block['className'];
 }
 if ( ! empty( $block['align'] ) ) {
-	$className .= ' align' . $block['align'];
+	$card_class_name .= ' align' . $block['align'];
 }
 
 // Load values and assing defaults.
@@ -39,15 +39,15 @@ if ( 'auto' === $cards_mode ) {
 	$cards_query      = get_m_query( $cards_mode_auto, $cards_query_args );
 } else {
 	$cards_mode_manual = get_field( 'cards_mode_manual' );
-	if(empty($cards_mode_manual)){
+	if ( empty( $cards_mode_manual ) ) {
 		//prevent retrieving all posts
-		$cards_mode_manual = [0];
+		$cards_mode_manual = [ 0 ];
 	}
-	$cards_query       = get_m_query( 'manual', [ 'post__in' => $cards_mode_manual ] );
+	$cards_query = get_m_query( 'manual', [ 'post__in' => $cards_mode_manual ] );
 }
 
 ?>
-<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>">
+<div id="<?php echo esc_attr( $card_id ); ?>" class="<?php echo esc_attr( $card_class_name ); ?>">
 	<?php
 	if ( $cards_has_header && $cards_query->have_posts() ) {
 		$cards_title = get_field( 'cards_title' );
@@ -61,7 +61,6 @@ if ( 'auto' === $cards_mode ) {
 			]
 		);
 	}
-	echo $cards_layout;
 	get_template_part(
 		'template-parts/parts/mosne-cards',
 		$cards_layout,

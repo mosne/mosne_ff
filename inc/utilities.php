@@ -291,14 +291,15 @@ function m_getlang() {
 /**
  *
  * @param string	$folder
- * @param string	$file
+ * @param string	$slug
+ * @param string	$name
  * @param array	$args
  * 
  * @return void|false
  */
 
-function m_get_template($folder, $file, $args = array()) {
-	get_template_part('template-parts/'.$folder.'/'.$file, '', $args);
+function m_part($folder, $slug, $name = null, $args = array()) {
+	get_template_part('template-parts/'.$folder.'/'.$slug, $name, $args);
 }
 
 /**

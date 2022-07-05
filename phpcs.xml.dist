@@ -17,6 +17,7 @@
 
     <!-- Exclude the Node Modules directory. -->
     <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>.yarn/*</exclude-pattern>
 
    <rule ref="WordPress-Extra">
        <!-- Exclude as we use a custom autoloader. -->

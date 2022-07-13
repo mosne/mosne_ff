@@ -287,3 +287,54 @@ function m_getlang() {
 	return reset( $langs );
 
 }
+
+/**
+ *
+ * @param string	$folder
+ * @param string	$slug
+ * @param string	$name
+ * @param array	$args
+ * 
+ * @return void|false
+ */
+
+function m_part($folder, $slug, $name = null, $args = array()) {
+	get_template_part('template-parts/'.$folder.'/'.$slug, $name, $args);
+}
+
+/**
+ * Create a slug-safe string from natural languange string
+ *
+ * @param string $str
+ * @param string $delimiter optional
+ *
+ * @return string
+ */
+function createSlug($str, $delimiter = '-'){
+
+	$slug = strtolower(trim(preg_replace('/[\s-]+/', $delimiter, preg_replace('/[^A-Za-z0-9-]+/', $delimiter, preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $str))))), $delimiter));
+	return $slug;
+
+} 
+
+/**
+ * Merge post-thumbnail and gallery images in one array checking if thumbnail is duplicated pushing it on the beginning
+ * 
+ * @param int   $thumb_id
+ * @param array $images_ids
+ *
+ * @return array|null
+ */
+function m_thumb_gallery_merge($thumb_id, $images_ids) {
+	if(!$thumb_id && !$images_ids) {
+		return null;
+	}
+	if(!$images_ids){
+		return $thumb_id;
+	}else{
+		if(!in_array($thumb_id, $images_ids) && $thumb_id){
+			array_unshift($images_ids, $thumb_id);
+		}
+		return $images_ids;
+	}
+}

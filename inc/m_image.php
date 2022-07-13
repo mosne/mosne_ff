@@ -80,7 +80,7 @@ function m_bottom( $image, $sz = 'medium' ) {
 			}
 		}
 
-		return 100 * bcdiv( int( $hh ), int( $ww ), 5 );
+		return 100 * bcdiv( (int) $hh, (int) $ww, 5 );
 	}
 }
 
@@ -269,7 +269,6 @@ function m_media( $field, string $sz = 'medium', string $class = '', bool $video
 	return $html;
 }
 
-
 function get_m_image( $field, $sz = 'medium', $class = '', $video = false ): string {
 	return m_media( $field, $sz, $class, $video );
 }
@@ -279,9 +278,9 @@ function get_m_image_ofit( $field, $sz = 'medium', $class = '', $video = false )
 }
 
 function m_image( $field, $sz = 'medium', $class = '', $video = false ) {
-	echo wp_kses_post( get_m_image( $field, $sz, $class, $video ) );
+	echo get_m_image( $field, $sz, $class, $video );
 }
 
 function m_image_ofit( $field, $sz = 'medium', $class = '', $video = false ) {
-	echo wp_kses_post( get_m_image_ofit( $field, $sz, $class, $video ) );
+	echo get_m_image_ofit( $field, $sz, $class, $video );
 }

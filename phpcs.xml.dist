@@ -53,9 +53,10 @@
           <property name="customAutoEscapedFunctions" type="array">
             <element value="m_icon" />
             <element value="m_image" />
-			<element value="m_include" />
-			<element value="m_if" />
-			<element value="m_section" />
+            <element value="m_image_ofit" />
+				<element value="m_include" />
+				<element value="m_if" />
+				<element value="m_section" />
           </property>
         </properties>
     </rule>

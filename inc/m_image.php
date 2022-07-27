@@ -261,7 +261,7 @@ function m_media( $field, string $sz = 'medium', string $class = '', bool $video
 	if ( 'image/svg+xml' === $image['mime_type'] ) {
 		$html .= $video_html['head'] . '<figure ' . m_wrapper( $image, $sz ) . '><picture class="svg-wrap">' . $srcset . '</picture></figure>' . $video_html['foot'];
 	} elseif ( true === $fit ) {
-		$html .= $video_html['head'] . '<picture class="' . $class . '">' . $srcset . '</picture>' . $video_html['foot'];
+		$html .= $video_html['head'] . '<picture class="m-img-wrap--ofit ' . $class . '">' . $srcset . '</picture>' . $video_html['foot'];
 	} else {
 		$html .= $video_html['head'] . '<picture class="m-img-wrap ' . $class . '" ' . m_wrapper( $image, $sz ) . '>' . $srcset . '</picture>' . $video_html['foot'];
 	}

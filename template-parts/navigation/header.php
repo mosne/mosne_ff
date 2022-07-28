@@ -16,7 +16,7 @@
 					<?php
 					wp_nav_menu(
 						[
-							'theme_location' => 'menu-main',
+							'theme_location' => 'primary',
 							'container'      => 'none',
 							'menu_class'     => 'header__menu-list',
 							'fallback_cb'    => false,

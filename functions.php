@@ -22,6 +22,7 @@ require_once __DIR__ . '/inc/editor-white-list.php';
 require_once __DIR__ . '/inc/editor-color-palette.php';
 require_once __DIR__ . '/inc/editor-font-size.php';
 require_once __DIR__ . '/inc/editor-block-styles.php';
+require_once __DIR__ . '/inc/editor-blocks-template.php';
 
 //patterns
 require_once __DIR__ . '/inc/erditor-patterns-categories.php';

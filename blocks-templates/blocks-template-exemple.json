@@ -1,0 +1,23 @@
+[
+	{
+		"clientId": "76b0d157-add0-4533-b70e-8a215e55dcce",
+		"name": "core/heading",
+		"isValid": true,
+		"attributes": {
+			 "content": "Heading",
+			 "level": 2
+		},
+		"innerBlocks": []
+  	},
+	{
+		 "clientId": "7cc17dd4-2351-467b-9441-1e7eca79bca5",
+		 "name": "core/paragraph",
+		 "isValid": true,
+		 "attributes": {
+			  "content": "Paragraph",
+			  "dropCap": false
+		 },
+		 "innerBlocks": []
+	}
+
+]

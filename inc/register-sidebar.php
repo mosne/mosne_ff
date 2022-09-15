@@ -25,10 +25,4 @@ function m_widgets_init() {
 
 }
 
-// add_action( 'widgets_init', 'm_widgets_init' );
-
-function m_hide_widget_menu() {
-	remove_menu_page('widgets');
-}
-
-add_action( 'admin_init', 'm_hide_widget_menu' );
+add_action( 'widgets_init', 'm_widgets_init' );

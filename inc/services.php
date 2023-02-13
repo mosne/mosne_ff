@@ -94,7 +94,7 @@ function mosne_editor_enqueue_scripts() {
 	wp_enqueue_script(
 		'mosne-editor-script', // unique handle
 		get_template_directory_uri() . $script_path,
-		[ 'wp-blocks', 'wp-dom', 'wp-element', 'wp-i18n' ], // required dependencies for blocks
+		[ 'wp-blocks', 'wp-dom', 'wp-dom-ready', 'wp-edit-post','wp-element', 'wp-i18n', 'wp-edit-site', 'wp-edit-widgets' ], // required dependencies for blocks
 		filemtime( get_template_directory() . $script_path ),
 		false
 	);

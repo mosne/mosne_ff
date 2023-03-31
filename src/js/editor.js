@@ -1,6 +1,7 @@
-import lazySizes from 'lazysizes'
 import 'lazysizes/plugins/native-loading/ls.native-loading'
 import 'lazysizes/plugins/object-fit/ls.object-fit'
+
+import lazySizes from 'lazysizes'
 
 /**
  * LazySizes configuration
@@ -30,10 +31,8 @@ if (window.acf) {
 }
 
 wp.hooks.addFilter('blocks.registerBlockType', 'mosne', function (settings, name) {
-
   if (name === 'core/paragraph') {
     // compact preview for block paragraph
-    settings.example.attributes.content = 'Lorem ipsum dolor'
     settings.example.attributes.dropCap = false
   }
 
